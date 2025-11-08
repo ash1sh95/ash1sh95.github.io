@@ -1,609 +1,579 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5BB8W2X');</script>
-  <!-- End Google Tag Manager -->
-  <link rel="icon" type="image/png" href="/ashish_pixel.jpeg"/>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashish Arun - Senior Data Engineer</title>
+    <meta name="description" content="Senior Data Engineer specializing in Azure, AI, end-to-end pipelines, DSPy, and data infrastructure.">
+    <meta name="keywords" content="data engineer, Azure, AI, DSPy, ML, portfolio, Dallas TX">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter (clean), Space Mono (code), Orbitron (futuristic) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Mono&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+    <!-- Particles.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Typed.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <style>
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --accent: #00d4ff;
+            --accent-hover: #00a3cc;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(0, 212, 255, 0.3);
+            --nav-bg: rgba(0, 0, 0, 0.8);
+            --shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+            --font-title: 'Orbitron', sans-serif;
+        }
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --text: #000000;
+            --accent: #00b8d4;
+            --accent-hover: #0088a3;
+            --card-bg: rgba(0, 0, 0, 0.05);
+            --border: rgba(0, 184, 212, 0.3);
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 0 20px rgba(0, 184, 212, 0.1);
+        }
 
-  <title>Ashish Arun Portfolio</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: var(--font-main); background: var(--bg); color: var(--text); 
+            line-height: 1.6; overflow-x: hidden; transition: background 0.5s ease, color 0.5s ease;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(0,212,255,0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0,212,255,0.05) 0%, transparent 50%);
+        }
+        a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
+        a:hover { color: var(--accent-hover); }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+        /* Cursor */
+        .cursor { position: fixed; width: 16px; height: 16px; border: 2px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; box-shadow: 0 0 10px var(--accent); }
+        .cursor::after { content: ''; position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; transform: translate(-50%, -50%); }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+        /* Navigation - More X-like: Minimal, with subtle underline transitions */
+        nav { position: fixed; top: 0; width: 100%; background: var(--nav-bg); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s; }
+        nav.scrolled { padding: 0.8rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .nav-left { font-family: var(--font-title); font-size: 1.5em; color: var(--accent); }
+        .nav-right { display: flex; align-items: center; gap: 2rem; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: var(--text); font-weight: 500; position: relative; padding: 0.5rem 0; cursor: pointer; transition: color 0.3s; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease-out; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover { color: var(--accent); }
+        .theme-toggle { background: var(--accent); color: #000; border: none; padding: 0.5rem 1rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .theme-toggle:hover { background: var(--accent-hover); transform: scale(1.05); }
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+        /* Hero - Enhanced with subtle Grok-like minimalism */
+        #home { position: relative; height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 0 5rem; overflow: hidden; }
+        #particles-js { position: absolute; width: 100%; height: 100%; z-index: -1; opacity: 0.6; }
+        .hero-left { max-width: 50%; }
+        .hero-title { font-size: 1.2em; color: var(--accent); margin-bottom: 1rem; font-family: var(--font-mono); opacity: 0.9; }
+        .hero-name { font-size: 4.5em; font-family: var(--font-title); color: var(--text); margin-bottom: 0.5rem; line-height: 1.1; }
+        .hero-name span { color: var(--accent); }
+        .hero-subtitle { font-size: 1.1em; color: var(--text); opacity: 0.8; margin-bottom: 2rem; max-width: 500px; }
+        .hero-actions { display: flex; gap: 1.5rem; align-items: center; }
+        .btn-cv { background: var(--accent); color: #000; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s; cursor: pointer; }
+        .btn-cv:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: var(--shadow); }
+        .social-links { display: flex; gap: 1rem; }
+        .social-links a { color: var(--accent); font-size: 1.3em; transition: all 0.3s; cursor: pointer; }
+        .social-links a:hover { color: var(--accent-hover); transform: scale(1.2) rotate(180deg); } /* Added rotation for flair */
+        .hero-right { position: relative; }
+        .profile-container { position: relative; width: 320px; height: 320px; }
+        .profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); box-shadow: var(--shadow); animation: glow 3s ease-in-out infinite alternate; }
+        .profile-ring { position: absolute; top: -10px; left: -10px; width: 340px; height: 340px; border: 2px solid var(--accent); border-radius: 50%; animation: rotate 20s linear infinite; opacity: 0.6; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes glow { from { box-shadow: 0 0 10px var(--accent); } to { box-shadow: 0 0 30px var(--accent); } }
 
+        /* Stats - X-like clean cards */
+        .stats { display: flex; justify-content: center; gap: 4rem; margin: 3rem 0; flex-wrap: wrap; }
+        .stat-item { background: var(--card-bg); padding: 1rem 2rem; border-radius: 12px; border: 1px solid var(--border); text-align: center; transition: all 0.3s; backdrop-filter: blur(10px); }
+        .stat-item:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+        .stat-number { font-size: 2.5em; font-weight: 700; color: var(--accent); font-family: var(--font-title); }
+        .stat-label { font-size: 0.9em; color: var(--text); opacity: 0.7; }
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169007209-3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        /* Sections */
+        section { padding: 100px 5rem; max-width: 1400px; margin: 0 auto; opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+        section.visible { opacity: 1; transform: translateY(0); }
+        h2 { font-family: var(--font-title); font-size: 2.8em; color: var(--accent); text-align: center; margin-bottom: 3rem; position: relative; animation: glow 2s ease-in-out infinite alternate; }
+        h2::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: var(--accent); border-radius: 2px; }
 
-    gtag('config', 'UA-169007209-3'); -->
-  </script>
+        /* Certifications Grid - New Section */
+        .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .cert-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; transition: all 0.3s; backdrop-filter: blur(10px); cursor: pointer; }
+        .cert-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--accent); }
+        .cert-icon { font-size: 2em; color: var(--accent); margin-bottom: 0.5rem; }
+        .cert-card h3 { font-size: 1em; margin-bottom: 0.5rem; }
 
+        /* Skills Grid */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .skill-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center; transition: all 0.4s ease; backdrop-filter: blur(10px); cursor: pointer; position: relative; overflow: hidden; }
+        .skill-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.1), transparent); transition: left 0.5s; }
+        .skill-card:hover::before { left: 100%; }
+        .skill-card:hover { transform: translateY(-10px) rotateX(5deg); box-shadow: var(--shadow); border-color: var(--accent); } /* Added 3D tilt */
+        .skill-icon { font-size: 3em; color: var(--accent); margin-bottom: 1rem; transition: transform 0.3s; }
+        .skill-card:hover .skill-icon { transform: rotate(360deg); animation: glow 1s infinite alternate; }
+        .skill-card h3 { font-family: var(--font-title); color: var(--text); margin-bottom: 0.5rem; }
+        .skill-card p { font-size: 0.9em; opacity: 0.8; }
 
+        /* Experience Timeline - Updated with DE3 */
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--border); transform: translateX(-50%); box-shadow: var(--shadow); }
+        .timeline-item { position: relative; margin: 3rem 0; opacity: 0; transform: translateY(50px); }
+        .timeline-item.visible { opacity: 1; transform: translateY(0); transition: all 0.8s ease; }
+        .timeline-content { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; width: 45%; position: relative; backdrop-filter: blur(10px); transition: all 0.3s; cursor: pointer; }
+        .timeline-item:hover .timeline-content { box-shadow: var(--shadow); border-color: var(--accent); transform: scale(1.02); }
+        .timeline-item:nth-child(odd) .timeline-content { left: 0; }
+        .timeline-item:nth-child(even) .timeline-content { left: 55%; }
+        .timeline-content::before { content: ''; position: absolute; top: 1.5rem; width: 0; height: 0; border: 10px solid transparent; }
+        .timeline-item:nth-child(odd) .timeline-content::before { right: -20px; border-left-color: var(--border); }
+        .timeline-item:nth-child(even) .timeline-content::before { left: -20px; border-right-color: var(--border); }
+        .timeline-date { font-family: var(--font-mono); color: var(--accent); font-size: 0.9em; margin-bottom: 0.5rem; }
+        .timeline h3 { color: var(--text); margin-bottom: 0.5rem; }
 
-  <!-- =======================================================
-  * Template Name: Personal - v2.1.0
-  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+        /* Projects - Updated to GitHub Overview */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .project-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.5s ease; backdrop-filter: blur(10px); cursor: pointer; }
+        .project-card:hover { transform: translateY(-10px) rotateY(5deg); box-shadow: var(--shadow); border-color: var(--accent); } /* 3D flip on hover
+        .project-img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.5s; }
+        .project-card:hover .project-img { transform: scale(1.05); }
+        .project-content { padding: 1.5rem; }
+        .project-content h3 { color: var(--text); margin-bottom: 0.5rem; }
+        .project-link { color: var(--accent); font-family: var(--font-mono); font-size: 0.9em; cursor: pointer; }
+
+        /* Contact */
+        form { display: grid; gap: 1.5rem; max-width: 600px; margin: 0 auto; }
+        input, textarea { background: var(--card-bg); border: 1px solid var(--border); color: var(--text); padding: 1rem; border-radius: 12px; font-family: var(--font-mono); transition: all 0.3s; backdrop-filter: blur(10px); }
+        input:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px rgba(0,212,255,0.2); transform: scale(1.01); } /* Subtle focus scale */
+        button { background: var(--accent); color: #000; border: none; padding: 1rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        button:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: var(--shadow); } */
+
+        /* Footer */
+        footer { text-align: center; padding: 3rem; color: var(--text); opacity: 0.7; font-size: 0.9em; }
+
+        @media (max-width: 1024px) {
+            #home { flex-direction: column; text-align: center; padding: 10rem 2rem 5rem; }
+            .hero-left, .hero-right { max-width: 100%; }
+            .hero-right { margin-top: 3rem; }
+            .hero-name { font-size: 3.5em; }
+        }
+        @media (max-width: 768px) {
+            .timeline::before { left: 30px; }
+            .timeline-content { width: calc(100% - 80px); left: 80px !important; }
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before { left: -50px; border-right-color: var(--border); border-left-color: transparent; }
+        }
+    </style>
 </head>
+<body data-theme="dark">
+    <!-- Cursor -->
+    <div class="cursor"></div>
 
-<body>
-  
-  <!-- Google Tag Manager (noscript) -->
-  <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BB8W2X"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  End Google Tag Manager (noscript) -->
-  <!-- ======= Header ======= -->
-  <header id="header" class="header-tops">
-
-    <div class="container">
-
-      <h1><a href="index.html">Ashish Arun</a></h1>
-      <h2 style="color:#fff">I'm a <span class="typing" style="color:#12D640"></span></h2>
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="#header"> <span>Home</span></a></li>
-          <li><a href="#about"><span>About</span></a></li>
-          <li><a href="#education"> <span>Education</span></a></li>
-          <li><a href="#experience"> <span>Experience</span></a></li>
-<!--          <li><a href="#projects"> <span>Projects</span></a></li>-->
-          <!-- <li><a href="#portfolio"> <span>Projects</span></a></li> -->
-          <li><a href="#skills"> <span>Skills</span></a></li>
-          <li><a href="https://docs.google.com/document/d/1fP67MILNTFI8kKho9LXN6jm2PmzIWYyoivgYBmnsb4k/edit?usp=sharing" target="_blank"> <span>Resume</span></a></li>
-          <!-- <li><a href="#links"> <span>Resume & Links</span></a></li> -->
-          <li><a href="#contacts"> <span>Contact</span></a></li>
-          
-
-        </ul>
-      </nav><!-- .nav-menu -->
-
-      <div class="social-links">
-          <a href="https://www.linkedin.com/in/ashish-a" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-          <a href="https://www.github.com/ash1sh95" target="_blank" class="github"><i class="bx bxl-github"></i></a>
-          <a href="mailto:ashish1995@gmail.com" target="_blank" class="google"><i class="bx bxl-google"></i></a>
-<!--           <img src="5Q0v.gif" class="img-fluid" alt="" class="center"> -->
-<!--         <marquee 
-          `scrollamount="20"`
-           direction="right"
-           behavior="scroll">
-         <img src="5Q0v.gif" />
- </marquee> -->
-      </div>
-
-    </div>
-  </header><!-- End Header -->
-<img src="5Q0v.gif" class="img-fluid" alt="" class="center">
-  <!-- ======= About Section ======= -->
-  <section id="about" class="about">
-
-    <!-- ======= About Me ======= -->
-    <div class="about-me container">
-
-      <div class="section-title">
-        <h2>About</h2>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-4" data-aos="fade-right">
-          <img src="assets/img/Ashish_Photo.jpg" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-          <p>Highly technical software engineer with 3+ years experience working for Fortune 500 companies and startups.
-            Currently Data Engineer II at GM Financial, with hands on experience in data transformation and pipelines using synapse and databricks, implemented IaC for Microsoft Azure for all the resources
-            and working on learning ML and AI framework and infrastructure.
-
-            <li>Masters degree in Computer Information Systems with focus in Data Engineering & Analytics </li>
-            <li>Passionate about helping organizations solve challenges in data extraction, loading & storage</li>
-         
-          </p>
-          <div class="row">
-            <div class="col-lg-6">
-              <ul>
-                <!-- <li><i class="icofont-rounded-right"></i> <strong>Birthday:</strong> </li> -->
-                <li><i class="icofont-rounded-right"></i> <strong>Phone:</strong> +1 970 286 8289</li>
-              </ul>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">Ashish<span style="color:var(--accent)">.</span></div>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="#home" class="active" onclick="scrollToSection('home')">Home</a>
+                <a href="#about" onclick="scrollToSection('about')">About</a>
+                <a href="#skills" onclick="scrollToSection('skills')">Skills</a>
+                <a href="#certs" onclick="scrollToSection('certs')">Certifications</a>
+                <a href="#experience" onclick="scrollToSection('experience')">Experience</a>
+                <!-- <a href="#projects" onclick="scrollToSection('projects')">Projects</a> -->
+                <a href="#contact" onclick="scrollToSection('contact')">Contact</a>
             </div>
-            <div class="col-lg-6">
-              <ul>
-                <li><i class="icofont-rounded-right"></i> <strong>City:</strong> Dallas, TX</li>
-                <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> ashish1995@gmail.com</li>
-              </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <span class="light">Light</span>
+                <span class="dark" style="display:none">Dark</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home">
+        <div id="particles-js"></div>
+        <div class="hero-left">
+            <!-- <p class="hero-title">Senior Data Engineer</p> -->
+            <h1 class="hero-name">Hello I'm<br><span id="typed-name">Ashish Arun</span></h1>
+            <p class="hero-subtitle">Azure Cloud Architect | End-to-End AI Implementation | DSPy & Data Infrastructure Expert | Building scalable data solutions at GM Financial</p>
+            <div class="hero-actions">
+                <a href="resume.pdf" class="btn-cv" download onclick="downloadCV()">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/ashish-a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/ash1sh95" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:ashish1995@gmail.com" onclick="sendEmail()"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-
-    </div><!-- End About Me -->
-
-    <!-- ======= Interests ======= -->
-    <div class="interests container">
-
-      <div class="section-title">
-        <h2>Interests</h2>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-3 col-md-4">
-          <div class="icon-box">
-            <i class="ri-code-s-slash-fill" style="color: #ffbb2c;"></i>
-            <h3>Software Development</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-          <div class="icon-box">
-            <i class="ri-database-2-line" style="color: #5578ff;"></i>
-            <h3>Machine Learning</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-          <div class="icon-box">
-            <i class="ri-code-s-slash-fill" style="color: #e80368;"></i>
-            <h3>Infrastrucutre as Code (IaC)</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
-          <div class="icon-box">
-            <i class="ri-global-line" style="color: #1c7d32;"></i>
-            <h3>Artificial Intelligence</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-code-s-slash-fill" style="color: #28a745;"></i>
-            <h3>Cloud Architecture</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-bar-chart-box-line" style="color: #f1081f;"></i>
-            <h3>Mircosoft Azure</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-database-2-line" style="color: #47aeff;"></i>
-            <h3>Databricks</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-database-2-line" style="color: #ffc107;"></i>
-            <h3>Data Warehouse</h3>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- End Interests -->
-  </section><!-- End About Section -->
-
-
-
-  <!-- ======= Education Section ======= -->
-  <section id="education" class="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>Education</h2>
-      </div>
-      <div class="row">
-        <div class="col-lg-12" data-aos="fade-up" style="display: inline-block;">
-
-
-            <div class="col-md-4 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100" style="padding:0px 0px;padding-bottom: 5px;display: inline-block;">
-              <img src="/assets/img/education/CSU.jpg" class="img-fluid" alt="">
-              <!-- <h4 style="text-align:left;"><a href="https://www.colostate.edu/" target="_blank" style="color:#12d640">Colorado State University</a><br> </h4> -->
-              <p style="text-align:left;color:#fff;padding: 5px 10px;"><em>Master's in Computer Information Systems</em></p>
-              <h5 style="text-align:left;padding: 0px 10px;">August 2019 - May 2021</h5>
-              <h6 style="text-align:left;color:#fff;padding: 0px 10px;">Relevant Coursework</h6>
-              <ul style="text-align:left;color:#fff;">
-                <li>Business Database Systems</li>
-                <li>Applied Data Mining and Analytics in Business</li>
-                <li>Application Software Infrastructure</li>
-                <li>Agile Management and Product Development</li>
-                <li>Business Visual Application Development</li>
-                <li>Software Development Methodology</li>
-              </ul>
+        <div class="hero-right">
+            <div class="profile-container">
+                <img src="assets/img/Ashish_Photo.jpg" alt="Ashish Arun" class="profile-img">
+                <div class="profile-ring"></div>
             </div>
-            <div class="col-md-4 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100" style="padding:0px 0px;padding-bottom: 5px;display: inline-block;">
-              <img src="assets/img/education/VTU.jpeg" class="img-fluid" alt="">
-              <!-- <h4 style="text-align:left;"><a href="https://vtu.ac.in/" target="_blank" style="color:#12d640">Visvesvaraya Technological University</a><br> </h4> -->
-              <p style="text-align:left;color:#fff;padding: 5px 10px;"><em>B.E in Electronics and Communication</em></p>
-              <h5 style="text-align:left;padding: 0px 10px;">August 2013 - May 2017</h5>
-              <h6 style="text-align:left;color:#fff;padding: 0px 10px;">Relevant Coursework</h6>
-              <ul style="text-align:left;color:#fff;">
-                <li>Operating Systems</li>
-                <li>Programming in C++</li>
-                <li>Image processing</li>
-                <li>DSP Algorithms and Architecture</li>
-                <li>Network Security</li>
-                <li>Embedded System Design</li>
-                <!-- <li>Computer Vision</li> -->
-              </ul>
-            </div>
-          </div>
         </div>
-      </div>
+    </section>
 
-
-    <div class="portfolio">
-    <div class="container">
-      <div class="section-title">
-        <h2>Online Certification</h2>
-      </div>
-
-      <div class="row portfolio-container" style="position: relative; height: 437.75px;">
-
-         <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 0px; top: 0px;">
-          <div class="portfolio-wrap">
-            <img src="assets/img/certification/udacity.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Data Engineering Nano Degree</h4>
-              <div class="portfolio-links">
-                <a href="https://graduation.udacity.com/confirm/6LKKQXXL" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-           </div>
-          </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 370px; top: 0px;">
-          <div class="portfolio-wrap">
-            <img src="assets/img/certification/databricks.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Academy Accreditation - Generative AI Fundamentals</h4>
-              <div class="portfolio-links">
-                <a href="https://credentials.databricks.com/f7667b63-77c5-44a1-9b93-52ea6ef72659" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-number" id="years-exp">5</div>
+            <div class="stat-label">Years Experience</div>
         </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 740px; top: 0px;">
-          <div class="portfolio-wrap">
-            <img src="assets/img/certification/databricks.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Academy Accreditation - Platform Administrator</h4>
-              <div class="portfolio-links">
-                <a href="https://credentials.databricks.com/8aa97359-f0f3-4e84-9806-bb73d4d12b7b" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
+        <div class="stat-item">
+            <div class="stat-number" id="projects-done">20+</div>
+            <div class="stat-label">Projects Delivered</div>
         </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-project" style="position: absolute; left: 0px; top: 218.875px;">
-          <div class="portfolio-wrap">
-            <img src="assets/img/certification/ibm.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Big Data Foundation - level 2</h4>
-              <div class="portfolio-links">
-                <a href="https://www.credly.com/badges/307d4a6e-3d2b-475a-81b9-c54d990197ae?source=linked_in_profile" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
+        <div class="stat-item">
+            <div class="stat-number" id="azure-certs">10+</div>
+            <div class="stat-label">Certifications</div>
         </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-project" style="position: absolute; left: 370px; top: 218.875px;">
-          <div class="portfolio-wrap">
-            <img src="assets/img/certification/dc.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Machine Learning with Python</h4>
-              <div class="portfolio-links">
-                <a href="https://www.datacamp.com/statement-of-accomplishment/track/76f3b32e78092fdbc9b90eff3440ed5a136fb5be" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
+        <div class="stat-item">
+            <div class="stat-number" id="ai-pipelines">30+</div>
+            <div class="stat-label">Data & AI Pipelines Built</div>
         </div>
-
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-project" style="position: absolute; left: 740px; top: 218.875px;">
-          <div class="portfolio-wrap">
-            <img src="assets/img/certification/LinkedIn_Logo.svg.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Other Certifications </h4>
-              <div class="portfolio-links">
-                <a href="https://www.linkedin.com/in/ashish-a/details/certifications/" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
     </div>
 
-  </section>
-  <!-- End Education Section -->
+    <!-- About -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p style="text-align:center;max-width:800px;margin:0 auto 2rem;font-size:1.1em;">
+            Highly technical Senior Data Engineer with over 5 years of experience building scalable data platforms on Azure. Currently Data Engineer III at GM Financial, leading end-to-end AI implementations from ingestion to deployment using Synapse, Databricks, Terraform IaC, and modern ML frameworks like DSPy.
+        </p>
+        <p style="text-align:center;max-width:800px;margin:0 auto;opacity:0.8;">
+            Master's in Computer Information Systems with focus on Data Engineering & Analytics. Passionate about AI infrastructure, MLOps, and helping organizations unlock value from their data. Interests: AI optimization, cloud architecture, hiking, and volunteering for social causes.
+        </p>
+    </section>
 
-
-
-  <!-- Start Experience Section -->
-
-  <section id="experience" class="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>Experience</h2>
-      </div>
-      <div class="row">
-          <div class="col-lg-12" data-aos="fade-up">
-              <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-                <h4 style="text-align:left;"><a href="https://www.gmfinancial.com/" style="color:#12d640">GM Financial</a><br> </h4>
-                <h5 style="text-align:left;">October 2022 - Present</h5>
-                <p style="text-align:left;color:#fff"><em>Data Engineer II </em></p>
-                <ul style="text-align:left;">
-                  <li>Implemented synapse data pipelines to load data from various sources to bronze layer</li>
-                  <li>Implemented databricks notebooks to load data into Adobe Experience Platform using Pyspark and RESTful APIs</li>
-                  <li>Migrated hive metastore to unity catalog in databricks</li>
-                  <li>Implemented Infrastructure as a Code for Azure services like keyvaults, subnets,azure databricks, Azure SQL, azure synapse using Terraform </li>
-                  <li>Implemented CI/CD pipelines for Azure Devops </li>
-                  <li>Implemented and maintained RBAC and administrative role assignments for azure and databricks resources</li>
-                  <li>Implemented automation to create and edit databricks clusters using Terraform</li>
-                  </ul>
-              </div>
-              <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-                <h4 style="text-align:left;"><a href="https://www.snagajob.com/" style="color:#12d640">Snagajob Inc.</a><br> </h4>
-                <h5 style="text-align:left;">July 2021 - August 2022</h5>
-                <p style="text-align:left;color:#fff"><em>Associate Data Engineer</em></p>
-                <ul style="text-align:left;">
-                  <li>Implemented 25+ SnowSQL scripts, functions and procedures for KPI metric calculations and automated them in JS</li>
-                  <li>Maintained and managed Kafka topics and kafka consumers with confluent kafka for data pipelines</li>
-                  <li>Implemented 50+ kafka pipelines to snowflake and automated the process with docker containers and argo</li>
-                  <li>Implemented automation to notify new kafka topics through Slack API and webhooks reducing tracking time by 50%</li>
-                  <li>Involved in updating and maintenance of Kafka connectors for snowflake and confluent</li>
-                  <li>Reduced the time consumption by 50% by implementing automated queries</li>
-                  <li>Implemented dashboards and monitoring for various metrics on Datadog</li>
-                  </ul>
-              </div>
-              <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-                <h4 style="text-align:left;"><a href="https://jbsfoodsgroup.com/" style="color:#12d640">JBS USA</a><br> </h4>
-                <h5 style="text-align:left;">June 2020 - August 2020</h5>
-                <p style="text-align:left;color:#fff"><em>Information Technology Intern (Database Systems)</em></p>
-                <ul style="text-align:left;">
-                  <li>Improved efficiency by 50% using automation scripts in Powershell to backup & restore databases </li>
-                    <li>Increased ease of operation by 80% by deploying automation script on schedule & enabling manual run from GUI</li>
-                      <li>Built GUI to inspect & display available disk space & memory using Powershell Forms & MS SQL </li>
-                        <li>Implemented secure execution of automation script by validating credentials in active directory & generating OTPs</li>
-                  </ul>
-              </div>
-              <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-                <h4 style="text-align:left;"><a href="https://us.nttdata.com/en/" target="_blank" style="color:#12d640">NTT DATA Services</a><br> </h4>
-                <h5 style="text-align:left;">February 2018 - June 2019</h5>
-                <p style="text-align:left;color:#fff"><em>Programmer Analyst</em></p>
-                <ul style="text-align:left;">
-                  <li>I worked on the testing of Health Edge Payor Software functionality</li>
-                    <li>Worked in the US Health insurance domain from Benefit Plan, components, enrollment, providers, subscriptions and claims</li>
-                      <li>Implemented software testing strategies & workflows through customer acceptance & final delivery</li>
-                        <li>Developed an average of 50+ test scenarios & cases per day to detect & resolve issues with customer software</li>
-                          <li>Detected software flaws with a 90% accuracy rate & reduced slippage to less than 5% with zero fatal defect slippage</li>
-                            <li>Implemented black box testing methodologies to identify software defects - functionality, usability & regression testing </li>
-                              <li>Reported & tracked average of 10 software defects per day as bugs or issues using JIRA project tracking tool</li>
-                   </ul>
-              </div>
-              <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-                <h4 style="text-align:left;"><a href="https://us.nttdata.com/en/" target="_blank" style="color:#12d640">NTT DATA Services</a><br> </h4>
-                <h5 style="text-align:left;">October 2017 - February 2018</h5>
-                <p style="text-align:left;color:#fff"><em>Quality Assurance and Testing Intern</em></p>
-                <ul style="text-align:left;">
-                  <li>I underwent training in SQL, Java, manual and automation testing</li>
-                    <li>I was consistently placed in the top 2% of the training batch by scoring 83/100 in training</li>
-                      <li>I also managed the sessions by scheduling and planning the course of action and coordination for the training process</li>
-                </ul>
+    <!-- Certifications - New Section -->
+    <section id="certs">
+        <h2>Certifications</h2>
+        <div class="certs-grid">
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <h3>Microsoft Certified: Azure AI Fundamentals</h3>
+                <p>Microsoft - Valid through 2025</p>
             </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <h3>Databricks Certified Generative AI Engineer Associate</h3>
+                <p>Databricks - Valid through 2027</p>
+            </div>
+            <div class="cert-card">
+                <i class="fas fa-certificate cert-icon"></i>
+                <h3>Databricks Certified Data Analyst Associate</h3>
+                <p>Databricks - Valid through 2027</p>
+            </div>
+            <div class="cert-card">
+              <i class="fas fa-certificate cert-icon"></i>
+              <h3>Databricks Certified Data Engineer Associate</h3>
+              <p>Databricks - Valid through 2027</p>
           </div>
+            <!-- Add more as per your LinkedIn -->
         </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- End Experience Section -->
-
-
-
-  <!-- Start Project Section -->
-  <!-- <section id="portfolio" class="portfolio">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Projects</h2>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12 d-flex justify-content-center">
-          <ul id="portfolio-flters">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">Web-App</li>
-            <li data-filter=".filter-project">Project</li>
-          </ul>
+    <!-- Skills -->
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card" onclick="showSkillDetail('Azure Cloud')">
+                <i class="fab fa-microsoft skill-icon"></i>
+                <h3>Azure Cloud</h3>
+                <p>Synapse, Databricks, Data Factory, Terraform IaC, Azure ML, Unity Catalog</p>
+            </div>
+            <div class="skill-card" onclick="showSkillDetail('Data Engineering')">
+                <i class="fas fa-database skill-icon"></i>
+                <h3>Data Engineering</h3>
+                <p>PySpark, Kafka, Snowflake, Data Lakes, REST APIs, SnowSQL</p>
+            </div>
+            <div class="skill-card" onclick="showSkillDetail('AI & ML')">
+                <i class="fas fa-brain skill-icon"></i>
+                <h3>AI & ML</h3>
+                <p>DSPy Framework, Model Evals (BLEU/ROUGE), MLOps, NLTK, Scikit-Learn</p>
+            </div>
+            <div class="skill-card" onclick="showSkillDetail('DevOps')">
+                <i class="fas fa-tools skill-icon"></i>
+                <h3>DevOps</h3>
+                <p>Azure DevOps, CI/CD, Docker, Argo, Datadog, JIRA</p>
+            </div>
+            <div class="skill-card" onclick="showSkillDetail('Languages')">
+                <i class="fas fa-code skill-icon"></i>
+                <h3>Languages</h3>
+                <p>Python, SQL, PySpark, JavaScript, C++, PowerShell</p>
+            </div>
+            <div class="skill-card" onclick="showSkillDetail('Security')">
+                <i class="fas fa-shield-alt skill-icon"></i>
+                <h3>Security</h3>
+                <p>RBAC, Azure AD, Key Vault, OTP Automation, Active Directory</p>
+            </div>
         </div>
-      </div> -->
+    </section>
 
-      <!-- <div class="row portfolio-container">
-
-       <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <br>
-          <center><h4>Tech Blog</h4></center>
-          <div class="portfolio-wrap">
-            <img src="assets/img/project/blog.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <div class="portfolio-links">
-                <a href="projects/blog.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
+    <!-- Experience -->
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Feb 2025 – Present</div>
+                    <h3>Data Engineer III – GM Financial</h3>
+                    <p>Working on Azure, Gen AI, Databricks Center of excellence, Infrastructure and data </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                  <div class="timeline-date">August 2023 – Feb 2025</div>
+                  <h3>Data Engineer II – GM Financial</h3>
+                  <p>Databricks, Azure, IaC, Python and Gen AI</p>
               </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+                <div class="timeline-date">oct 2022– August 2023</div>
+                <h3>Data Engineer I – GM Financial</h3>
+                <p>Led advanced Synapse pipelines and Databricks notebooks for high-volume data ingestion into Adobe Experience Platform using PySpark and REST APIs. Migrated Hive to Unity Catalog; Automated Azure resources with Terraform IaC. Led CI/CD, RBAC, and AI infrastructure explorations, reducing deployment time by 40%.</p>
             </div>
-          </div>
-        </div> -->
-
-       
-
-
-      <!-- </div>
-    </div>
-  </section> -->
-
-  <!-- End Project Section -->
-
-
-
-  <!-- Start Skills Section -->
-
-  <section id="skills" class="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>Skills</h2>
-      </div>
-      <div class="row">
-        <div class="col-lg-12" data-aos="fade-up">
-          <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100" style="background:#fff">
-            <h4 style="text-align:left;color:#09203a">Languages and Databases</h4>
-                <p style="text-align:left;">
-                  <img src="https://www.vectorlogo.zone/logos/python/python-horizontal.svg" alt="vectorlogo.zone" height="50" width="150">
-                  <img src="https://www.vectorlogo.zone/logos/java/java-horizontal.svg" alt="vectorlogo.zone" height="50" width="120">
-                  <img src="https://www.vectorlogo.zone/logos/w3_html5/w3_html5-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="upload.wikimedia.org" height="60" width="90">
-                  <img src="https://www.vectorlogo.zone/logos/mysql/mysql-horizontal.svg" alt="vectorlogo.zone" height="70" width="130">
-                  <img src="https://www.vectorlogo.zone/logos/postgresql/postgresql-horizontal.svg" alt="vectorlogo.zone" height="50" width="190">
-
-                </p>
+        </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Jul 2021 – Aug 2022</div>
+                    <h3>Associate Data Engineer – Snagajob Inc.</h3>
+                    <p>Built 25+ SnowSQL scripts and 50+ Kafka pipelines to Snowflake. Reduced tracking time by 50% via Slack API automation. Implemented Datadog monitoring dashboards.</p>
+                </div>
             </div>
-          <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="lefade-up" data-aos-delay="100" style="background:#fff">
-              <h4 style="text-align:left;color:#09203a">Tools</h4>
-                <p style="text-align:left;">
-                  <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/databricks/databricks-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/jupyter/jupyter-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/snowflake/snowflake-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/apache_kafka/apache_kafka-ar21.svg" alt="vectorlogo.zone">
-              </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- End Skills Section -->
-
-
-
-
-  <!-- Start Links section -->
-  <section id="links" class="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>Resume & Links</h2>
-      </div>
-      <div class="row">
-        <div class="col-md-3 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-          <a href="https://docs.google.com/document/d/1fP67MILNTFI8kKho9LXN6jm2PmzIWYyoivgYBmnsb4k/edit?usp=sharing" target="_blank"><div class="icon"><i class="icofont-page"></i></div></a>
-          <h4 class="title"><a href="https://docs.google.com/document/d/1fP67MILNTFI8kKho9LXN6jm2PmzIWYyoivgYBmnsb4k/edit?usp=sharing" target="_blank">Resume</a></h4>
-          <p class="description" style="color:#fff;">resume download</p>
-        </div>
-       
-     
-      </div>
-    </div>
-  </section> End Links Section
-
-
-  <!-- Start Contact Section -->
-
-  <section id="contacts" class="contact">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Contact</h2>
-      </div>
-
-      <div class="row mt-2">
-
-        <div class="col-md-6 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-map"></i>
-            <h3>Address</h3>
-            <p>Dallas, TX</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-share-alt"></i>
-            <h3>Social Profiles</h3>
-            <div class="social-links">
-              <a href="https://www.linkedin.com/in/ashish-a" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              <a href="https://www.github.com/ash1sh95" target="_blank" class="github"><i class="bx bxl-github"></i></a>
-              <a href="mailto:ashish1995@gmail.com" target="_blank" class="google"><i class="bx bxl-google"></i></a>
-
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Jun 2020 – Aug 2020</div>
+                    <h3>IT Intern – JBS USA</h3>
+                    <p>Automated database backups with PowerShell, improving efficiency by 50%. Built GUI for system monitoring using PowerShell Forms and MS SQL.</p>
+                </div>
             </div>
-          </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Feb 2018 – Jun 2019</div>
+                    <h3>Programmer Analyst – NTT DATA Services</h3>
+                    <p>Tested Health Edge Payor Software. Developed 50+ test scenarios daily with 90% accuracy. Implemented black box testing and tracked defects via JIRA.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Oct 2017 – Feb 2018</div>
+                    <h3>QA & Testing Intern – NTT DATA Services</h3>
+                    <p>Trained in SQL, Java, manual/automation testing; Top 2% in batch (83/100 score). Managed training sessions and coordination.</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="col-md-6 mt-4 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-envelope"></i>
-            <h3>Email</h3>
-            <p>ashish1995@gmail.com</p>
-            
-          </div>
+    <!-- Projects -->
+    <!-- <section id="projects">
+        <h2>Projects & Code</h2>
+        <p style="text-align:center;max-width:800px;margin:0 auto 2rem;opacity:0.8;">Explore my GitHub for hands-on projects in data engineering, AI, and cloud infrastructure. From ETL pipelines to ML models—code speaks louder.</p>
+        <div class="projects-grid">
+            <div class="project-card" onclick="openProject('https://github.com/ash1sh95?tab=repositories')">
+                <i class="fab fa-github" style="font-size: 4em; color: var(--accent); margin: 2rem auto; display: block;"></i>
+                <div class="project-content">
+                    <h3>Full GitHub Repository</h3>
+                    <p>Browse 20+ repositories including PySpark ETLs, sentiment analysis with DSPy, Azure IaC scripts, and more. Starred and forked for collaboration.</p>
+                    <a href="https://github.com/ash1sh95?tab=repositories" class="project-link" target="_blank">Explore on GitHub</a>
+                </div>
+            </div>
+            <div class="project-card" onclick="openProject('https://github.com/ash1sh95/airbnb-etl')">
+                <img src="images/project2.jpg" alt="Airbnb ETL" class="project-img">
+                <div class="project-content">
+                    <h3>Airbnb Denver ETL with PySpark</h3>
+                    <p>Scalable data pipeline from S3 to Databricks using Spark SQL. Transformed and loaded into parquet for analytics.</p>
+                    <a href="https://github.com/ash1sh95/airbnb-etl" class="project-link" target="_blank">View Repo</a>
+                </div>
+            </div>
+            <div class="project-card" onclick="openProject('https://github.com/ash1sh95/movie-sentiment')">
+                <img src="images/project3.jpg" alt="Sentiment Analysis" class="project-img">
+                <div class="project-content">
+                    <h3>Movie Review Sentiment Analysis</h3>
+                    <p>Naive Bayes classifier on NLTK corpora achieving 80% accuracy. Enhanced with DSPy for dynamic prompt tuning.</p>
+                    <a href="https://github.com/ash1sh95/movie-sentiment" class="project-link" target="_blank">View Repo</a>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6 mt-4 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-phone-call"></i>
-            <h3>Contact</h3>
-            <p>+1 970 286 8289</p>
-          </div>
-        </div>
-      </div>
+    </section> -->
 
-    </div>
-  </section>
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <form id="contact-form" onsubmit="submitForm(event)">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
 
-  <!-- End Contact Section -->
+    <footer>
+        <p>© 2025 Ashish Arun. Built with <i class="fas fa-heart" style="color:var(--accent)"></i> </p>
+    </footer>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="assets/vendor/counterup/counterup.min.js"></script>
-  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/venobox/venobox.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script type="text/javascript">
-    var typed = new Typed('.typing',{
-      strings: ["Data Engineer", "Cloud Engineer", "ML and AI Enthusiast"],
-      loop: true,
-      typeSpeed: 65,
-      backSpeed: 65
-    });
-  </script>
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            document.querySelectorAll('.theme-toggle .light, .theme-toggle .dark').forEach(el => el.style.display = el.classList.contains(isDark ? 'light' : 'dark') ? 'inline' : 'none');
+            localStorage.setItem('theme', body.getAttribute('data-theme'));
+        }
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.body.setAttribute('data-theme', savedTheme);
+        document.querySelectorAll('.theme-toggle .light, .theme-toggle .dark').forEach(el => el.style.display = el.classList.contains(savedTheme === 'dark' ? 'dark' : 'light') ? 'inline' : 'none');
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+        // Scroll to Section
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+        }
 
+        // Download CV
+        function downloadCV() {
+            const link = document.createElement('a');
+            link.href = 'resume.pdf';
+            link.download = 'Ashish_Arun_Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Send Email
+        function sendEmail() {
+            window.location.href = 'mailto:ashish1995@gmail.com?subject=Portfolio Inquiry&body=Hello Ashish,';
+        }
+
+        // Show Skill Detail
+        function showSkillDetail(skill) {
+            alert(`${skill}: Deep expertise in production-scale implementations. Check my GitHub for code samples!`);
+        }
+
+        // Open Project
+        function openProject(url) {
+            window.open(url, '_blank');
+        }
+
+        // Submit Form
+        function submitForm(event) {
+            event.preventDefault();
+            alert('Message sent successfully! (Connect with Formspree for live emails)');
+            document.getElementById('contact-form').reset();
+        }
+
+        // Particles
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 800 } },
+                color: { value: '#00d4ff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.3, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#00d4ff', opacity: 0.2, width: 1 },
+                move: { enable: true, speed: 1.5, direction: 'none', random: false, straight: false, out_mode: 'out' }
+            },
+            interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } } },
+            retina_detect: true
+        });
+
+        // Cursor
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', e => {
+            gsap.to(cursor, { duration: 0.2, left: e.clientX, top: e.clientY });
+        });
+
+        // Nav Active
+        window.addEventListener('scroll', () => {
+            const sections = ['home', 'about', 'certs', 'skills', 'experience', 'projects', 'contact'];
+            const scrollPos = window.scrollY + 100;
+            sections.forEach((id, i) => {
+                const el = document.getElementById(id);
+                if (el && el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos) {
+                    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+                    const link = document.querySelector(`.nav-links a[onclick="scrollToSection('${id}')"]`);
+                    if (link) link.classList.add('active');
+                }
+            });
+            document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+        // Typing Effect
+        new Typed('#typed-name', {
+            strings: ['Ashish Arun', 'Senior Data Engineer III', 'Azure AI Architect'],
+            typeSpeed: 100,
+            backSpeed: 50,
+            backDelay: 1500,
+            loop: true
+        });
+
+        // Hero Animations
+        gsap.from('.hero-title', { opacity: 0, y: -50, duration: 1, delay: 0.5 });
+        gsap.from('.hero-name', { opacity: 0, x: -100, duration: 1.2, delay: 0.8 });
+        gsap.from('.hero-subtitle', { opacity: 0, x: -50, duration: 1, delay: 1.2 });
+        gsap.from('.hero-actions', { opacity: 0, y: 50, duration: 1, delay: 1.5 });
+        gsap.from('.profile-container', { opacity: 0, scale: 0.8, rotation: 180, duration: 1.5, delay: 1 }); /* Added rotation entry */
+
+        // Stats Counter
+        const counters = [
+            { id: 'years-exp', end: 5 },
+            { id: 'projects-done', end: 25 },
+            { id: 'azure-certs', end: 3 },
+            { id: 'ai-pipelines', end: 10 }
+        ];
+        counters.forEach(counter => {
+            gsap.fromTo(`#${counter.id}`, 
+                { innerText: 0 },
+                { innerText: counter.end, duration: 2, delay: 1.5, ease: 'power2.out',
+                  snap: { innerText: 1 },
+                  onUpdate: function() { 
+                      document.getElementById(counter.id).innerText = Math.ceil(this.targets()[0].innerText);
+                  },
+                  scrollTrigger: { trigger: '.stats', start: 'top 80%' }
+                }
+            );
+        });
+
+        // Section Reveals
+        gsap.utils.toArray('section').forEach(section => {
+            ScrollTrigger.create({
+                trigger: section,
+                start: 'top 80%',
+                onEnter: () => {
+                    section.classList.add('visible');
+                    gsap.fromTo(section.children, { opacity: 0, y: 50 }, { opacity: 1, y: 0, stagger: 0.2, duration: 0.8, ease: 'power2.out' });
+                }
+            });
+        });
+
+        // Timeline
+        gsap.utils.toArray('.timeline-item').forEach((item, i) => {
+            ScrollTrigger.create({
+                trigger: item,
+                start: 'top 80%',
+                onEnter: () => item.classList.add('visible')
+            });
+        });
+
+        // Enhanced Hovers
+        gsap.utils.toArray('.skill-card, .project-card, .cert-card, .stat-item').forEach(card => {
+            card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05, rotationY: 5, duration: 0.3, ease: 'power2.out' }));
+            card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, rotationY: 0, duration: 0.3, ease: 'power2.out' }));
+        });
+    </script>
 </body>
-
 </html>
