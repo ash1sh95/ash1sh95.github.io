@@ -919,8 +919,14 @@
             document.getElementById('preloader').classList.add('fade-out');
         }
 
-        // Magic Circle Preloader
-        window.addEventListener('load', () => {
+        // Magic Circle Preloader - Fixed Timing
+        document.addEventListener('DOMContentLoaded', () => {
+            // Start preloader immediately
+            const progressArc = document.getElementById('progress-arc');
+            const percentage = document.getElementById('preloader-percentage');
+            const preloader = document.getElementById('preloader');
+            const totalDash = 1131; // Circumference of outer circle
+
             // Typing effect for title
             new Typed('#preloader-typed', {
                 strings: ['Summoning Portfolio', 'Ashish Arun', 'Senior Data Engineer III', 'Azure AI Architect'],
@@ -944,15 +950,13 @@
                 }
             });
 
-            // Animate magic circle progress
-            const progressArc = document.getElementById('progress-arc');
-            const percentage = document.getElementById('preloader-percentage');
-            const preloader = document.getElementById('preloader');
-            const totalDash = 1131; // Circumference of outer circle
+            // Animate magic circle progress for fixed duration
             let progress = 0;
+            const duration = 4000; // 4 seconds total
+            const steps = 40; // Update every 100ms
+            const increment = 100 / steps;
 
             const interval = setInterval(() => {
-                const increment = Math.random() * 25 + 8; // More dynamic progress
                 progress += increment;
                 if (progress >= 100) {
                     progress = 100;
@@ -983,7 +987,16 @@
                         repeat: 1
                     });
                 }
-            }, 150);
+            }, duration / steps);
+
+            // Fallback: hide preloader after page load completes (whichever comes first)
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    if (!preloader.classList.contains('fade-out')) {
+                        preloader.classList.add('fade-out');
+                    }
+                }, 500); // Small delay to ensure smooth transition
+            });
         });
 
         // Enhanced Hovers
