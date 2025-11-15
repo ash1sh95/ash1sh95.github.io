@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashish Arun - Senior Data Engineer | AI & Cloud Architecture Expert</title>
     <meta name="description" content="Senior Data Engineer III at GM Financial. Expert in end-to-end AI pipelines, Azure cloud infrastructure, DSPy, MLOps, and scalable data platforms. 5+ years building production ML systems.">
-    <meta name="keywords" content="data engineer, Azure, AI, DSPy, MLOps, cloud architecture, data pipelines, machine learning, senior engineer, portfolio, Dallas TX">
+    <meta name="keywords" content="data engineer, Azure, AI, DSPy, MLOps, cloud architecture, data pipelines, machine learning, senior engineer, portfolio, Dallas TX, GenAI, Databricks, PySpark, Terraform, Azure AI, data engineering expert">
     <meta name="author" content="Ashish Arun">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#00d4ff">
+    <meta name="msapplication-TileColor" content="#00d4ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta property="og:title" content="Ashish Arun - Senior Data Engineer | AI & Cloud Expert">
     <meta property="og:description" content="Senior Data Engineer specializing in Azure, AI pipelines, DSPy, and cloud infrastructure. Building scalable ML systems at GM Financial.">
     <meta property="og:image" content="https://ash1sh95.github.io/assets/img/Ashish_Photo.jpg">
@@ -18,6 +22,7 @@
     <meta name="twitter:description" content="AI & Cloud Architecture Expert | Building end-to-end ML pipelines">
     <meta name="twitter:image" content="https://ash1sh95.github.io/assets/img/Ashish_Photo.jpg">
     <link rel="canonical" href="https://ash1sh95.github.io">
+    <link rel="icon" href="favicon.jpg" type="image/jpeg">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -90,14 +95,69 @@
         a:hover { color: var(--accent-hover); }
 
         /* Preloader */
-        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 10000; display: flex; align-items: center; justify-content: center; }
-        .preloader-content { text-align: center; }
-        .preloader-logo { font-family: var(--font-title); font-size: 3em; color: var(--accent); margin-bottom: 2rem; animation: pulse 1.5s infinite; }
-        .preloader-bar { width: 300px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
-        .preloader-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-hover)); width: 0%; animation: load 2s ease-out forwards; }
-        @keyframes load { to { width: 100%; } }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        #preloader.fade-out { animation: fadeOut 0.5s ease-out forwards; }
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--bg) 0%, rgba(0,212,255,0.1) 50%, var(--bg) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 4s ease infinite;
+            z-index: 10000; display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .preloader-content { text-align: center; position: relative; z-index: 2; }
+        .preloader-logo {
+            font-family: var(--font-title); font-size: 3em; color: var(--accent);
+            margin-bottom: 1rem; text-shadow: 0 0 20px var(--accent);
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+        @keyframes logoGlow { from { text-shadow: 0 0 10px var(--accent); } to { text-shadow: 0 0 30px var(--accent), 0 0 40px var(--accent); } }
+        .preloader-subtitle { font-family: var(--font-mono); font-size: 1.2em; color: var(--text); opacity: 0.8; margin-bottom: 2rem; }
+        .preloader-bar-container {
+            position: relative; width: 300px; height: 6px;
+            background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin: 0 auto;
+            box-shadow: inset 0 0 10px rgba(0,212,255,0.2);
+        }
+        .preloader-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #00ff88, var(--accent-hover));
+            background-size: 200% 100%;
+            animation: fillShimmer 2s linear infinite;
+            width: 0%; transition: width 2s ease-out;
+            box-shadow: 0 0 20px var(--accent);
+        }
+        @keyframes fillShimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .preloader-percentage {
+            position: absolute; top: -30px; right: 0;
+            font-family: var(--font-mono); font-size: 0.9em; color: var(--accent);
+            text-shadow: 0 0 10px var(--accent);
+        }
+        .skip-preloader {
+            position: absolute; top: 20px; right: 20px;
+            background: var(--accent); color: #000; border: none; padding: 0.5rem 1rem;
+            border-radius: 20px; font-size: 0.8em; cursor: pointer; opacity: 0.7;
+            transition: all 0.3s; box-shadow: 0 0 10px var(--accent);
+        }
+        .skip-preloader:hover { opacity: 1; transform: scale(1.05); }
+        .preloader-particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .particle {
+            position: absolute; width: 6px; height: 6px; background: var(--accent);
+            border-radius: 50%; opacity: 0.7; animation: float 4s infinite ease-in-out;
+            box-shadow: 0 0 10px var(--accent);
+        }
+        .particle:nth-child(odd) { animation-delay: -1s; }
+        .particle:nth-child(even) { animation-delay: -2s; }
+        .particle:nth-child(3n) { animation-delay: -3s; width: 8px; height: 8px; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.7; }
+            50% { transform: translateY(-30px) rotate(180deg) scale(1.2); opacity: 1; }
+        }
+        #preloader.fade-out { animation: fadeOut 1s ease-out forwards; }
         @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
 
         /* Cursor */
@@ -154,6 +214,13 @@
         h2 { font-family: var(--font-title); font-size: 2.8em; color: var(--accent); text-align: center; margin-bottom: 3rem; position: relative; animation: glow 2s ease-in-out infinite alternate; }
         h2::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: var(--accent); border-radius: 2px; }
 
+        /* About Grid */
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .about-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; transition: all 0.3s; backdrop-filter: blur(10px); }
+        .about-item:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--accent); }
+        .about-icon { font-size: 2.5em; color: var(--accent); margin-bottom: 1rem; animation: iconFloat 3s ease-in-out infinite; }
+        @keyframes iconFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
         /* Certifications Grid - New Section */
         .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
         .cert-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; transition: all 0.3s; backdrop-filter: blur(10px); cursor: pointer; }
@@ -198,13 +265,15 @@
         /* Projects - Updated to GitHub Overview */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
         .project-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.5s ease; backdrop-filter: blur(10px); cursor: pointer; }
-        .project-card:hover { transform: translateY(-10px) rotateY(5deg); box-shadow: var(--shadow); border-color: var(--accent); } /* 3D flip on hover
+        .project-card:hover { transform: translateY(-10px) rotateY(5deg); box-shadow: var(--shadow); border-color: var(--accent); } /* 3D flip on hover */
         .project-img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.5s; }
         .project-card:hover .project-img { transform: scale(1.05); }
-        .project-content { padding: 1.5rem; }
+        .project-content { padding: 1.5rem; text-align: center; }
+        .project-icon { font-size: 3em; color: var(--accent); margin-bottom: 1rem; animation: iconPulse 2s infinite ease-in-out; }
+        @keyframes iconPulse { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } }
         .project-content h3 { color: var(--text); margin-bottom: 0.5rem; }
         .project-content p { margin-bottom: 1rem; opacity: 0.9; }
-        .project-metrics { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .project-metrics { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; justify-content: center; }
         .project-metrics span { background: var(--accent); color: #000; padding: 0.25rem 0.5rem; border-radius: 20px; font-size: 0.8em; font-weight: 600; }
         .project-link { color: var(--accent); font-family: var(--font-mono); font-size: 0.9em; cursor: pointer; }
 
@@ -213,7 +282,7 @@
         input, textarea { background: var(--card-bg); border: 1px solid var(--border); color: var(--text); padding: 1rem; border-radius: 12px; font-family: var(--font-mono); transition: all 0.3s; backdrop-filter: blur(10px); }
         input:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px rgba(0,212,255,0.2); transform: scale(1.01); } /* Subtle focus scale */
         button { background: var(--accent); color: #000; border: none; padding: 1rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
-        button:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: var(--shadow); } */
+        button:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: var(--shadow); }
 
         /* Footer */
         footer { text-align: center; padding: 3rem; color: var(--text); opacity: 0.7; font-size: 0.9em; }
@@ -234,11 +303,35 @@
 </head>
 <body data-theme="dark">
     <!-- Preloader -->
-    <div id="preloader">
+    <div id="preloader" role="status" aria-live="polite" aria-label="Loading portfolio">
+        <button class="skip-preloader" onclick="skipPreloader()">Skip</button>
+        <div class="preloader-particles" aria-hidden="true">
+            <div class="particle" style="left: 5%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 15%; animation-delay: 0.5s;"></div>
+            <div class="particle" style="left: 25%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 35%; animation-delay: 1.5s;"></div>
+            <div class="particle" style="left: 45%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 55%; animation-delay: 2.5s;"></div>
+            <div class="particle" style="left: 65%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 75%; animation-delay: 3.5s;"></div>
+            <div class="particle" style="left: 85%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 95%; animation-delay: 4.5s;"></div>
+            <div class="particle" style="left: 10%; top: 20%; animation-delay: 0.2s;"></div>
+            <div class="particle" style="left: 20%; top: 30%; animation-delay: 0.7s;"></div>
+            <div class="particle" style="left: 30%; top: 40%; animation-delay: 1.2s;"></div>
+            <div class="particle" style="left: 40%; top: 50%; animation-delay: 1.7s;"></div>
+            <div class="particle" style="left: 50%; top: 60%; animation-delay: 2.2s;"></div>
+            <div class="particle" style="left: 60%; top: 70%; animation-delay: 2.7s;"></div>
+            <div class="particle" style="left: 70%; top: 80%; animation-delay: 3.2s;"></div>
+            <div class="particle" style="left: 80%; top: 90%; animation-delay: 3.7s;"></div>
+            <div class="particle" style="left: 90%; top: 10%; animation-delay: 4.2s;"></div>
+        </div>
         <div class="preloader-content">
-            <div class="preloader-logo">Ashish<span style="color:var(--accent)">.</span></div>
-            <div class="preloader-bar">
-                <div class="preloader-fill"></div>
+            <div class="preloader-logo" id="preloader-typed" aria-label="Ashish Arun"></div>
+            <div class="preloader-subtitle" id="preloader-subtitle"></div>
+            <div class="preloader-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <div class="preloader-fill" id="preloader-fill"></div>
+                <div class="preloader-percentage" id="preloader-percentage" aria-live="polite">0%</div>
             </div>
         </div>
     </div>
@@ -278,7 +371,7 @@
             <h1 class="hero-name">Hello I'm<br><span id="typed-name">Ashish Arun</span></h1>
             <p class="hero-subtitle">Azure Cloud Architect | End-to-End AI Implementation | DSPy & Data Infrastructure Expert | Building scalable data solutions at GM Financial</p>
             <div class="hero-actions">
-                <a href="resume.pdf" class="btn-cv" download onclick="downloadCV()">
+                <a href="https://ash1sh95.github.io/resume.pdf" class="btn-cv" download onclick="downloadCV()">
                     <i class="fas fa-download"></i> Download CV
                 </a>
                 <div class="social-links">
@@ -303,15 +396,15 @@
             <div class="stat-label">Years Experience</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number" id="projects-done">"20"</div>
+            <div class="stat-number" id="projects-done">25</div>
             <div class="stat-label">Projects Delivered</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number" id="azure-certs">"10"</div>
+            <div class="stat-number" id="azure-certs">10</div>
             <div class="stat-label">Certifications</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number" id="ai-pipelines">"30"</div>
+            <div class="stat-number" id="ai-pipelines">30</div>
             <div class="stat-label">Data & AI Pipelines Built</div>
         </div>
     </div>
@@ -319,12 +412,24 @@
     <!-- About -->
     <section id="about">
         <h2>About Me</h2>
-        <p style="text-align:center;max-width:800px;margin:0 auto 2rem;font-size:1.1em;">
-            Highly technical Senior Data Engineer with over 5 years of experience building scalable data platforms on Azure. Currently Data Engineer III at GM Financial, leading end-to-end AI implementations from ingestion to deployment using Synapse, Databricks, Terraform IaC, and modern ML frameworks like DSPy.
-        </p>
-        <p style="text-align:center;max-width:800px;margin:0 auto;opacity:0.8;">
-            Master's in Computer Information Systems with focus on Data Engineering & Analytics. Passionate about AI infrastructure, MLOps, and helping organizations unlock value from their data. Interests: AI optimization, cloud architecture, hiking, and volunteering for social causes.
-        </p>
+        <div class="about-grid">
+            <div class="about-item">
+                <i class="fas fa-code about-icon"></i>
+                <p>Highly technical Senior Data Engineer with over 5 years of experience building scalable data platforms on Azure. Currently Data Engineer III at GM Financial, leading end-to-end AI implementations.</p>
+            </div>
+            <div class="about-item">
+                <i class="fas fa-graduation-cap about-icon"></i>
+                <p>Master's in Computer Information Systems with focus on Data Engineering & Analytics. Specialized in production ML systems and cloud architecture.</p>
+            </div>
+            <div class="about-item">
+                <i class="fas fa-brain about-icon"></i>
+                <p>Passionate about AI infrastructure, MLOps, and DSPy frameworks. Helping organizations unlock value from their data through innovative solutions.</p>
+            </div>
+            <div class="about-item">
+                <i class="fas fa-heart about-icon"></i>
+                <p>Interests: AI optimization, cloud architecture, hiking, and volunteering for social causes. Always exploring new technologies and giving back to the community.</p>
+            </div>
+        </div>
     </section>
 
     <!-- Latest Updates - LinkedIn Posts -->
@@ -427,22 +532,23 @@
                 <div class="timeline-content">
                     <div class="timeline-date">Feb 2025 – Present</div>
                     <h3>Data Engineer III – GM Financial</h3>
-                    <p>Working on Azure, Gen AI, Databricks Center of excellence, Infrastructure and data </p>
+                    <p>Working on Azure, Gen AI, Databricks Center of excellence, Infrastructure and data</p>
+                </div>
             </div>
             <div class="timeline-item">
-              <div class="timeline-content">
-                  <div class="timeline-date">August 2023 – Feb 2025</div>
-                  <h3>Data Engineer II – GM Financial</h3>
-                  <p>Databricks, Azure, IaC, Python and Gen AI</p>
-              </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-content">
-                <div class="timeline-date">oct 2022– August 2023</div>
-                <h3>Data Engineer I – GM Financial</h3>
-                <p>Led advanced Synapse pipelines and Databricks notebooks for high-volume data ingestion into Adobe Experience Platform using PySpark and REST APIs. Migrated Hive to Unity Catalog; Automated Azure resources with Terraform IaC. Led CI/CD, RBAC, and AI infrastructure explorations, reducing deployment time by 40%.</p>
+                <div class="timeline-content">
+                    <div class="timeline-date">August 2023 – Feb 2025</div>
+                    <h3>Data Engineer II – GM Financial</h3>
+                    <p>Databricks, Azure, IaC, Python and Gen AI</p>
+                </div>
             </div>
-        </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Oct 2022 – August 2023</div>
+                    <h3>Data Engineer I – GM Financial</h3>
+                    <p>Led advanced Synapse pipelines and Databricks notebooks for high-volume data ingestion into Adobe Experience Platform using PySpark and REST APIs. Migrated Hive to Unity Catalog; Automated Azure resources with Terraform IaC. Led CI/CD, RBAC, and AI infrastructure explorations, reducing deployment time by 40%.</p>
+                </div>
+            </div>
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="timeline-date">Jul 2021 – Aug 2022</div>
@@ -481,6 +587,7 @@
         <div class="projects-grid">
             <div class="project-card" onclick="openProject('https://github.com/ash1sh95/awesome-databricks-genai')">
                 <div class="project-content">
+                    <i class="fas fa-robot project-icon"></i>
                     <h3>Awesome Databricks GenAI</h3>
                     <p><strong>Tech Stack:</strong> Databricks, Generative AI, Python, MLflow</p>
                     <p>Comprehensive collection of resources, tutorials, and best practices for building generative AI applications on Databricks. Includes end-to-end pipelines, model deployment strategies, and performance optimization techniques.</p>
@@ -494,6 +601,7 @@
             </div>
             <div class="project-card" onclick="openProject('https://github.com/ash1sh95/azure-agentic-rag')">
                 <div class="project-content">
+                    <i class="fas fa-cloud project-icon"></i>
                     <h3>Azure Agentic RAG</h3>
                     <p><strong>Tech Stack:</strong> Azure AI, RAG, LangChain, Python</p>
                     <p>Implementation of Retrieval-Augmented Generation with agentic capabilities on Azure. Features intelligent document processing, contextual Q&A, and scalable knowledge base management for enterprise applications.</p>
@@ -507,6 +615,7 @@
             </div>
             <div class="project-card" onclick="openProject('https://github.com/ash1sh95/essay-writer')">
                 <div class="project-content">
+                    <i class="fas fa-pen-fancy project-icon"></i>
                     <h3>AI Essay Writer</h3>
                     <p><strong>Tech Stack:</strong> Python, OpenAI API, Streamlit, NLP</p>
                     <p>AI-powered essay writing assistant with advanced language models. Features topic analysis, structure generation, and content enhancement. Includes web interface for easy access and customization options.</p>
@@ -695,11 +804,64 @@
             });
         });
 
+        // Skip Preloader
+        function skipPreloader() {
+            document.getElementById('preloader').classList.add('fade-out');
+        }
+
         // Preloader
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('preloader').classList.add('fade-out');
-            }, 500);
+            // Typing effect for logo
+            new Typed('#preloader-typed', {
+                strings: ['Ashish<span style="color:var(--accent)">.</span>', 'Ashish Arun<span style="color:var(--accent)">.</span>', 'Senior Data Engineer III<span style="color:var(--accent)">.</span>', 'Azure AI Architect<span style="color:var(--accent)">.</span>'],
+                typeSpeed: 100,
+                backSpeed: 50,
+                backDelay: 800,
+                loop: false,
+                showCursor: true,
+                cursorChar: '|',
+                onComplete: () => {
+                    // Start subtitle typing
+                    new Typed('#preloader-subtitle', {
+                        strings: ['Building AI & Cloud Solutions', 'End-to-End Data Pipelines', 'DSPy & MLOps Expert', 'Welcome to My Portfolio'],
+                        typeSpeed: 70,
+                        backSpeed: 40,
+                        backDelay: 1200,
+                        loop: false,
+                        showCursor: true,
+                        cursorChar: '|'
+                    });
+                }
+            });
+
+            // Animate loading bar with percentage and enhanced effects
+            const fill = document.getElementById('preloader-fill');
+            const percentage = document.getElementById('preloader-percentage');
+            const barContainer = document.querySelector('.preloader-bar-container');
+            const preloader = document.getElementById('preloader');
+            let progress = 0;
+            const interval = setInterval(() => {
+                const increment = Math.random() * 20 + 5; // More dynamic progress
+                progress += increment;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    // Add a final glow effect
+                    gsap.to(fill, { boxShadow: '0 0 30px var(--accent)', duration: 0.5 });
+                    setTimeout(() => {
+                        gsap.to(preloader, { opacity: 0, duration: 1, ease: 'power2.out', onComplete: () => {
+                            preloader.style.display = 'none';
+                        }});
+                    }, 800);
+                }
+                fill.style.width = progress + '%';
+                percentage.textContent = Math.floor(progress) + '%';
+                barContainer.setAttribute('aria-valuenow', Math.floor(progress));
+                // Add subtle shake effect near end
+                if (progress > 90) {
+                    gsap.to(barContainer, { x: Math.random() * 4 - 2, duration: 0.1, yoyo: true, repeat: 1 });
+                }
+            }, 120);
         });
 
         // Enhanced Hovers
