@@ -94,71 +94,113 @@
         a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
         a:hover { color: var(--accent-hover); }
 
-        /* Preloader */
+        /* Magic Circle Preloader */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, var(--bg) 0%, rgba(0,212,255,0.1) 50%, var(--bg) 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 4s ease infinite;
+            background: radial-gradient(circle at center, #000011 0%, #000000 50%, #110011 100%);
             z-index: 10000; display: flex; align-items: center; justify-content: center; overflow: hidden;
         }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
         .preloader-content { text-align: center; position: relative; z-index: 2; }
-        .preloader-logo {
-            font-family: var(--font-title); font-size: 3em; color: var(--accent);
-            margin-bottom: 1rem; text-shadow: 0 0 20px var(--accent);
-            animation: logoGlow 2s ease-in-out infinite alternate;
+        .magic-circle-container {
+            position: relative; width: 400px; height: 400px; margin: 0 auto 2rem;
+            filter: drop-shadow(0 0 30px rgba(0,255,255,0.5));
         }
-        @keyframes logoGlow { from { text-shadow: 0 0 10px var(--accent); } to { text-shadow: 0 0 30px var(--accent), 0 0 40px var(--accent); } }
-        .preloader-subtitle { font-family: var(--font-mono); font-size: 1.2em; color: var(--text); opacity: 0.8; margin-bottom: 2rem; }
-        .preloader-bar-container {
-            position: relative; width: 300px; height: 6px;
-            background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin: 0 auto;
-            box-shadow: inset 0 0 10px rgba(0,212,255,0.2);
+        .magic-circle {
+            width: 100%; height: 100%;
+            filter: drop-shadow(0 0 20px rgba(255,0,255,0.3));
         }
-        .preloader-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), #00ff88, var(--accent-hover));
-            background-size: 200% 100%;
-            animation: fillShimmer 2s linear infinite;
-            width: 0%; transition: width 2s ease-out;
-            box-shadow: 0 0 20px var(--accent);
+        .outer-ring {
+            animation: rotateClockwise 20s linear infinite;
+            filter: drop-shadow(0 0 10px #00ffff);
         }
-        @keyframes fillShimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
+        .middle-ring {
+            animation: rotateCounterClockwise 15s linear infinite;
+            filter: drop-shadow(0 0 15px #ff00ff);
+        }
+        .inner-ring {
+            animation: rotateClockwise 10s linear infinite;
+            filter: drop-shadow(0 0 10px #8000ff);
+        }
+        .progress-arc {
+            stroke-dasharray: 1131; /* 2 * PI * 180 */
+            stroke-dashoffset: 1131;
+            animation: progressFill 3s ease-out forwards;
+            filter: drop-shadow(0 0 15px #00ffff);
+        }
+        .core {
+            animation: corePulse 2s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.8));
+        }
+        .runes .rune {
+            font-family: 'Arial Unicode MS', sans-serif; font-size: 24px;
+            fill: url(#particleGlow);
+            animation: runeGlow 3s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 5px #00ffff);
+        }
+        .orbiting-particles .particle {
+            animation: orbit 8s linear infinite;
+            filter: drop-shadow(0 0 8px #ff00ff);
+        }
+        .particle-1 { animation-delay: 0s; }
+        .particle-2 { animation-delay: -1s; }
+        .particle-3 { animation-delay: -2s; }
+        .particle-4 { animation-delay: -3s; }
+        .particle-5 { animation-delay: -4s; }
+        .particle-6 { animation-delay: -5s; }
+        .particle-7 { animation-delay: -6s; }
+        .particle-8 { animation-delay: -7s; }
+
+        @keyframes rotateClockwise { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes rotateCounterClockwise { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+        @keyframes progressFill {
+            from { stroke-dashoffset: 1131; }
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes corePulse {
+            from { r: 35; opacity: 0.8; }
+            to { r: 45; opacity: 1; }
+        }
+        @keyframes runeGlow {
+            from { opacity: 0.6; }
+            to { opacity: 1; }
+        }
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(180px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(180px) rotate(-360deg); }
+        }
+
+        .preloader-text { margin-top: 2rem; }
+        .preloader-title {
+            font-family: var(--font-title); font-size: 2.5em; color: #00ffff;
+            margin-bottom: 1rem; text-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff;
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff; }
+            to { text-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff, 0 0 60px #8000ff; }
+        }
+        .preloader-subtitle {
+            font-family: var(--font-mono); font-size: 1.2em; color: #ff00ff;
+            opacity: 0.9; margin-bottom: 1rem; text-shadow: 0 0 10px #ff00ff;
         }
         .preloader-percentage {
-            position: absolute; top: -30px; right: 0;
-            font-family: var(--font-mono); font-size: 0.9em; color: var(--accent);
-            text-shadow: 0 0 10px var(--accent);
+            font-family: var(--font-mono); font-size: 1.5em; color: #00ffff;
+            text-shadow: 0 0 15px #00ffff; font-weight: bold;
         }
         .skip-preloader {
             position: absolute; top: 20px; right: 20px;
-            background: var(--accent); color: #000; border: none; padding: 0.5rem 1rem;
-            border-radius: 20px; font-size: 0.8em; cursor: pointer; opacity: 0.7;
-            transition: all 0.3s; box-shadow: 0 0 10px var(--accent);
+            background: linear-gradient(45deg, #00ffff, #ff00ff); color: #000; border: none; padding: 0.5rem 1rem;
+            border-radius: 20px; font-size: 0.8em; cursor: pointer; opacity: 0.8;
+            transition: all 0.3s; box-shadow: 0 0 15px rgba(0,255,255,0.5);
+            font-weight: bold;
         }
-        .skip-preloader:hover { opacity: 1; transform: scale(1.05); }
-        .preloader-particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .particle {
-            position: absolute; width: 6px; height: 6px; background: var(--accent);
-            border-radius: 50%; opacity: 0.7; animation: float 4s infinite ease-in-out;
-            box-shadow: 0 0 10px var(--accent);
+        .skip-preloader:hover { opacity: 1; transform: scale(1.05); box-shadow: 0 0 25px rgba(255,0,255,0.8); }
+        #preloader.fade-out { animation: magicFadeOut 1.5s ease-out forwards; }
+        @keyframes magicFadeOut {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+            100% { opacity: 0; visibility: hidden; transform: scale(0.95); }
         }
-        .particle:nth-child(odd) { animation-delay: -1s; }
-        .particle:nth-child(even) { animation-delay: -2s; }
-        .particle:nth-child(3n) { animation-delay: -3s; width: 8px; height: 8px; }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.7; }
-            50% { transform: translateY(-30px) rotate(180deg) scale(1.2); opacity: 1; }
-        }
-        #preloader.fade-out { animation: fadeOut 1s ease-out forwards; }
-        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
 
         /* Cursor */
         .cursor { position: fixed; width: 16px; height: 16px; border: 2px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; box-shadow: 0 0 10px var(--accent); }
@@ -327,10 +369,78 @@
             <div class="particle" style="left: 90%; top: 10%; animation-delay: 4.2s;"></div>
         </div>
         <div class="preloader-content">
-            <div class="preloader-logo" id="preloader-typed" aria-label="Ashish Arun"></div>
-            <div class="preloader-subtitle" id="preloader-subtitle"></div>
-            <div class="preloader-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                <div class="preloader-fill" id="preloader-fill"></div>
+            <div class="magic-circle-container">
+                <svg class="magic-circle" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outer rotating ring -->
+                    <circle cx="200" cy="200" r="180" fill="none" stroke="url(#outerGlow)" stroke-width="2" class="outer-ring"/>
+                    <!-- Middle ring with runes -->
+                    <circle cx="200" cy="200" r="140" fill="none" stroke="url(#middleGlow)" stroke-width="3" class="middle-ring"/>
+                    <!-- Inner ring -->
+                    <circle cx="200" cy="200" r="100" fill="none" stroke="url(#innerGlow)" stroke-width="2" class="inner-ring"/>
+                    <!-- Progress arc -->
+                    <path d="M200,200 L200,20 A180,180 0 0,1" fill="none" stroke="url(#progressGlow)" stroke-width="4" stroke-linecap="round" class="progress-arc" id="progress-arc"/>
+                    <!-- Central core -->
+                    <circle cx="200" cy="200" r="40" fill="url(#coreGlow)" class="core"/>
+                    <!-- Runes around the circle -->
+                    <g class="runes">
+                        <text x="200" y="30" text-anchor="middle" class="rune" transform="rotate(0 200 200)">ᚠ</text>
+                        <text x="320" y="200" text-anchor="middle" class="rune" transform="rotate(90 200 200)">ᚡ</text>
+                        <text x="200" y="370" text-anchor="middle" class="rune" transform="rotate(180 200 200)">ᚢ</text>
+                        <text x="80" y="200" text-anchor="middle" class="rune" transform="rotate(270 200 200)">ᚣ</text>
+                        <text x="290" y="80" text-anchor="middle" class="rune" transform="rotate(45 200 200)">ᚤ</text>
+                        <text x="290" y="320" text-anchor="middle" class="rune" transform="rotate(135 200 200)">ᚥ</text>
+                        <text x="110" y="320" text-anchor="middle" class="rune" transform="rotate(225 200 200)">ᚦ</text>
+                        <text x="110" y="80" text-anchor="middle" class="rune" transform="rotate(315 200 200)">ᚧ</text>
+                    </g>
+                    <!-- Orbiting particles -->
+                    <g class="orbiting-particles">
+                        <circle cx="200" cy="20" r="3" fill="url(#particleGlow)" class="particle particle-1"/>
+                        <circle cx="350" cy="200" r="2" fill="url(#particleGlow)" class="particle particle-2"/>
+                        <circle cx="200" cy="380" r="3" fill="url(#particleGlow)" class="particle particle-3"/>
+                        <circle cx="50" cy="200" r="2" fill="url(#particleGlow)" class="particle particle-4"/>
+                        <circle cx="320" cy="80" r="2" fill="url(#particleGlow)" class="particle particle-5"/>
+                        <circle cx="320" cy="320" r="3" fill="url(#particleGlow)" class="particle particle-6"/>
+                        <circle cx="80" cy="320" r="2" fill="url(#particleGlow)" class="particle particle-7"/>
+                        <circle cx="80" cy="80" r="3" fill="url(#particleGlow)" class="particle particle-8"/>
+                    </g>
+                    <!-- Gradient definitions -->
+                    <defs>
+                        <radialGradient id="outerGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" style="stop-color:#00ffff;stop-opacity:0.8"/>
+                            <stop offset="50%" style="stop-color:#8000ff;stop-opacity:0.6"/>
+                            <stop offset="100%" style="stop-color:#00ffff;stop-opacity:0.2"/>
+                        </radialGradient>
+                        <radialGradient id="middleGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" style="stop-color:#ff00ff;stop-opacity:0.9"/>
+                            <stop offset="50%" style="stop-color:#00ffff;stop-opacity:0.7"/>
+                            <stop offset="100%" style="stop-color:#8000ff;stop-opacity:0.3"/>
+                        </radialGradient>
+                        <radialGradient id="innerGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1"/>
+                            <stop offset="50%" style="stop-color:#ff00ff;stop-opacity:0.8"/>
+                            <stop offset="100%" style="stop-color:#8000ff;stop-opacity:0.4"/>
+                        </radialGradient>
+                        <radialGradient id="progressGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1"/>
+                            <stop offset="50%" style="stop-color:#ff00ff;stop-opacity:0.9"/>
+                            <stop offset="100%" style="stop-color:#8000ff;stop-opacity:0.7"/>
+                        </radialGradient>
+                        <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9"/>
+                            <stop offset="30%" style="stop-color:#00ffff;stop-opacity:0.8"/>
+                            <stop offset="70%" style="stop-color:#ff00ff;stop-opacity:0.6"/>
+                            <stop offset="100%" style="stop-color:#8000ff;stop-opacity:0.4"/>
+                        </radialGradient>
+                        <radialGradient id="particleGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1"/>
+                            <stop offset="100%" style="stop-color:#ff00ff;stop-opacity:0.5"/>
+                        </radialGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="preloader-text">
+                <div class="preloader-title" id="preloader-typed" aria-label="Ashish Arun">Summoning Portfolio</div>
+                <div class="preloader-subtitle" id="preloader-subtitle">Initializing magic...</div>
                 <div class="preloader-percentage" id="preloader-percentage" aria-live="polite">0%</div>
             </div>
         </div>
@@ -809,24 +919,24 @@
             document.getElementById('preloader').classList.add('fade-out');
         }
 
-        // Preloader
+        // Magic Circle Preloader
         window.addEventListener('load', () => {
-            // Typing effect for logo
+            // Typing effect for title
             new Typed('#preloader-typed', {
-                strings: ['Ashish<span style="color:var(--accent)">.</span>', 'Ashish Arun<span style="color:var(--accent)">.</span>', 'Senior Data Engineer III<span style="color:var(--accent)">.</span>', 'Azure AI Architect<span style="color:var(--accent)">.</span>'],
-                typeSpeed: 100,
-                backSpeed: 50,
-                backDelay: 800,
+                strings: ['Summoning Portfolio', 'Ashish Arun', 'Senior Data Engineer III', 'Azure AI Architect'],
+                typeSpeed: 120,
+                backSpeed: 60,
+                backDelay: 1000,
                 loop: false,
                 showCursor: true,
                 cursorChar: '|',
                 onComplete: () => {
                     // Start subtitle typing
                     new Typed('#preloader-subtitle', {
-                        strings: ['Building AI & Cloud Solutions', 'End-to-End Data Pipelines', 'DSPy & MLOps Expert', 'Welcome to My Portfolio'],
-                        typeSpeed: 70,
-                        backSpeed: 40,
-                        backDelay: 1200,
+                        strings: ['Initializing magic...', 'Building AI & Cloud Solutions', 'End-to-End Data Pipelines', 'DSPy & MLOps Expert'],
+                        typeSpeed: 80,
+                        backSpeed: 50,
+                        backDelay: 1500,
                         loop: false,
                         showCursor: true,
                         cursorChar: '|'
@@ -834,34 +944,46 @@
                 }
             });
 
-            // Animate loading bar with percentage and enhanced effects
-            const fill = document.getElementById('preloader-fill');
+            // Animate magic circle progress
+            const progressArc = document.getElementById('progress-arc');
             const percentage = document.getElementById('preloader-percentage');
-            const barContainer = document.querySelector('.preloader-bar-container');
             const preloader = document.getElementById('preloader');
+            const totalDash = 1131; // Circumference of outer circle
             let progress = 0;
+
             const interval = setInterval(() => {
-                const increment = Math.random() * 20 + 5; // More dynamic progress
+                const increment = Math.random() * 25 + 8; // More dynamic progress
                 progress += increment;
                 if (progress >= 100) {
                     progress = 100;
                     clearInterval(interval);
-                    // Add a final glow effect
-                    gsap.to(fill, { boxShadow: '0 0 30px var(--accent)', duration: 0.5 });
+                    // Final magic burst effect
+                    gsap.to('.magic-circle', {
+                        scale: 1.1,
+                        filter: 'drop-shadow(0 0 50px rgba(0,255,255,0.8)) drop-shadow(0 0 100px rgba(255,0,255,0.6))',
+                        duration: 0.8,
+                        ease: 'power2.out'
+                    });
                     setTimeout(() => {
-                        gsap.to(preloader, { opacity: 0, duration: 1, ease: 'power2.out', onComplete: () => {
-                            preloader.style.display = 'none';
-                        }});
-                    }, 800);
+                        preloader.classList.add('fade-out');
+                    }, 1000);
                 }
-                fill.style.width = progress + '%';
+
+                const dashOffset = totalDash - (progress / 100) * totalDash;
+                progressArc.style.strokeDashoffset = dashOffset;
                 percentage.textContent = Math.floor(progress) + '%';
-                barContainer.setAttribute('aria-valuenow', Math.floor(progress));
-                // Add subtle shake effect near end
-                if (progress > 90) {
-                    gsap.to(barContainer, { x: Math.random() * 4 - 2, duration: 0.1, yoyo: true, repeat: 1 });
+
+                // Add magical shake effect near end
+                if (progress > 85) {
+                    gsap.to('.magic-circle-container', {
+                        x: Math.random() * 6 - 3,
+                        y: Math.random() * 6 - 3,
+                        duration: 0.15,
+                        yoyo: true,
+                        repeat: 1
+                    });
                 }
-            }, 120);
+            }, 150);
         });
 
         // Enhanced Hovers
