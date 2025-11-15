@@ -208,16 +208,6 @@
         .project-metrics span { background: var(--accent); color: #000; padding: 0.25rem 0.5rem; border-radius: 20px; font-size: 0.8em; font-weight: 600; }
         .project-link { color: var(--accent); font-family: var(--font-mono); font-size: 0.9em; cursor: pointer; }
 
-        /* Blog Grid */
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-        .blog-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.5s ease; backdrop-filter: blur(10px); cursor: pointer; }
-        .blog-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); border-color: var(--accent); }
-        .blog-date { color: var(--accent); font-family: var(--font-mono); font-size: 0.8em; margin-bottom: 0.5rem; }
-        .blog-content h3 { color: var(--text); margin-bottom: 0.5rem; }
-        .blog-content p { opacity: 0.8; margin-bottom: 1rem; }
-        .blog-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .blog-tags span { background: var(--accent); color: #000; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.75em; font-weight: 600; }
-
         /* Contact */
         form { display: grid; gap: 1.5rem; max-width: 600px; margin: 0 auto; }
         input, textarea { background: var(--card-bg); border: 1px solid var(--border); color: var(--text); padding: 1rem; border-radius: 12px; font-family: var(--font-mono); transition: all 0.3s; backdrop-filter: blur(10px); }
@@ -271,7 +261,6 @@
                 <a href="#certs" onclick="scrollToSection('certs')">Certifications</a>
                 <a href="#experience" onclick="scrollToSection('experience')">Experience</a>
                 <a href="#projects" onclick="scrollToSection('projects')">Projects</a>
-                <a href="#blog" onclick="scrollToSection('blog')">Blog</a>
                 <a href="#contact" onclick="scrollToSection('contact')">Contact</a>
             </div>
             <button class="theme-toggle" onclick="toggleTheme()">
@@ -490,111 +479,58 @@
         <h2>Featured Projects</h2>
         <p style="text-align:center;max-width:800px;margin:0 auto 2rem;opacity:0.8;">Deep dives into complex AI and data engineering solutions. Each project showcases end-to-end implementation from architecture to deployment.</p>
         <div class="projects-grid">
-            <div class="project-card" onclick="openProject('https://github.com/ash1sh95/gm-financial-ai-pipeline')">
+            <div class="project-card">
                 <div class="project-content">
-                    <h3>GM Financial AI Credit Scoring Pipeline</h3>
-                    <p><strong>Tech Stack:</strong> Azure Synapse, Databricks, DSPy, PySpark, MLflow</p>
-                    <p>Built end-to-end ML pipeline processing 10M+ records daily. Implemented DSPy for automated prompt engineering, improving model accuracy by 25%. Deployed with MLOps best practices including A/B testing and continuous monitoring.</p>
+                    <h3>GM Financial Data Platform Migration</h3>
+                    <p><strong>Tech Stack:</strong> Azure Synapse, Databricks, PySpark, Terraform, Unity Catalog</p>
+                    <p>Led migration from Hive metastore to Unity Catalog, implementing column-level security and data governance. Built advanced Synapse pipelines for Adobe Experience Platform integration using PySpark and REST APIs.</p>
                     <div class="project-metrics">
-                        <span>📊 10M records/day</span>
-                        <span>🎯 25% accuracy boost</span>
-                        <span>⚡ 40% faster inference</span>
-                    </div>
-                    <a href="https://github.com/ash1sh95/gm-financial-ai-pipeline" class="project-link" target="_blank">View Architecture</a>
-                </div>
-            </div>
-            <div class="project-card" onclick="openProject('https://github.com/ash1sh95/azure-iac-automation')">
-                <div class="project-content">
-                    <h3>Azure Infrastructure Automation</h3>
-                    <p><strong>Tech Stack:</strong> Terraform, Azure ARM, PowerShell, Azure DevOps</p>
-                    <p>Automated deployment of 50+ Azure resources across dev/prod environments. Implemented CI/CD pipelines reducing deployment time from 4 hours to 15 minutes. Included security hardening with RBAC and Azure AD integration.</p>
-                    <div class="project-metrics">
-                        <span>🏗️ 50+ resources</span>
-                        <span>⚡ 93% time reduction</span>
-                        <span>🔒 Enterprise security</span>
-                    </div>
-                    <a href="https://github.com/ash1sh95/azure-iac-automation" class="project-link" target="_blank">View IaC Code</a>
-                </div>
-            </div>
-            <div class="project-card" onclick="openProject('https://github.com/ash1sh95/databricks-unity-migration')">
-                <div class="project-content">
-                    <h3>Databricks Unity Catalog Migration</h3>
-                    <p><strong>Tech Stack:</strong> Databricks, PySpark, Unity Catalog, Delta Lake</p>
-                    <p>Migrated 200+ Hive tables to Unity Catalog with zero downtime. Implemented data governance framework with column-level security. Optimized queries with Delta Lake, achieving 40% performance improvement.</p>
-                    <div class="project-metrics">
-                        <span>📋 200+ tables</span>
-                        <span>🚀 40% faster queries</span>
+                        <span>🔄 Zero-downtime migration</span>
                         <span>🔐 Column-level security</span>
+                        <span>⚡ 40% performance boost</span>
                     </div>
-                    <a href="https://github.com/ash1sh95/databricks-unity-migration" class="project-link" target="_blank">View Migration Scripts</a>
                 </div>
             </div>
-            <div class="project-card" onclick="openProject('https://github.com/ash1sh95/snowflake-kafka-integration')">
+            <div class="project-card">
                 <div class="project-content">
-                    <h3>Snowflake-Kafka Real-time Pipeline</h3>
-                    <p><strong>Tech Stack:</strong> Kafka, Snowflake, SnowSQL, Python, Docker</p>
-                    <p>Built 25+ SnowSQL scripts and 50+ Kafka connectors for real-time data ingestion. Reduced data latency from 24 hours to 5 minutes. Implemented monitoring dashboards with Datadog integration.</p>
+                    <h3>Snagajob Real-time Analytics Pipeline</h3>
+                    <p><strong>Tech Stack:</strong> Snowflake, Kafka, SnowSQL, Python, Datadog</p>
+                    <p>Developed 25+ SnowSQL scripts and 50+ Kafka pipelines for real-time data ingestion to Snowflake. Automated tracking processes via Slack API, reducing manual effort by 50%. Implemented comprehensive monitoring dashboards.</p>
                     <div class="project-metrics">
-                        <span>📡 50+ connectors</span>
-                        <span>⚡ 5min latency</span>
+                        <span>📡 50+ Kafka connectors</span>
+                        <span>⚡ 24h to 5min latency</span>
                         <span>📈 50% efficiency gain</span>
                     </div>
-                    <a href="https://github.com/ash1sh95/snowflake-kafka-integration" class="project-link" target="_blank">View Pipeline Code</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Azure Infrastructure as Code</h3>
+                    <p><strong>Tech Stack:</strong> Terraform, Azure DevOps, PowerShell, Azure AD</p>
+                    <p>Automated Azure resource deployments with Terraform IaC, reducing deployment time by 40%. Implemented RBAC, CI/CD pipelines, and security hardening across development and production environments.</p>
+                    <div class="project-metrics">
+                        <span>🏗️ Automated deployments</span>
+                        <span>🔒 RBAC implementation</span>
+                        <span>⚡ 40% faster deployments</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>JBS USA System Monitoring Suite</h3>
+                    <p><strong>Tech Stack:</strong> PowerShell, MS SQL, GUI Development</p>
+                    <p>Automated database backup processes with PowerShell, improving efficiency by 50%. Developed GUI applications for real-time system monitoring and database management.</p>
+                    <div class="project-metrics">
+                        <span>💾 Automated backups</span>
+                        <span>📊 Real-time monitoring</span>
+                        <span>⚡ 50% efficiency improvement</span>
+                    </div>
                 </div>
             </div>
         </div>
         <div style="text-align:center;margin-top:2rem;">
             <a href="https://github.com/ash1sh95?tab=repositories" target="_blank" class="btn-cv" style="display:inline-flex;">
                 <i class="fab fa-github"></i> Explore All Projects
-            </a>
-        </div>
-    </section>
-
-    <!-- Blog -->
-    <section id="blog">
-        <h2>Latest Articles</h2>
-        <p style="text-align:center;max-width:800px;margin:0 auto 2rem;opacity:0.8;">Insights on AI engineering, cloud architecture, and data platform best practices. Sharing lessons learned from building scalable ML systems.</p>
-        <div class="blog-grid">
-            <div class="blog-card" onclick="openProject('https://medium.com/@ashish1995/building-scalable-ai-pipelines-with-dspy-and-azure-123456')">
-                <div class="blog-content">
-                    <div class="blog-date">Nov 2024</div>
-                    <h3>Building Scalable AI Pipelines with DSPy and Azure</h3>
-                    <p>Learn how to implement dynamic prompt optimization using DSPy in production Azure environments. Case study from GM Financial's ML platform.</p>
-                    <div class="blog-tags">
-                        <span>#DSPy</span>
-                        <span>#Azure</span>
-                        <span>#MLOps</span>
-                    </div>
-                </div>
-            </div>
-            <div class="blog-card" onclick="openProject('https://medium.com/@ashish1995/terraform-best-practices-for-data-platforms-789012')">
-                <div class="blog-content">
-                    <div class="blog-date">Oct 2024</div>
-                    <h3>Terraform Best Practices for Data Platforms</h3>
-                    <p>Essential patterns for infrastructure as code in data engineering. From CI/CD integration to security hardening in cloud environments.</p>
-                    <div class="blog-tags">
-                        <span>#Terraform</span>
-                        <span>#IaC</span>
-                        <span>#DevOps</span>
-                    </div>
-                </div>
-            </div>
-            <div class="blog-card" onclick="openProject('https://medium.com/@ashish1995/unity-catalog-migration-guide-345678')">
-                <div class="blog-content">
-                    <div class="blog-date">Sep 2024</div>
-                    <h3>Unity Catalog Migration: A Complete Guide</h3>
-                    <p>Step-by-step approach to migrating from Hive metastore to Databricks Unity Catalog. Including governance, security, and performance considerations.</p>
-                    <div class="blog-tags">
-                        <span>#Databricks</span>
-                        <span>#DataGovernance</span>
-                        <span>#Migration</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="text-align:center;margin-top:2rem;">
-            <a href="https://medium.com/@ashish1995" target="_blank" class="btn-cv" style="display:inline-flex;">
-                <i class="fab fa-medium"></i> Read More Articles
             </a>
         </div>
     </section>
@@ -690,7 +626,7 @@
 
         // Scroll Progress and Nav Active
         window.addEventListener('scroll', () => {
-            const sections = ['home', 'about', 'updates', 'skills', 'certs', 'experience', 'projects', 'blog', 'contact'];
+            const sections = ['home', 'about', 'updates', 'skills', 'certs', 'experience', 'projects', 'contact'];
             const scrollPos = window.scrollY + 100;
             const scrollTop = window.pageYOffset;
             const docHeight = document.body.offsetHeight - window.innerHeight;
