@@ -89,12 +89,26 @@
         a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
         a:hover { color: var(--accent-hover); }
 
+        /* Preloader */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 10000; display: flex; align-items: center; justify-content: center; }
+        .preloader-content { text-align: center; }
+        .preloader-logo { font-family: var(--font-title); font-size: 3em; color: var(--accent); margin-bottom: 2rem; animation: pulse 1.5s infinite; }
+        .preloader-bar { width: 300px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+        .preloader-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-hover)); width: 0%; animation: load 2s ease-out forwards; }
+        @keyframes load { to { width: 100%; } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        #preloader.fade-out { animation: fadeOut 0.5s ease-out forwards; }
+        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
         /* Cursor */
         .cursor { position: fixed; width: 16px; height: 16px; border: 2px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; box-shadow: 0 0 10px var(--accent); }
         .cursor::after { content: ''; position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; transform: translate(-50%, -50%); }
 
+        /* Scroll Progress Bar */
+        #scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-hover)); z-index: 9999; transition: width 0.3s ease; }
+
         /* Navigation - More X-like: Minimal, with subtle underline transitions */
-        nav { position: fixed; top: 0; width: 100%; background: var(--nav-bg); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s; }
+        nav { position: fixed; top: 4px; width: 100%; background: var(--nav-bg); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s; }
         nav.scrolled { padding: 0.8rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         .nav-left { font-family: var(--font-title); font-size: 1.5em; color: var(--accent); }
         .nav-right { display: flex; align-items: center; gap: 2rem; }
@@ -151,8 +165,7 @@
         .updates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
         .update-embed { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: all 0.3s; backdrop-filter: blur(10px); }
         .update-embed:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--accent); }
-        .linkedin-post { margin: 0; font-size: 0.9em; line-height: 1.4; }
-        .linkedin-post p { margin-bottom: 0.5rem; }
+        .update-embed iframe { width: 100%; height: auto; min-height: 400px; border-radius: 8px; }
 
         /* Skills Grid */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
@@ -163,7 +176,9 @@
         .skill-icon { font-size: 3em; color: var(--accent); margin-bottom: 1rem; transition: transform 0.3s; }
         .skill-card:hover .skill-icon { transform: rotate(360deg); animation: glow 1s infinite alternate; }
         .skill-card h3 { font-family: var(--font-title); color: var(--text); margin-bottom: 0.5rem; }
-        .skill-card p { font-size: 0.9em; opacity: 0.8; }
+        .skill-card p { font-size: 0.9em; opacity: 0.8; margin-bottom: 1rem; }
+        .skill-progress { background: rgba(255,255,255,0.1); height: 6px; border-radius: 3px; overflow: hidden; margin-top: 1rem; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-hover)); border-radius: 3px; width: 0; transition: width 1.5s ease-out; }
 
         /* Experience Timeline - Updated with DE3 */
         .timeline { position: relative; max-width: 900px; margin: 0 auto; }
@@ -228,8 +243,21 @@
     </style>
 </head>
 <body data-theme="dark">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">Ashish<span style="color:var(--accent)">.</span></div>
+            <div class="preloader-bar">
+                <div class="preloader-fill"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Cursor -->
     <div class="cursor"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
 
     <!-- Navigation -->
     <nav>
@@ -317,30 +345,11 @@
             Stay updated with my latest thoughts on AI engineering, cloud architecture, and data platform innovations.
         </p>
         <div class="updates-grid">
-            <!-- Replace with actual LinkedIn embed codes -->
             <div class="update-embed">
-                <blockquote class="linkedin-post" data-instgrm-permalink="https://www.linkedin.com/posts/ashish-a_ai-engineering-dspy-azure-activity-placeholder" data-instgrm-version="14">
-                    <div>
-                        <p>🚀 Just deployed an end-to-end AI pipeline on Azure using DSPy for dynamic prompt optimization. Reduced model inference time by 35%!</p>
-                        <p>#AI #DSPy #Azure #DataEngineering</p>
-                    </div>
-                </blockquote>
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7383278812974731264?collapsed=1" height="619" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
             </div>
             <div class="update-embed">
-                <blockquote class="linkedin-post" data-instgrm-permalink="https://www.linkedin.com/posts/ashish-a_cloud-architecture-terraform-iac-activity-placeholder" data-instgrm-version="14">
-                    <div>
-                        <p>💡 Infrastructure as Code with Terraform: Automated 50+ Azure resources deployment. From dev to prod in minutes!</p>
-                        <p>#Terraform #IaC #Azure #DevOps</p>
-                    </div>
-                </blockquote>
-            </div>
-            <div class="update-embed">
-                <blockquote class="linkedin-post" data-instgrm-permalink="https://www.linkedin.com/posts/ashish-a_mlops-databricks-unity-catalog-activity-placeholder" data-instgrm-version="14">
-                    <div>
-                        <p>🔧 Migrated legacy Hive tables to Unity Catalog in Databricks. Improved data governance and query performance by 40%.</p>
-                        <p>#Databricks #MLOps #DataGovernance</p>
-                    </div>
-                </blockquote>
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7354903193392222209?collapsed=1" height="619" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
             </div>
         </div>
         <div style="text-align:center;margin-top:2rem;">
@@ -386,31 +395,37 @@
                 <i class="fab fa-microsoft skill-icon"></i>
                 <h3>Azure Cloud</h3>
                 <p>Synapse, Databricks, Data Factory, Terraform IaC, Azure ML, Unity Catalog</p>
+                <div class="skill-progress"><div class="progress-fill" data-width="98%"></div></div>
             </div>
             <div class="skill-card" onclick="showSkillDetail('Data Engineering')">
                 <i class="fas fa-database skill-icon"></i>
                 <h3>Data Engineering</h3>
                 <p>PySpark, Kafka, Snowflake, Data Lakes, REST APIs, SnowSQL</p>
+                <div class="skill-progress"><div class="progress-fill" data-width="95%"></div></div>
             </div>
             <div class="skill-card" onclick="showSkillDetail('AI & ML')">
                 <i class="fas fa-brain skill-icon"></i>
                 <h3>AI & ML</h3>
                 <p>DSPy Framework, Model Evals (BLEU/ROUGE), MLOps, NLTK, Scikit-Learn</p>
+                <div class="skill-progress"><div class="progress-fill" data-width="92%"></div></div>
             </div>
             <div class="skill-card" onclick="showSkillDetail('DevOps')">
                 <i class="fas fa-tools skill-icon"></i>
                 <h3>DevOps</h3>
                 <p>Azure DevOps, CI/CD, Docker, Argo, Datadog, JIRA</p>
+                <div class="skill-progress"><div class="progress-fill" data-width="90%"></div></div>
             </div>
             <div class="skill-card" onclick="showSkillDetail('Languages')">
                 <i class="fas fa-code skill-icon"></i>
                 <h3>Languages</h3>
                 <p>Python, SQL, PySpark, JavaScript, C++, PowerShell</p>
+                <div class="skill-progress"><div class="progress-fill" data-width="88%"></div></div>
             </div>
             <div class="skill-card" onclick="showSkillDetail('Security')">
                 <i class="fas fa-shield-alt skill-icon"></i>
                 <h3>Security</h3>
                 <p>RBAC, Azure AD, Key Vault, OTP Automation, Active Directory</p>
+                <div class="skill-progress"><div class="progress-fill" data-width="85%"></div></div>
             </div>
         </div>
     </section>
@@ -673,10 +688,15 @@
             gsap.to(cursor, { duration: 0.2, left: e.clientX, top: e.clientY });
         });
 
-        // Nav Active
+        // Scroll Progress and Nav Active
         window.addEventListener('scroll', () => {
             const sections = ['home', 'about', 'updates', 'skills', 'certs', 'experience', 'projects', 'blog', 'contact'];
             const scrollPos = window.scrollY + 100;
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+
             sections.forEach((id, i) => {
                 const el = document.getElementById(id);
                 if (el && el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos) {
@@ -748,10 +768,27 @@
             });
         });
 
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('fade-out');
+            }, 500);
+        });
+
         // Enhanced Hovers
         gsap.utils.toArray('.skill-card, .project-card, .cert-card, .stat-item').forEach(card => {
             card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05, rotationY: 5, duration: 0.3, ease: 'power2.out' }));
             card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, rotationY: 0, duration: 0.3, ease: 'power2.out' }));
+        });
+
+        // Skill Progress Animation
+        gsap.utils.toArray('.progress-fill').forEach(fill => {
+            ScrollTrigger.create({
+                trigger: fill,
+                start: 'top 80%',
+                onEnter: () => gsap.to(fill, { width: fill.dataset.width, duration: 1.5, ease: 'power2.out' }),
+                once: true
+            });
         });
     </script>
 </body>
