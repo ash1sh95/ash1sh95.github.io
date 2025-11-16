@@ -91,7 +91,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: var(--font-main); background: var(--bg); color: var(--text);
-            line-height: 1.6; overflow: hidden; transition: background 0.5s ease, color 0.5s ease;
+            line-height: 1.6; transition: background 0.5s ease, color 0.5s ease;
             background-image:
                 radial-gradient(circle at 20% 80%, rgba(0,212,255,0.05) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(0,212,255,0.05) 0%, transparent 50%);
@@ -328,9 +328,6 @@
 
         /* Enhanced Mobile Styles for Phones */
         @media (max-width: 600px) {
-            /* Body scrolling fix */
-            body { overflow: auto; }
-
             /* Navigation */
             nav { padding: 1rem; }
             .nav-left { font-size: 1.2em; }
