@@ -63,8 +63,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <!-- Typed.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-    <!-- EmailJS -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         :root {
             --bg: #000000;
@@ -808,7 +806,8 @@
     <!-- Contact -->
     <section id="contact">
         <h2>Get In Touch</h2>
-        <form id="contact-form" onsubmit="submitForm(event)">
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="hidden" name="source" value="Message from website portfolio">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
             <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
@@ -873,26 +872,6 @@
             window.open(url, '_blank');
         }
 
-        // Submit Form
-        function submitForm(event) {
-            event.preventDefault();
-            // Initialize EmailJS (replace with your public key)
-            emailjs.init('YOUR_PUBLIC_KEY');
-
-            // Send email
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
-                from_name: document.getElementById('contact-form').name.value,
-                from_email: document.getElementById('contact-form').email.value,
-                message: document.getElementById('contact-form').message.value
-            })
-            .then(function(response) {
-                alert('Message sent successfully!');
-                document.getElementById('contact-form').reset();
-            }, function(error) {
-                alert('Failed to send message. Please try again.');
-                console.error('EmailJS error:', error);
-            });
-        }
 
         // Particles - disabled on mobile for performance
         if (window.innerWidth > 768) {
