@@ -328,6 +328,9 @@
 
         /* Enhanced Mobile Styles for Phones */
         @media (max-width: 600px) {
+            /* Body scrolling fix */
+            body { overflow: auto; }
+
             /* Navigation */
             nav { padding: 1rem; }
             .nav-left { font-size: 1.2em; }
@@ -423,6 +426,25 @@
             .stat-item:active { transform: scale(0.98); }
             .btn-cv:active { transform: scale(0.95); }
             .social-links a:active { transform: scale(0.9); }
+        }
+
+        /* Performance optimizations for mobile */
+        @media (max-width: 768px) {
+            /* Disable cursor animation */
+            .cursor { display: none; }
+
+            /* Reduce animation complexity */
+            .skill-card:hover .skill-icon { transform: none; }
+            .project-card:hover .project-img { transform: none; }
+            .profile-img { animation: none; }
+            .profile-ring { animation: none; }
+
+            /* Disable 3D transforms */
+            .skill-card:hover { transform: none; }
+            .project-card:hover { transform: none; }
+            .cert-card:hover { transform: none; }
+            .about-item:hover { transform: none; }
+            .stat-item:hover { transform: none; }
         }
     </style>
 </head>
@@ -859,26 +881,30 @@
             document.getElementById('contact-form').reset();
         }
 
-        // Particles
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 60, density: { enable: true, value_area: 800 } },
-                color: { value: '#00d4ff' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.3, random: true },
-                size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: '#00d4ff', opacity: 0.2, width: 1 },
-                move: { enable: true, speed: 1.5, direction: 'none', random: false, straight: false, out_mode: 'out' }
-            },
-            interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } } },
-            retina_detect: true
-        });
+        // Particles - disabled on mobile for performance
+        if (window.innerWidth > 768) {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 60, density: { enable: true, value_area: 800 } },
+                    color: { value: '#00d4ff' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.3, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#00d4ff', opacity: 0.2, width: 1 },
+                    move: { enable: true, speed: 1.5, direction: 'none', random: false, straight: false, out_mode: 'out' }
+                },
+                interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } } },
+                retina_detect: true
+            });
+        }
 
-        // Cursor
-        const cursor = document.querySelector('.cursor');
-        document.addEventListener('mousemove', e => {
-            gsap.to(cursor, { duration: 0.2, left: e.clientX, top: e.clientY });
-        });
+        // Cursor - disabled on mobile
+        if (window.innerWidth > 768) {
+            const cursor = document.querySelector('.cursor');
+            document.addEventListener('mousemove', e => {
+                gsap.to(cursor, { duration: 0.2, left: e.clientX, top: e.clientY });
+            });
+        }
 
         // Scroll Progress and Nav Active
         window.addEventListener('scroll', () => {
