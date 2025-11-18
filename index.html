@@ -254,6 +254,17 @@
         .cert-icon { font-size: 2em; color: var(--accent); margin-bottom: 0.5rem; }
         .cert-card h3 { font-size: 1em; margin-bottom: 0.5rem; }
 
+        /* Education Grid */
+        .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .edu-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; transition: all 0.3s; backdrop-filter: blur(10px); }
+        .edu-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--accent); }
+        .edu-logo { width: 80px; height: 80px; object-fit: contain; margin-bottom: 1rem; border-radius: 8px; }
+        .edu-degree { font-size: 1.2em; font-weight: 600; margin-bottom: 0.5rem; }
+        .edu-university { font-size: 1em; opacity: 0.9; margin-bottom: 0.5rem; }
+        .edu-dates { font-family: var(--font-mono); color: var(--accent); font-size: 0.9em; margin-bottom: 0.5rem; }
+        .edu-grade { font-weight: 600; margin-bottom: 1rem; }
+        .edu-description { font-size: 0.9em; opacity: 0.8; line-height: 1.5; }
+
         /* Updates Grid - LinkedIn Posts */
         .updates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
         .update-embed { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: all 0.3s; backdrop-filter: blur(10px); }
@@ -512,6 +523,7 @@
                 <div class="nav-links">
                     <a href="#home" class="active" onclick="scrollToSection('home')">Home</a>
                     <a href="#about" onclick="scrollToSection('about')">About</a>
+                    <a href="#education" onclick="scrollToSection('education')">Education</a>
                     <a href="#updates" onclick="scrollToSection('updates')">Updates</a>
                     <a href="#skills" onclick="scrollToSection('skills')">Skills</a>
                     <a href="#certs" onclick="scrollToSection('certs')">Certifications</a>
@@ -592,6 +604,29 @@
             <div class="about-item">
                 <i class="fas fa-heart about-icon"></i>
                 <p>Interests: AI optimization, cloud architecture, hiking, and volunteering for social causes. Always exploring new technologies and giving back to the community.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <h2>Education</h2>
+        <div class="edu-grid">
+            <div class="edu-card">
+                <img src="assets/img/education/CSU.jpg" alt="Colorado State University" class="edu-logo">
+                <h3 class="edu-degree">Master's degree, Computer Information Systems</h3>
+                <p class="edu-university">Colorado State University</p>
+                <p class="edu-dates">Aug 2019 - May 2021</p>
+                <p class="edu-grade">Grade: GPA 3.94/4.0</p>
+                <p class="edu-description">Completed a STEM-designated, 33-credit program ranked #1 in Colorado for six consecutive years. Specialized in data engineering and cloud computing, gaining expertise in cutting-edge technologies and business applications. Key coursework included: Applied Data Mining and Analytics in Business (CIS 575), Business Database Systems (CIS 655), Business Intelligence (CIS 570), Application Software Infrastructure (CIS 606), E-Business Application Technologies (CIS 665). Developed advanced skills in: Data mining and business analytics, Database design and management, Data warehousing and OLAP, Business intelligence and data visualization, Cloud computing architectures and deployment models, E-business application development and integration. This rigorous MCIS program has equipped me with a strong foundation in both technical skills and business management essentials, preparing me for leadership roles in IT and data-driven decision-making.</p>
+            </div>
+            <div class="edu-card">
+                <img src="assets/img/education/VTU.jpeg" alt="Visvesvaraya Technological University" class="edu-logo">
+                <h3 class="edu-degree">Bachelor of Engineering (BE), Electronics and Communication</h3>
+                <p class="edu-university">Visvesvaraya Technological University</p>
+                <p class="edu-dates">2013 - 2017</p>
+                <p class="edu-grade">Grade: First Class with Distinction</p>
+                <p class="edu-description">Activities and societies: Organized e-sports tournament as a part of college annual fest. Volunteered as a placement coordinator and was responsible for hospitality and placement activities in the college. Consistently ranked in the top 1% of the class throughout the program. Gained comprehensive knowledge in digital system design, signal processing, and communication systems.</p>
             </div>
         </div>
     </section>
@@ -913,7 +948,7 @@
 
         // Scroll Progress and Nav Active
         window.addEventListener('scroll', () => {
-            const sections = ['home', 'about', 'updates', 'skills', 'certs', 'experience', 'projects', 'contact'];
+            const sections = ['home', 'about', 'education', 'updates', 'skills', 'certs', 'experience', 'projects', 'contact'];
             const scrollPos = window.scrollY + 100;
             const scrollTop = window.pageYOffset;
             const docHeight = document.body.offsetHeight - window.innerHeight;
