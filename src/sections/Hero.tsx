@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
 import { personalInfo } from '../data/content';
 import { Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
 import { MagneticButton } from '../components/animations/MagneticButton';
@@ -50,9 +51,22 @@ const Hero = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.5, duration: 0.6 }}
-                        className="text-2xl lg:text-3xl text-text-muted font-light mb-6"
+                        className="text-2xl lg:text-3xl text-text-muted font-light mb-6 min-h-[2.5rem]"
                     >
-                        {personalInfo.title}
+                        <TypeAnimation
+                            sequence={[
+                                'Senior Data Engineer',
+                                2000,
+                                'AI Architect',
+                                2000,
+                                'Cloud Solutions Expert',
+                                2000,
+                            ]}
+                            wrapper="span"
+                            speed={50}
+                            repeat={Infinity}
+                            className="text-primary font-medium"
+                        />
                     </motion.h2>
 
                     <motion.p

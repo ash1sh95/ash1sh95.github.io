@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { GraduationCap } from 'lucide-react';
+import { GraduationCap, Calendar } from 'lucide-react';
 import { education } from '../data/content';
 
 const Education = () => {
@@ -16,7 +16,7 @@ const Education = () => {
                 <div className="h-1 w-24 bg-primary mx-auto rounded-full" />
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 {education.map((edu, index) => (
                     <motion.div
                         key={index}
@@ -24,10 +24,11 @@ const Education = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: index * 0.1 }}
-                        className="glass-panel p-8 rounded-2xl hover:border-primary/50 transition-all group hover:-translate-y-2"
+                        className="glass-panel p-8 rounded-2xl hover:border-primary/50 transition-all group hover:-translate-y-2 hover:shadow-2xl"
                     >
-                        <div className="flex items-start gap-6 mb-6">
-                            <div className="bg-white rounded-xl p-3 flex-shrink-0 w-20 h-20 flex items-center justify-center overflow-hidden shadow-lg">
+                        {/* Logo - Centered and Larger */}
+                        <div className="flex justify-center mb-6">
+                            <div className="bg-white rounded-xl p-4 flex-shrink-0 w-28 h-28 flex items-center justify-center overflow-hidden shadow-lg group-hover:shadow-primary/20 transition-shadow">
                                 {edu.logo ? (
                                     <img
                                         src={edu.logo}
@@ -35,23 +36,38 @@ const Education = () => {
                                         className="w-full h-full object-contain"
                                     />
                                 ) : (
-                                    <GraduationCap className="text-primary w-10 h-10" />
+                                    <GraduationCap className="text-primary w-16 h-16" />
                                 )}
-                            </div>
-                            <div className="flex-1">
-                                <h3 className="text-xl font-bold font-display text-text mb-2">
-                                    {edu.school}
-                                </h3>
-                                <p className="text-primary font-semibold mb-1">{edu.degree}</p>
-                                <p className="text-text-muted text-sm">{edu.date}</p>
                             </div>
                         </div>
 
-                        <div className="space-y-3">
-                            <div className="bg-primary/10 px-4 py-2 rounded-lg inline-block">
-                                <p className="text-primary font-semibold text-sm">{edu.grade}</p>
+                        {/* Content - Centered */}
+                        <div className="text-center space-y-4">
+                            {/* Degree - Most Prominent */}
+                            <h3 className="text-xl font-bold font-display text-text leading-tight">
+                                {edu.degree}
+                            </h3>
+
+                            {/* School Name */}
+                            <p className="text-lg text-primary font-semibold">
+                                {edu.school}
+                            </p>
+
+                            {/* Date */}
+                            <div className="flex items-center justify-center gap-2 text-text-muted">
+                                <Calendar size={16} />
+                                <p className="text-sm font-mono">{edu.date}</p>
                             </div>
-                            <p className="text-text-muted leading-relaxed text-sm">
+
+                            {/* Grade - Highlighted */}
+                            <div className="inline-block">
+                                <div className="bg-primary/10 px-6 py-2 rounded-full border border-primary/20">
+                                    <p className="text-primary font-bold text-sm">{edu.grade}</p>
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <p className="text-text-muted leading-relaxed text-sm pt-2">
                                 {edu.description}
                             </p>
                         </div>
