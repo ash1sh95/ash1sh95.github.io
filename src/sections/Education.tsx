@@ -66,10 +66,6 @@ const Education = () => {
                                 </div>
                             </div>
 
-                            {/* Description */}
-                            <p className="text-text-muted leading-relaxed text-sm pt-2">
-                                {edu.description}
-                            </p>
                         </div>
                     </motion.div>
                 ))}
