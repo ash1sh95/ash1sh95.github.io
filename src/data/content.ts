@@ -1,4 +1,6 @@
 import { Database, Cloud, Brain, Code, Rocket } from 'lucide-react';
+import csuLogo from '../assets/img/education/CSU.jpg';
+import vtuLogo from '../assets/img/education/VTU.jpeg';
 
 export const personalInfo = {
     name: "Ashish Arun",
@@ -56,7 +58,7 @@ export const education = [
         date: "Aug 2019 - May 2021",
         grade: "GPA 3.94/4.0",
         description: "STEM-designated program focused on data engineering and cloud computing. Key coursework: Data Mining, Database Systems, Business Intelligence, Cloud Computing.",
-        logo: "/assets/img/education/CSU.jpg"
+        logo: csuLogo
     },
     {
         school: "Visvesvaraya Technological University",
@@ -64,7 +66,7 @@ export const education = [
         date: "2013 - 2017",
         grade: "First Class with Distinction",
         description: "Ranked in top 1% of class. Organized e-sports tournament and served as placement coordinator.",
-        logo: "/assets/img/education/VTU.jpeg"
+        logo: vtuLogo
     }
 ];
 

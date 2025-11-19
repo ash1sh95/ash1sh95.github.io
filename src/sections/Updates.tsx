@@ -42,6 +42,8 @@ const Updates = () => {
                                     frameBorder="0"
                                     allowFullScreen
                                     title="Embedded post"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    allow="autoplay; encrypted-media"
                                     className="w-full h-[500px] md:h-[600px]"
                                 ></iframe>
                             </div>
