@@ -1,0 +1,109 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ashish Arun</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <style>
+    :root { --bg:#000; --text:#fff; --accent:#00d4ff; --card:rgba(255,255,255,0.04); --border:rgba(0,212,255,0.2); }
+    [data-theme=light] { --bg:#fff; --text:#000; --accent:#00b8d4; --card:rgba(0,0,0,0.04); --border:rgba(0,184,212,0.2); }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; }
+    .container { max-width:1400px; margin:auto; padding:2rem; }
+    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:1.5rem; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:1.5rem; backdrop-filter:blur(12px); }
+    .avatar { width:180px; height:180px; border-radius:50%; object-fit:cover; border:3px solid var(--accent); cursor:pointer; transition:.3s; }
+    .avatar:hover { transform:scale(1.05); }
+    .emoji-btn { font-size:3rem; background:none; border:none; cursor:pointer; margin-top:1rem; }
+    .live-clock { font-size:2.2rem; font-family:'Space Mono',monospace; font-weight:700; margin:1rem 0; text-align:center; }
+    .claim-btn { background:var(--accent); color:#000; padding:.8rem 1.5rem; border-radius:50px; font-weight:600; text-decoration:none; display:inline-block; transition:.3s; }
+    .claim-btn:hover { transform:translateY(-2px); box-shadow:0 0 20px rgba(0,212,255,.4); }
+    .now-dot { width:12px; height:12px; background:#0f0; border-radius:50%; display:inline-block; margin-right:.5rem; animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+    #particles-js { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; opacity:.3; }
+    @media(max-width:1024px){ .grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body data-theme="dark">
+
+<div id="particles-js"></div>
+
+<div class="container grid">
+  <!-- LEFT -->
+  <div class="card" style="grid-column:1/5;">
+    <p style="font-size:.9rem;color:var(--accent);">welcome</p>
+    <h2>Hi, I’m <span style="color:var(--accent);">Ashish Arun</span>,<br>a Senior Data Engineer.</h2>
+    <p style="margin-top:1rem;">Azure AI Architect • Synapse • Databricks • DSPy • MLOps</p>
+    <a href="https://cal.com/ashish" target="_blank" class="claim-btn" style="margin-top:1.5rem;">Claim a Spot →</a>
+    <div style="margin-top:1.5rem;">
+      <p style="font-weight:600;">Contact</p>
+      <p style="font-family:'Space Mono',monospace;">
+        <a href="mailto:ashish1995@gmail.com">ashish1995@gmail.com</a><br>Dallas, TX
+      </p>
+    </div>
+    <div style="display:flex;gap:1rem;margin-top:1rem;">
+      <a href="https://linkedin.com/in/ashish-a" target="_blank"><i class="fab fa-linkedin" style="font-size:1.4rem;"></i></a>
+      <a href="https://github.com/ash1sh95" target="_blank"><i class="fab fa-github" style="font-size:1.4rem;"></i></a>
+      <a href="https://x.com/yourhandle" target="_blank"><i class="fab fa-x-twitter" style="font-size:1.4rem;"></i></a>
+    </div>
+  </div>
+
+  <!-- CENTER -->
+  <div class="card" style="grid-column:5/9;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <img src="images/ashish.jpg" alt="Ashish" class="avatar" id="avatar">
+    <button class="emoji-btn" id="emojiBtn">Random</button>
+    <div class="live-clock" id="clock">Loading...</div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="card" style="grid-column:9/13;">
+    <h3>About me</h3>
+    <p>Data Engineer III @ GM Financial<br>My stack:</p>
+    <ul style="margin-left:1.2rem;opacity:.9;">
+      <li>Azure • Databricks • Terraform</li>
+      <li>PySpark • Kafka • Snowflake</li>
+      <li>DSPy • MLOps • CI/CD</li>
+    </ul>
+    <p style="margin-top:1rem;">I volunteer for disability support & tiger conservation. Love hiking.</p>
+    <div style="margin-top:1.5rem;">
+      <p style="font-weight:600;">Now</p>
+      <p><span class="now-dot"></span>RL + Azure ML pipelines</p>
+    </div>
+    <div style="margin-top:1.5rem;">
+      <p style="font-weight:600;">Mentor</p>
+      <p>Azure Data Engineering</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // LIVE CLOCK
+  function updateClock() {
+    const now = new Date();
+    const opts = { timeZone: 'America/Chicago', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    const time = now.toLocaleTimeString('en-US', opts);
+    document.getElementById('clock').textContent = time + ' CDT';
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // EMOJI BUTTON
+  const emojis = ['Smile','Grin','Laughing','Wink','Heart Eyes','Star-Struck','Nerd','Cool','Sunglasses','Rocket','Fire','Lightning','Robot','Alien','Ghost','Brain','Gear','Hammer','Paintbrush','Microphone','Trophy','Seedling','Sunrise','Rainbow','Snowman','Party Popper','Camera','Puzzle Piece','Basketball','Dancer','Musician','Astronaut','Superhero','Mage','Elf','Genie','Fairy','Santa','Christmas Tree','Fireworks','Sparkles','Umbrella','Snowflake','Comet','Cyclone','Beach with Umbrella','Mountain','Castle','Airplane','Rocket','Satellite'];
+  document.getElementById('emojiBtn').addEventListener('click', () => {
+    const i = Math.floor(Math.random() * emojis.length);
+    document.getElementById('emojiBtn').textContent = emojis[i];
+  });
+
+  // PARTICLES
+  particlesJS('particles-js', {
+    particles: { number: { value: 60 }, color: { value: '#00d4ff' }, shape: { type: 'circle' }, opacity: { value: 0.3 }, size: { value: 3 }, line_linked: { enable: true, distance: 150, color: '#00d4ff', opacity: 0.2, width: 1 }, move: { enable: true, speed: 1.5 } },
+    interactivity: { events: { onhover: { enable: true, mode: 'repulse' } } },
+    retina_detect: true
+  });
+</script>
+
+</body>
+</html> -->
