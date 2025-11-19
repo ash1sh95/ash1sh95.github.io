@@ -46,6 +46,16 @@ const Projects = () => {
                                 <div className="flex flex-wrap gap-2 mt-auto">
                                     {project.tech.map((t, i) => (
                                         <span key={i} className="px-3 py-1 bg-background text-text-muted text-xs font-mono rounded-full border border-border flex items-center gap-2">
+                                            {t === 'OpenAI API' && (
+                                                <img
+                                                    src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg"
+                                                    alt="OpenAI"
+                                                    className="w-3 h-3 object-contain"
+                                                    onError={(e) => {
+                                                        e.currentTarget.style.display = 'none';
+                                                    }}
+                                                />
+                                            )}
                                             {t}
                                         </span>
                                     ))}
