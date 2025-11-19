@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { skills, certifications } from '../data/content';
-import { Award, Cpu, Database, Cloud, Code, Brain, Shield, Zap } from 'lucide-react';
+import { Award, Cpu, Database, Cloud, Code, Brain, Shield, Zap, type LucideIcon } from 'lucide-react';
 
-const categoryIcons: Record<string, any> = {
+const categoryIcons: Record<string, LucideIcon> = {
     'Data & AI Platforms': Database,
     'GenAI & ML': Brain,
     'Programming': Code,

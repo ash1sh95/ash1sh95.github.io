@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 export const LoadingScreen = () => {
     const [progress, setProgress] = useState(0);
@@ -17,8 +17,15 @@ export const LoadingScreen = () => {
         return () => clearInterval(interval);
     }, []);
 
-    // Binary rain effect
-    const binaryColumns = Array.from({ length: 20 }, (_, i) => i);
+    // Binary rain effect with stable random values
+    const binaryColumns = useMemo(() =>
+        Array.from({ length: 20 }, (_, i) => ({
+            index: i,
+            duration: 3 + Math.random() * 2,
+            delay: Math.random() * 2,
+            pattern: Array.from({ length: 20 }, () => Math.random() > 0.5 ? '1' : '0').join('\n')
+        }))
+        , []);
 
     return (
         <div className="fixed inset-0 bg-background flex items-center justify-center z-50 overflow-hidden">
@@ -26,19 +33,19 @@ export const LoadingScreen = () => {
             <div className="absolute inset-0 opacity-5">
                 {binaryColumns.map((col) => (
                     <motion.div
-                        key={col}
+                        key={col.index}
                         className="absolute top-0 text-primary font-mono text-xs"
-                        style={{ left: `${col * 5}%` }}
+                        style={{ left: `${col.index * 5}%` }}
                         initial={{ y: -100 }}
                         animate={{ y: '100vh' }}
                         transition={{
-                            duration: 3 + Math.random() * 2,
+                            duration: col.duration,
                             repeat: Infinity,
-                            delay: Math.random() * 2,
+                            delay: col.delay,
                             ease: 'linear'
                         }}
                     >
-                        {Array.from({ length: 20 }, () => Math.random() > 0.5 ? '1' : '0').join('\n')}
+                        {col.pattern}
                     </motion.div>
                 ))}
             </div>

@@ -38,7 +38,7 @@ export const MagneticButton = ({ children, className = '', href, onClick }: Magn
 
     return (
         <Component
-            ref={ref as any}
+            ref={ref as React.Ref<HTMLAnchorElement & HTMLButtonElement>}
             href={href}
             onClick={onClick}
             className={className}

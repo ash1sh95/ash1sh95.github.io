@@ -18,7 +18,7 @@ const Hero = () => {
                 className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px] animate-float"
             />
             <motion.div
-                style={{ y: y2, animationDelay: '2s' } as any}
+                style={{ y: y2, animationDelay: '2s' }}
                 className="absolute top-[40%] -right-[10%] w-[40%] h-[40%] bg-secondary/10 rounded-full blur-[100px] animate-float"
             />
 
