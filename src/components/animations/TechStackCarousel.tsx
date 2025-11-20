@@ -1,5 +1,5 @@
-import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { motion, useAnimationControls } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 interface TechLogo {
     name: string;
@@ -23,47 +23,58 @@ const techStack: TechLogo[] = [
     { name: 'TypeScript', url: 'https://typescriptlang.org', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
     { name: 'PostgreSQL', url: 'https://postgresql.org', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
     { name: 'Git', url: 'https://git-scm.com', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+    { name: 'Argo', url: 'https://argoproj.github.io/', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/argocd/argocd-original.svg' },
+    { name: 'Airflow', url: 'https://airflow.apache.org/', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apacheairflow/apacheairflow-original.svg' },
 ];
 
 export const TechStackCarousel = () => {
+    const controls = useAnimationControls();
     const containerRef = useRef<HTMLDivElement>(null);
-    const x = useMotionValue(0);
-    const springX = useSpring(x, { stiffness: 50, damping: 20 });
 
-    // Duplicate for seamless loop
+    // Duplicate 3 times for smoother looping
     const duplicatedStack = [...techStack, ...techStack, ...techStack];
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            const current = x.get();
-            const itemWidth = 112; // 80px width + 32px gap
-            const totalWidth = techStack.length * itemWidth;
-
-            if (current <= -totalWidth) {
-                x.set(0);
-            } else {
-                x.set(current - 1);
-            }
-        }, 30);
-
-        return () => clearInterval(interval);
-    }, [x]);
+        const startAnimation = async () => {
+            await controls.start({
+                x: [0, -100 * techStack.length],
+                transition: {
+                    duration: 40,
+                    ease: "linear",
+                    repeat: Infinity,
+                    repeatType: "loop"
+                }
+            });
+        };
+        startAnimation();
+    }, [controls]);
 
     return (
-        <div className="w-full overflow-hidden py-12 bg-surface/50">
-            <h3 className="text-2xl font-display font-bold text-text text-center mb-8">
+        <div className="w-full overflow-hidden py-16 bg-surface/30 backdrop-blur-sm border-y border-white/5">
+            <h3 className="text-2xl font-display font-bold text-text text-center mb-10">
                 Technologies I Work With
             </h3>
             <div
                 ref={containerRef}
-                className="relative cursor-grab active:cursor-grabbing"
+                className="relative flex overflow-hidden mask-gradient"
+                style={{
+                    maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                    WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+                }}
             >
                 <motion.div
-                    className="flex gap-8"
-                    style={{ x: springX }}
-                    drag="x"
-                    dragConstraints={{ left: -techStack.length * 112, right: 0 }}
-                    dragElastic={0.1}
+                    className="flex gap-12 px-12"
+                    animate={controls}
+                    onHoverStart={() => controls.stop()}
+                    onHoverEnd={() => controls.start({
+                        x: [null, -100 * techStack.length],
+                        transition: {
+                            duration: 40,
+                            ease: "linear",
+                            repeat: Infinity,
+                            repeatType: "loop"
+                        }
+                    })}
                 >
                     {duplicatedStack.map((tech, index) => (
                         <a
@@ -71,17 +82,16 @@ export const TechStackCarousel = () => {
                             href={tech.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-shrink-0 group"
-                            onClick={(e) => e.stopPropagation()}
+                            className="flex-shrink-0 group flex flex-col items-center gap-3 min-w-[80px]"
                         >
-                            <div className="w-20 h-20 flex items-center justify-center rounded-xl bg-background border border-border hover:border-primary/50 transition-all duration-300 hover:scale-110">
+                            <div className="w-20 h-20 flex items-center justify-center rounded-2xl bg-surface border border-white/10 shadow-lg group-hover:border-primary/50 group-hover:shadow-primary/20 transition-all duration-300 group-hover:-translate-y-2">
                                 <img
                                     src={tech.logo}
                                     alt={tech.name}
-                                    className="w-12 h-12 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                                    className="w-10 h-10 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                                 />
                             </div>
-                            <p className="text-xs text-text-muted text-center mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <p className="text-xs font-medium text-text-muted group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300">
                                 {tech.name}
                             </p>
                         </a>

@@ -20,15 +20,21 @@ const Contact = () => {
 
             <div className="container mx-auto max-w-4xl relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    transition={{ duration: 0.8 }}
+                    className="text-center mb-20"
                 >
-                    <h2 className="text-5xl md:text-7xl font-display font-black text-text mb-6">
-                        Let's <span className="text-primary">Connect</span>
+                    <h2 className="text-5xl md:text-7xl font-display font-black text-text mb-8 tracking-tight">
+                        Let's <span className="text-primary relative inline-block">
+                            Connect
+                            <svg className="absolute w-full h-3 -bottom-1 left-0 text-primary/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
+                            </svg>
+                        </span>
                     </h2>
-                    <p className="text-xl text-text-muted max-w-2xl mx-auto">
+                    <p className="text-xl md:text-2xl text-text-muted max-w-2xl mx-auto font-light">
                         Ready to build something amazing? Drop me an email.
                     </p>
                 </motion.div>

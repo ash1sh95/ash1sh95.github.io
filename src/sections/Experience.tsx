@@ -28,22 +28,48 @@ const Experience = () => {
                             {/* Timeline Dot */}
                             <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-border group-hover:bg-primary transition-colors duration-300 ring-4 ring-background" />
 
-                            <div className="mb-2">
-                                <span className="font-mono text-primary font-bold text-sm bg-primary/5 px-3 py-1 rounded-full">
-                                    {job.date}
-                                </span>
-                            </div>
+                            <div className="mb-8">
+                                <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
+                                    {/* Company Logo */}
+                                    <div className="w-16 h-16 rounded-xl bg-white p-2 flex items-center justify-center shadow-md border border-border group-hover:border-primary/30 transition-all duration-300 group-hover:scale-105 overflow-hidden">
+                                        <img
+                                            src={job.logo}
+                                            alt={`${job.company} logo`}
+                                            className="w-full h-full object-contain"
+                                            onError={(e) => {
+                                                e.currentTarget.style.display = 'none';
+                                                e.currentTarget.parentElement?.classList.add('bg-primary/10');
+                                                const fallback = document.createElement('div');
+                                                fallback.className = 'text-primary font-bold text-xl';
+                                                fallback.innerText = job.company.substring(0, 2).toUpperCase();
+                                                e.currentTarget.parentElement?.appendChild(fallback);
+                                            }}
+                                        />
+                                    </div>
 
-                            <h3 className="text-2xl font-bold text-text mb-1 group-hover:text-primary transition-colors">
-                                {job.role} <span className="text-text-muted">@</span> {job.company}
-                            </h3>
+                                    <div>
+                                        <h3 className="text-xl font-bold text-text group-hover:text-primary transition-colors">
+                                            {job.role}
+                                        </h3>
+                                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-text-muted">
+                                            <span className="font-medium text-text">{job.company}</span>
+                                            <span className="hidden sm:inline">•</span>
+                                            <span className="font-mono text-sm">{job.date}</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <div className="mt-4 text-text-muted leading-relaxed">
-                                <ul className="space-y-2 list-disc list-inside marker:text-primary">
+                                <ul className="space-y-3 text-text-muted leading-relaxed group-hover:text-text/80 transition-colors duration-300">
                                     {Array.isArray(job.description) ? job.description.map((desc, i) => (
-                                        <li key={i} className="pl-2">{desc}</li>
+                                        <li key={i} className="pl-0 flex items-start gap-2">
+                                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0 group-hover:bg-primary transition-colors" />
+                                            <span>{desc}</span>
+                                        </li>
                                     )) : (
-                                        <li className="pl-2">{job.description}</li>
+                                        <li className="pl-0 flex items-start gap-2">
+                                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0 group-hover:bg-primary transition-colors" />
+                                            <span>{job.description}</span>
+                                        </li>
                                     )}
                                 </ul>
                             </div>

@@ -8,25 +8,32 @@
 
 @layer base {
   :root {
-    /* Light Mode Defaults */
-    --color-primary: #007AFF;
+    /* Light Mode Defaults - Premium */
+    --color-primary: #0066CC;
+    /* Deeper Blue */
     --color-secondary: #5856D6;
-    --color-background: #F0F2F5;
+    --color-background: #FAFAFA;
+    /* Cleaner White */
     --color-surface: #FFFFFF;
-    --color-text: #111111;
-    --color-text-muted: #666666;
-    --color-border: #E5E5E5;
+    --color-text: #0A0A0A;
+    /* Sharp Black */
+    --color-text-muted: #555555;
+    --color-border: #E0E0E0;
   }
 
   .dark {
-    /* Dark Mode Defaults */
-    --color-primary: #0A84FF;
-    --color-secondary: #5E5CE6;
-    --color-background: #050505;
-    --color-surface: #0F0F0F;
+    /* Dark Mode Defaults - Obsidian & Gold/Blue hints */
+    --color-primary: #2997FF;
+    /* Vivid Blue */
+    --color-secondary: #BF5AF2;
+    /* Rich Purple */
+    --color-background: #000000;
+    /* True Black for OLED pop */
+    --color-surface: #0A0A0A;
+    /* Almost Black */
     --color-text: #F5F5F7;
-    --color-text-muted: #A1A1A6;
-    --color-border: #1F1F1F;
+    --color-text-muted: #86868B;
+    --color-border: #1D1D1F;
   }
 
   html {

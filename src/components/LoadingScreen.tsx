@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 
 export const LoadingScreen = () => {
     const [progress, setProgress] = useState(0);
@@ -11,205 +11,96 @@ export const LoadingScreen = () => {
                     clearInterval(interval);
                     return 100;
                 }
-                return prev + 2;
+                const increment = Math.random() * 1.5 + 0.3;
+                return Math.min(prev + increment, 100);
             });
-        }, 30);
+        }, 80);
         return () => clearInterval(interval);
     }, []);
 
-    // Binary rain effect with stable random values
-    const binaryColumns = useMemo(() =>
-        Array.from({ length: 20 }, (_, i) => ({
-            index: i,
-            duration: 3 + Math.random() * 2,
-            delay: Math.random() * 2,
-            pattern: Array.from({ length: 20 }, () => Math.random() > 0.5 ? '1' : '0').join('\n')
-        }))
-        , []);
-
     return (
-        <div className="fixed inset-0 bg-background flex items-center justify-center z-50 overflow-hidden">
-            {/* Binary Rain Background */}
-            <div className="absolute inset-0 opacity-5">
-                {binaryColumns.map((col) => (
-                    <motion.div
-                        key={col.index}
-                        className="absolute top-0 text-primary font-mono text-xs"
-                        style={{ left: `${col.index * 5}%` }}
-                        initial={{ y: -100 }}
-                        animate={{ y: '100vh' }}
-                        transition={{
-                            duration: col.duration,
-                            repeat: Infinity,
-                            delay: col.delay,
-                            ease: 'linear'
-                        }}
-                    >
-                        {col.pattern}
-                    </motion.div>
-                ))}
-            </div>
-
-            {/* Data Pipeline Visualization */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                <svg width="100%" height="100%" className="max-w-4xl">
-                    {/* Animated data flow lines */}
-                    <motion.path
-                        d="M 100 300 Q 300 100 500 300 T 900 300"
-                        stroke="var(--color-primary)"
-                        strokeWidth="2"
-                        fill="none"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                    />
-                    <motion.path
-                        d="M 100 400 Q 300 600 500 400 T 900 400"
-                        stroke="var(--color-secondary)"
-                        strokeWidth="2"
-                        fill="none"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: "linear", delay: 0.5 }}
-                    />
-                </svg>
-            </div>
-
+        <div className="fixed inset-0 bg-white dark:bg-black flex items-center justify-center z-50 overflow-hidden">
             {/* Main Content */}
-            <div className="text-center relative z-10 px-6">
-                {/* Personal Branding - Initials */}
+            <div className="relative z-10 flex flex-col items-center px-6 w-full max-w-md">
+                {/* Infinity Symbol - Clean Animation */}
                 <motion.div
-                    className="mb-12 relative"
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{ duration: 0.8, type: "spring" }}
+                    className="mb-16 sm:mb-20 relative w-64 h-32 sm:w-80 sm:h-40"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
                 >
-                    <div className="relative w-32 h-32 mx-auto">
-                        {/* Outer hexagon */}
-                        <motion.div
-                            className="absolute inset-0"
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                        >
-                            <svg viewBox="0 0 100 100" className="w-full h-full">
-                                <polygon
-                                    points="50 1 95 25 95 75 50 99 5 75 5 25"
-                                    fill="none"
-                                    stroke="var(--color-primary)"
-                                    strokeWidth="2"
-                                    opacity="0.5"
-                                />
-                            </svg>
-                        </motion.div>
-
-                        {/* Inner rotating ring */}
-                        <motion.div
-                            className="absolute inset-4 border-2 border-secondary/40 rounded-full"
-                            animate={{ rotate: -360 }}
-                            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                    {/* Infinity Symbol SVG */}
+                    <svg
+                        className="absolute inset-0 w-full h-full"
+                        viewBox="0 0 200 100"
+                        style={{ overflow: 'visible' }}
+                    >
+                        {/* Infinity Outline - Pure Black/White */}
+                        <motion.path
+                            d="M 30,50 C 30,30 40,20 55,20 C 70,20 77,30 85,50 C 93,70 100,80 115,80 C 130,80 140,70 140,50 C 140,30 130,20 115,20 C 100,20 93,30 85,50 C 77,70 70,80 55,80 C 40,80 30,70 30,50 Z"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            className="text-black dark:text-white"
+                            initial={{ pathLength: 0, opacity: 0 }}
+                            animate={{ pathLength: 1, opacity: 1 }}
+                            transition={{ duration: 2, ease: "easeInOut" }}
                         />
-
-                        {/* Initials */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <motion.span
-                                className="text-5xl font-display font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.5 }}
-                            >
-                                AA
-                            </motion.span>
-                        </div>
-
-                        {/* Pulsing particles */}
-                        {[0, 60, 120, 180, 240, 300].map((angle, i) => (
-                            <motion.div
-                                key={i}
-                                className="absolute w-2 h-2 bg-primary rounded-full"
-                                style={{
-                                    top: '50%',
-                                    left: '50%',
-                                    transformOrigin: '0 0',
-                                }}
-                                animate={{
-                                    rotate: angle,
-                                    x: [0, 60, 0],
-                                    opacity: [0.3, 1, 0.3],
-                                }}
-                                transition={{
-                                    duration: 3,
-                                    repeat: Infinity,
-                                    delay: i * 0.2,
-                                }}
-                            />
-                        ))}
-                    </div>
+                    </svg>
                 </motion.div>
 
-                {/* Loading Text with Data Theme */}
+                {/* Name Reveal - E-ink Typography */}
                 <motion.div
+                    className="mb-4 overflow-hidden"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 }}
-                    className="mb-8"
+                    transition={{ delay: 2, duration: 0.8 }}
                 >
-                    <h2 className="text-3xl font-display font-bold text-text mb-2">
-                        <motion.span
-                            animate={{ opacity: [1, 0.5, 1] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                        >
-                            Initializing Data Pipeline
-                        </motion.span>
-                    </h2>
-                    <p className="text-sm text-text-muted font-mono">
-                        {progress < 30 && '// Loading infrastructure...'}
-                        {progress >= 30 && progress < 60 && '// Connecting to data sources...'}
-                        {progress >= 60 && progress < 90 && '// Compiling AI models...'}
-                        {progress >= 90 && '// Ready to deploy...'}
+                    <h1 className="text-2xl sm:text-3xl font-display font-light tracking-[0.3em] text-black dark:text-white uppercase text-center">
+                        Ashish Arun
+                    </h1>
+                </motion.div>
+
+                {/* Tagline */}
+                <motion.div
+                    className="mb-16 sm:mb-20"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2.3, duration: 0.8 }}
+                >
+                    <p className="text-xs sm:text-sm font-mono text-black/60 dark:text-white/60 tracking-widest uppercase text-center">
+                        Data Engineer · AI Architect
                     </p>
                 </motion.div>
 
-                {/* Progress Bar with Data Metrics */}
-                <div className="w-80 max-w-full mx-auto">
-                    <div className="flex justify-between text-xs text-text-muted mb-2 font-mono">
-                        <span>0%</span>
-                        <span className="text-primary font-bold">{progress}%</span>
-                        <span>100%</span>
-                    </div>
-                    <div className="h-2 bg-surface rounded-full overflow-hidden border border-border">
+                {/* Minimalist Progress Bar - E-ink Style */}
+                <div className="w-full max-w-xs sm:max-w-sm">
+                    <motion.div
+                        className="h-[2px] bg-black/10 dark:bg-white/10 rounded-full overflow-hidden relative"
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ delay: 2.5, duration: 0.8, ease: "easeOut" }}
+                    >
                         <motion.div
-                            className="h-full bg-gradient-to-r from-primary via-secondary to-primary rounded-full relative"
+                            className="absolute top-0 left-0 h-full bg-black dark:bg-white"
                             style={{ width: `${progress}%` }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            {/* Shimmer effect */}
-                            <motion.div
-                                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                                animate={{ x: ['-100%', '200%'] }}
-                                transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
-                            />
-                        </motion.div>
-                    </div>
-                </div>
+                            transition={{ ease: "easeOut" }}
+                        />
+                    </motion.div>
 
-                {/* Tech Stack Indicators */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2 }}
-                    className="mt-8 flex gap-4 justify-center text-xs text-text-muted font-mono"
-                >
-                    {['Azure', 'Databricks', 'GenAI', 'DSPy'].map((tech, i) => (
-                        <motion.span
-                            key={tech}
-                            initial={{ opacity: 0.3 }}
-                            animate={{ opacity: progress > (i + 1) * 20 ? 1 : 0.3 }}
-                            className={progress > (i + 1) * 20 ? 'text-primary' : ''}
-                        >
-                            [{tech}]
-                        </motion.span>
-                    ))}
-                </motion.div>
+                    {/* Progress Percentage */}
+                    <motion.div
+                        className="mt-3 text-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 2.7 }}
+                    >
+                        <span className="text-xs font-mono text-black/50 dark:text-white/50 tracking-wider">
+                            {Math.round(progress)}%
+                        </span>
+                    </motion.div>
+                </div>
             </div>
         </div>
     );

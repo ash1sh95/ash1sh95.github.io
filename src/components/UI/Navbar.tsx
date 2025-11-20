@@ -40,7 +40,7 @@ export const Navbar = () => {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="pointer-events-auto glass-panel rounded-full px-6 py-3 flex items-center gap-6 shadow-2xl border border-white/20 dark:border-white/10 bg-white/60 dark:bg-black/80 backdrop-blur-xl"
+                className="pointer-events-auto glass-panel rounded-full px-6 py-3 flex items-center gap-6 shadow-2xl border border-white/20 dark:border-white/10 bg-white/70 dark:bg-black/70 backdrop-blur-xl ring-1 ring-white/20"
             >
                 {/* Logo */}
                 <motion.a
