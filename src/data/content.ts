@@ -44,13 +44,8 @@ export const about = [
         description: "Technical Principal — Data & AI at GM Financial with 5+ years of experience building data and AI platforms on Azure and Databricks. Leading end-to-end AI implementations."
     },
     {
-        icon: Database,
-        title: "Data Engineering Expert",
-        description: "Principal-level engineer with 5+ years building production ML systems and cloud-native data platforms. Specialized in Databricks, Azure, and scalable data architecture."
-    },
-    {
         icon: Brain,
-        title: "GenAI & MLOps Leader",
+        title: "GenAI & Agent Governance",
         description: "Architected enterprise GenAI frameworks serving multiple product teams. Works on agent governance, LLM evaluation, and production AI infrastructure. Established Databricks Center of Excellence."
     },
     {
@@ -59,9 +54,14 @@ export const about = [
         description: "Contributor to Databricks open source — two pull requests open in databricks/databricks-ai-bridge (PRs #801 and #802), including a Responses API bug fix with regression tests."
     },
     {
+        icon: Database,
+        title: "Data Engineering Expert",
+        description: "The platform foundation under the AI work — principal-level data engineering with 5+ years building production ML systems and the cloud-native data platforms his agents run on. Specialized in Databricks, Azure, and scalable data architecture."
+    },
+    {
         icon: Cloud,
         title: "Cloud Infrastructure",
-        description: "Azure-certified engineer proficient in IaC (Terraform), CI/CD automation, and Kubernetes. Reduced deployment times by 40% through infrastructure automation and best practices."
+        description: "The delivery foundation for the AI platform work — Azure-certified, proficient in IaC (Terraform), CI/CD automation, and Kubernetes. Reduced deployment times by 40% through infrastructure automation and best practices."
     },
     {
         icon: Rocket,
@@ -203,12 +203,16 @@ export const projects = [
 
 export const skills = [
     {
+        category: "GenAI & Agents",
+        items: ["Agent Governance", "LLM Evals", "LangGraph", "MCP", "DSPy", "RAG", "LangChain", "OpenAI API", "LLM Fine-tuning", "MLOps", "Local LLMs / Ollama"]
+    },
+    {
         category: "Data & AI Platforms",
         items: ["Databricks", "Azure Synapse", "Azure Data Factory", "Apache Spark", "Unity Catalog", "Delta Lake"]
     },
     {
-        category: "GenAI & ML",
-        items: ["DSPy", "LangChain", "LangGraph", "OpenAI API", "LLM Fine-tuning", "RAG", "LLM Evals", "MLOps", "MCP", "Local LLMs / Ollama"]
+        category: "Data Engineering",
+        items: ["ETL/ELT", "Data Modeling", "Data Warehousing", "Stream Processing", "Data Governance"]
     },
     {
         category: "Programming",
@@ -219,12 +223,8 @@ export const skills = [
         items: ["Azure", "Terraform", "Docker", "Kubernetes", "CI/CD", "GitHub Actions", "Azure DevOps"]
     },
     {
-        category: "Data Engineering",
-        items: ["ETL/ELT", "Data Modeling", "Data Warehousing", "Stream Processing", "Data Governance"]
-    },
-    {
         category: "Security & Compliance",
-        items: ["RBAC", "Azure AD", "Key Vault", "Data Security", "Compliance Frameworks", "Agent Governance"]
+        items: ["RBAC", "Azure AD", "Key Vault", "Data Security", "Compliance Frameworks"]
     }
 ];
 
