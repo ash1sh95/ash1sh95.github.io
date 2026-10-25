@@ -40,12 +40,12 @@ export const Navbar = () => {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="pointer-events-auto glass-panel rounded-full px-6 py-3 flex items-center gap-6 shadow-2xl border border-white/20 dark:border-white/10 bg-white/70 dark:bg-black/70 backdrop-blur-xl ring-1 ring-white/20"
+                className="pointer-events-auto glass-panel rounded-full max-w-[calc(100vw-1.5rem)] px-4 py-2.5 sm:px-6 sm:py-3 flex items-center gap-4 sm:gap-6 shadow-2xl border border-white/20 dark:border-white/10 bg-white/70 dark:bg-black/70 backdrop-blur-xl ring-1 ring-white/20"
             >
                 {/* Logo */}
                 <motion.a
                     href="#"
-                    className="font-display font-bold text-xl tracking-tight text-text"
+                    className="font-display font-bold text-lg sm:text-xl tracking-tight text-text whitespace-nowrap shrink-0"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >
@@ -71,7 +71,7 @@ export const Navbar = () => {
                 {/* Theme Toggle */}
                 <button
                     onClick={toggleTheme}
-                    className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 text-text transition-colors relative overflow-hidden"
+                    className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 text-text transition-colors relative overflow-hidden shrink-0"
                     aria-label="Toggle Theme"
                 >
                     <AnimatePresence mode="wait">
