@@ -18,6 +18,10 @@ const Skills = () => {
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
             <div className="container mx-auto relative z-10">
+                <div className="flex items-center gap-4 mb-6">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">06 — Skills</span>
+                    <span className="h-px w-16 bg-platinum-400" />
+                </div>
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
