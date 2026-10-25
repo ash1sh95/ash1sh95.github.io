@@ -41,11 +41,13 @@ const Hero = () => {
                 className="absolute inset-0 pointer-events-none"
                 style={{ background: 'radial-gradient(720px circle at 88% 12%, rgba(199,204,214,0.055), transparent 65%)' }}
             />
-            {/* Audit-log column — a deliberate margin column at 2xl only:
-                fixed width, hairline gutter rule, fully inside the hero */}
+            {/* Audit-log column — shown only at 1920px and up. Its 144px
+                width plus 24px viewport offset fits within the 192px page
+                margin beside the 1536px container, keeping the hairline
+                gutter and every glyph clear of both content and edge. */}
             <div
                 aria-hidden
-                className="absolute right-10 top-28 bottom-28 hidden 2xl:flex w-44 flex-col justify-between border-l border-platinum-300/10 pl-5 font-mono text-[10px] tracking-[0.18em] text-platinum-300 opacity-[0.07] pointer-events-none select-none z-0 overflow-hidden"
+                className="absolute right-6 top-28 bottom-28 hidden min-[1920px]:flex w-36 flex-col justify-between border-l border-platinum-300/10 pl-4 font-mono text-[10px] tracking-[0.18em] text-platinum-300 opacity-[0.07] pointer-events-none select-none z-0 overflow-hidden"
             >
                 {AUDIT_LINES.map((line, i) => (
                     <span key={i} className="block whitespace-nowrap">{line}</span>
