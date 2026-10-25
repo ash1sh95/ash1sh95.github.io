@@ -3,7 +3,7 @@ import { skills, certifications } from '../data/content';
 import { Award, Cpu, Database, Cloud, Code, Brain, Shield, Zap, type LucideIcon } from 'lucide-react';
 
 const categoryIcons: Record<string, LucideIcon> = {
-    'Data & AI Platforms': Database,
+    'Databricks & Data Platforms': Database,
     'GenAI & Agents': Brain,
     'Programming': Code,
     'Cloud & Infrastructure': Cloud,
