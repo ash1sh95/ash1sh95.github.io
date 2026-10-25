@@ -19,13 +19,14 @@ const Skills = () => {
 
             <div className="container mx-auto relative z-10">
                 <div className="flex items-center gap-4 mb-6">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">05 — Skills</span>
+                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">06 — Skills</span>
                     <span className="h-px w-16 bg-platinum-400" />
                 </div>
                 <motion.div
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -14 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: '0px 0px 60px 0px' }}
+                    transition={{ duration: 0.45 }}
                     className="mb-16 flex items-center gap-4"
                 >
                     <div className="p-3 rounded-xl bg-primary/10 text-primary">
@@ -44,10 +45,10 @@ const Skills = () => {
                             return (
                                 <motion.div
                                     key={catIndex}
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: 14 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: catIndex * 0.1, duration: 0.5 }}
+                                    viewport={{ once: true, margin: '0px 0px 60px 0px' }}
+                                    transition={{ delay: Math.min(catIndex * 0.05, 0.15), duration: 0.4 }}
                                     whileHover={{ y: -5 }}
                                     className="bg-background border border-border rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 group shadow-sm hover:shadow-md"
                                 >
@@ -63,10 +64,10 @@ const Skills = () => {
                                         {category.items?.slice(0, 6).map((item, itemIndex) => (
                                             <motion.span
                                                 key={`${catIndex}-${itemIndex}`}
-                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                initial={{ opacity: 0, scale: 0.92 }}
                                                 whileInView={{ opacity: 1, scale: 1 }}
-                                                viewport={{ once: true }}
-                                                transition={{ delay: catIndex * 0.1 + itemIndex * 0.05 }}
+                                                viewport={{ once: true, margin: '0px 0px 60px 0px' }}
+                                                transition={{ delay: itemIndex * 0.02, duration: 0.25 }}
                                                 whileHover={{ scale: 1.05 }}
                                                 className="px-3 py-1 bg-surface border border-border rounded-full text-xs font-medium text-text-muted hover:border-primary/30 hover:text-primary hover:bg-primary/5 transition-all cursor-default"
                                             >
@@ -86,10 +87,10 @@ const Skills = () => {
 
                     {/* Certifications */}
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
+                        initial={{ opacity: 0, x: 14 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.4 }}
+                        viewport={{ once: true, margin: '0px 0px 60px 0px' }}
+                        transition={{ delay: 0.1, duration: 0.4 }}
                         className="bg-gradient-to-br from-background to-surface border border-border rounded-2xl p-8 shadow-lg h-fit sticky top-24"
                     >
                         <h3 className="text-2xl font-display font-bold mb-8 flex items-center gap-3 text-text">
@@ -99,10 +100,10 @@ const Skills = () => {
                             {certifications.map((cert, index) => (
                                 <motion.div
                                     key={index}
-                                    initial={{ opacity: 0, x: 10 }}
+                                    initial={{ opacity: 0, x: 8 }}
                                     whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.5 + index * 0.1 }}
+                                    viewport={{ once: true, margin: '0px 0px 60px 0px' }}
+                                    transition={{ delay: 0.1 + index * 0.05, duration: 0.35 }}
                                     className="pb-6 border-b border-border last:border-0 last:pb-0 group"
                                 >
                                     <h4 className="font-bold text-text mb-2 text-sm leading-tight group-hover:text-primary transition-colors">{cert.name}</h4>
