@@ -23,7 +23,7 @@ const GATE_STEPS = [
     'tool_call → dedupe ✓',
     'rate_limit ✓ · judge ✓',
     'decision → ALLOW',
-    'eval 17/17 · 0 false allows',
+    'all safety checks passed · 0 unsafe actions allowed',
 ];
 
 const GateDemo = () => {
