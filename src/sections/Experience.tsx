@@ -23,10 +23,10 @@ const Experience = () => {
                     {experience.map((job, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 16 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
+                            viewport={{ once: true, margin: '0px 0px 60px 0px' }}
+                            transition={{ delay: Math.min(index * 0.05, 0.15), duration: 0.4 }}
                             className="relative pl-8 border-l-2 border-border group"
                         >
                             {/* Timeline Dot */}
