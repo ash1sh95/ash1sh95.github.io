@@ -37,7 +37,7 @@ const Contact = () => {
                 >
                     <div className="flex items-center justify-center gap-4 mb-6">
                         <span className="h-px w-12 bg-platinum-400" />
-                        <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">07 — Contact</span>
+                        <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">06 — Contact</span>
                         <span className="h-px w-12 bg-platinum-400" />
                     </div>
                     <h2 className="text-4xl md:text-6xl font-display font-bold text-text mb-8">
@@ -49,7 +49,7 @@ const Contact = () => {
                         </span>
                     </h2>
                     <p className="text-xl md:text-2xl text-text-muted max-w-2xl mx-auto font-light">
-                        Ready to build something amazing? Let's get in touch.
+                        Working on production AI agents, governance, or evals? Let's get in touch.
                     </p>
                 </motion.div>
 
@@ -137,6 +137,12 @@ const Contact = () => {
                     viewport={{ once: true }}
                     className="pt-8 border-t border-border text-center"
                 >
+                    <p className="font-display italic text-lg md:text-xl text-text mb-3">
+                        {personalInfo.tagline}
+                    </p>
+                    <p className="font-mono uppercase tracking-[0.25em] text-[11px] text-text-muted mb-6">
+                        Dallas, Texas
+                    </p>
                     <p className="text-sm text-text-muted font-mono">
                         © {new Date().getFullYear()} {personalInfo.name}. Built with React + Framer Motion
                     </p>
