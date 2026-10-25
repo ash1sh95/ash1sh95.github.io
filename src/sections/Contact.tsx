@@ -29,15 +29,15 @@ const Contact = () => {
 
             <div className="container mx-auto max-w-4xl relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true, margin: '0px 0px 60px 0px' }}
+                    transition={{ duration: 0.5 }}
                     className="text-center mb-20"
                 >
                     <div className="flex items-center justify-center gap-4 mb-6">
                         <span className="h-px w-12 bg-platinum-400" />
-                        <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">06 — Contact</span>
+                        <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">07 — Contact</span>
                         <span className="h-px w-12 bg-platinum-400" />
                     </div>
                     <h2 className="text-4xl md:text-6xl font-display font-bold text-text mb-8">
@@ -55,9 +55,10 @@ const Contact = () => {
 
                 {/* Social Links - Including Email */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 14 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: '0px 0px 60px 0px' }}
+                    transition={{ duration: 0.45 }}
                     className="flex justify-center gap-6 mb-16"
                 >
                     {[
@@ -134,7 +135,8 @@ const Contact = () => {
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: '0px 0px 60px 0px' }}
+                    transition={{ duration: 0.45 }}
                     className="pt-8 border-t border-border text-center"
                 >
                     <p className="font-display italic text-lg md:text-xl text-text mb-3">
