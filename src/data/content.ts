@@ -159,6 +159,7 @@ export const experience = [
 export const projects = [
     {
         title: "agent-control-plane",
+        pitch: "Every agent action passes this gate — or it doesn't run.",
         description: "Judge-before-action control plane for AI agents — policy and LLM-judge gate, tool rate limits, duplicate-call prevention, per-call human approvals, and a JSONL audit log. Databricks notebook and Asset Bundle included.",
         tech: ["Python", "AI Agents", "Databricks", "MLflow", "MCP"],
         link: "https://github.com/ash1sh95/agent-control-plane",
@@ -166,6 +167,7 @@ export const projects = [
     },
     {
         title: "databricks-agent-kit",
+        pitch: "Production agents on Databricks, from a single spec.",
         description: "Starter kit for building production agents on Databricks — Unity Catalog tool patterns, Model Serving agent loop, MLflow evaluation templates, and Asset Bundle deployment.",
         tech: ["Databricks", "Unity Catalog", "MLflow", "LangGraph", "Python"],
         link: "https://github.com/ash1sh95/databricks-agent-kit",
@@ -173,6 +175,7 @@ export const projects = [
     },
     {
         title: "DSPy Observability Dashboard",
+        pitch: "See what your pipeline spent, slowed on, and broke.",
         description: "Production-grade observability for DSPy pipelines on Databricks — MLflow tracing with cost, latency and error dashboards for LLM pipelines.",
         tech: ["DSPy", "Databricks", "MLflow", "LLMOps", "Python"],
         link: "https://github.com/ash1sh95/dspy-observability-dashboard",
@@ -180,6 +183,7 @@ export const projects = [
     },
     {
         title: "Databricks Insight Agent",
+        pitch: "Agents that watch the platform, so you don't have to.",
         description: "Multi-agent system for real-time monitoring and analysis of Databricks system tables — DSPy, MLflow, enterprise-grade evaluation and security patterns.",
         tech: ["Databricks", "Multi-Agent", "DSPy", "MLflow", "Python"],
         link: "https://github.com/ash1sh95/databricks-insight-agent",
@@ -187,6 +191,7 @@ export const projects = [
     },
     {
         title: "Azure Agentic RAG",
+        pitch: "Hard questions in. Grounded answers out.",
         description: "Agentic RAG pipeline on Azure OpenAI + LangChain — query routing, retrieval and generation with tool-calling, deployable to Azure Functions / App Service.",
         tech: ["RAG", "Azure OpenAI", "LangChain", "Python"],
         link: "https://github.com/ash1sh95/azure-agentic-rag",
@@ -194,6 +199,7 @@ export const projects = [
     },
     {
         title: "Awesome Databricks GenAI",
+        pitch: "The field guide to GenAI on Databricks.",
         description: "Curated list of tools, tutorials & repos for building GenAI on Databricks (RAG, Agents, Mosaic AI, LLMs).",
         tech: ["Databricks", "GenAI", "RAG", "AI Agents", "LLM"],
         link: "https://github.com/ash1sh95/awesome-databricks-genai",
