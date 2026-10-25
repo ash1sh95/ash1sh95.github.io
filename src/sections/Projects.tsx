@@ -29,10 +29,10 @@ const Projects = () => {
                                         <Folder size={24} />
                                     </div>
                                     <div className="flex gap-3">
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full">
+                                        <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`GitHub repository for ${project.title}`} className="text-text-muted hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full">
                                             <Github size={20} />
                                         </a>
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full">
+                                        <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title}`} className="text-text-muted hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full">
                                             <ExternalLink size={20} />
                                         </a>
                                     </div>
@@ -42,9 +42,15 @@ const Projects = () => {
                                     {project.title}
                                 </h3>
 
-                                <p className="text-text-muted mb-6 flex-1 text-sm leading-relaxed group-hover:text-text transition-colors">
+                                <p className="text-text-muted mb-4 flex-1 text-sm leading-relaxed group-hover:text-text transition-colors">
                                     {project.description}
                                 </p>
+
+                                {project.metrics && (
+                                    <p className="text-xs font-mono text-primary/80 mb-6">
+                                        {project.metrics}
+                                    </p>
+                                )}
 
                                 <div className="flex flex-wrap gap-2 mt-auto">
                                     {project.tech.map((t, i) => (
