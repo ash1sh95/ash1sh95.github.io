@@ -12,10 +12,10 @@ const Elsewhere = () => {
     return (
         <section id="elsewhere" className="px-6 border-y border-border bg-background">
             <motion.div
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                viewport={{ once: true, margin: '0px 0px 60px 0px' }}
+                transition={{ duration: 0.45 }}
                 className="container mx-auto py-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-10"
             >
                 <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300 shrink-0">
