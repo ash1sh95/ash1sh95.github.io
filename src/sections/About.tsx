@@ -13,6 +13,11 @@ const About = () => {
                 transition={{ duration: 0.8 }}
                 className="mb-20 text-center relative z-10"
             >
+                <div className="flex items-center justify-center gap-4 mb-6">
+                    <span className="h-px w-12 bg-platinum-400" />
+                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">01 — About</span>
+                    <span className="h-px w-12 bg-platinum-400" />
+                </div>
                 <h2 className="text-4xl md:text-6xl font-display font-bold text-text mb-6">About Me</h2>
                 <div className="h-1 w-24 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full" />
             </motion.div>
