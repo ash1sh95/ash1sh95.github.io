@@ -36,12 +36,12 @@ const Education = () => {
                     >
                         {/* Logo - Centered and Larger */}
                         <div className="flex justify-center mb-8">
-                            <div className="bg-white rounded-2xl p-4 flex-shrink-0 w-32 h-32 flex items-center justify-center overflow-hidden shadow-lg group-hover:shadow-primary/20 transition-all duration-300 group-hover:scale-105">
+                            <div className={`bg-white rounded-2xl flex-shrink-0 w-32 h-32 flex items-center justify-center overflow-hidden shadow-lg group-hover:shadow-primary/20 transition-all duration-300 group-hover:scale-105 ${edu.school === 'Visvesvaraya Technological University' ? 'p-3' : 'p-4'}`}>
                                 {edu.logo ? (
                                     <img
                                         src={edu.logo}
                                         alt={`${edu.school} logo`}
-                                        className="w-full h-full object-contain"
+                                        className={`w-full h-full object-contain ${edu.school === 'Visvesvaraya Technological University' ? 'scale-[1.6]' : ''}`}
                                     />
                                 ) : (
                                     <GraduationCap className="text-primary w-16 h-16" />
