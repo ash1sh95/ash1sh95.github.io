@@ -60,6 +60,12 @@ const GateDemo = () => {
                 {step === -1 ? 'Run policy check' : running ? 'Checking…' : 'Run again'}
             </button>
             <div className="mt-4 min-h-[4.25rem] font-mono text-[11px] leading-[1.7] text-text-muted" aria-hidden={step === -1}>
+                {step === -1 && (
+                    <p className="opacity-50">
+                        <span className="text-burgundy-500 mr-2">›</span>
+                        awaiting tool_call — press run
+                    </p>
+                )}
                 {step >= 0 && GATE_STEPS.slice(0, step + 1).map((line, i) => (
                     <motion.p
                         key={`${line}-${i}`}
