@@ -94,7 +94,7 @@ const Skills = () => {
                         className="bg-gradient-to-br from-background to-surface border border-border rounded-2xl p-8 shadow-lg h-fit sticky top-24"
                     >
                         <h3 className="text-2xl font-display font-bold mb-8 flex items-center gap-3 text-text">
-                            <Award className="text-primary" /> Certifications
+                            <Award className="text-primary" /> Selected Certifications
                         </h3>
                         <div className="space-y-6">
                             {certifications.map((cert, index) => (
