@@ -35,7 +35,7 @@ function App() {
   // Console signature — one quiet line for whoever opens devtools.
   useEffect(() => {
     console.log(
-      '%cAshish Arun %c Technical Principal — Data & AI · Production agents on Databricks — build, govern, observe, evaluate.\n%cYou found the audit trail. I eval the gate, not the answers.\n%chttps://github.com/ash1sh95',
+      '%cAshish Arun %c Technical Principal — Data & AI · Production agents on Databricks — build, govern, observe, evaluate.\n%cYou found the audit trail. I build AI systems that are safe to run in production.\n%chttps://github.com/ash1sh95',
       'color:#E8EBF0;background:#050505;font-weight:600;padding:2px 6px;border-radius:3px',
       'color:#C7CCD6',
       'color:#93303F;font-family:monospace',
