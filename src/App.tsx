@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { MotionConfig } from 'framer-motion';
 import { Navbar } from './components/UI/Navbar';
-import { Hero, About, Experience, Projects, Skills, Contact, Updates, Education } from './sections';
+import { Hero, About, Experience, Projects, Skills, Contact, Education, Elsewhere } from './sections';
 import { TechStackCarousel } from './components/animations/TechStackCarousel';
 import { LoadingScreen } from './components/LoadingScreen';
 
@@ -17,20 +18,22 @@ function App() {
   }
 
   return (
-    <div className="bg-background min-h-screen text-text selection:bg-burgundy-500 selection:text-white overflow-x-hidden transition-colors duration-300">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <TechStackCarousel />
-        <Experience />
-        <Education />
-        <Updates />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="bg-background min-h-screen text-text selection:bg-burgundy-500 selection:text-white overflow-x-hidden transition-colors duration-300">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <TechStackCarousel />
+          <Experience />
+          <Education />
+          <Elsewhere />
+          <Projects />
+          <Skills />
+          <Contact />
+        </main>
+      </div>
+    </MotionConfig>
   );
 }
 
