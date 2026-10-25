@@ -18,7 +18,7 @@ const AUDIT_LINES = [
     'span · 142ms',
     'policy · pass',
     'router · local',
-    'eval · 17/17',
+    'safety · passed',
     'per-call ✓',
     'gate → allow',
     'audit · sealed',
@@ -102,7 +102,7 @@ const Hero = () => {
                                         transition={{ duration: 0.3 }}
                                         className="font-mono text-[11px] md:text-xs tracking-wider text-text-muted mb-5 overflow-hidden"
                                     >
-                                        {'{"decision":"ALLOW","reason":"principal_verified","eval":"17/17"}'}
+                                        {'{"decision":"ALLOW","subject":"ashish_arun","clearance":"principal"}'}
                                     </motion.p>
                                 )}
                             </AnimatePresence>
