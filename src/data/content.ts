@@ -45,23 +45,23 @@ export const about = [
     },
     {
         icon: Brain,
-        title: "GenAI & Agent Governance",
+        title: "GenAI & MLOps Leader",
         description: "Architected enterprise GenAI frameworks serving multiple product teams. Works on agent governance, LLM evaluation, and production AI infrastructure. Established Databricks Center of Excellence."
+    },
+    {
+        icon: Database,
+        title: "Data Platforms — Databricks",
+        description: "Principal-level data engineering, designed and shipped: production ML systems and cloud-native data platforms on Databricks and Azure, with 5+ years building at enterprise scale. Specialized in scalable data architecture."
+    },
+    {
+        icon: Cloud,
+        title: "Cloud Infrastructure",
+        description: "Designs and builds cloud infrastructure on Azure — Azure-certified, proficient in IaC (Terraform), CI/CD automation, and Kubernetes. Reduced deployment times by 40% through infrastructure automation and best practices."
     },
     {
         icon: ShieldCheck,
         title: "Open-Source Contributor",
         description: "Contributor to Databricks open source — two pull requests open in databricks/databricks-ai-bridge (PRs #801 and #802), including a Responses API bug fix with regression tests."
-    },
-    {
-        icon: Database,
-        title: "Data Engineering Expert",
-        description: "The platform foundation under the AI work — principal-level data engineering with 5+ years building production ML systems and the cloud-native data platforms his agents run on. Specialized in Databricks, Azure, and scalable data architecture."
-    },
-    {
-        icon: Cloud,
-        title: "Cloud Infrastructure",
-        description: "The delivery foundation for the AI platform work — Azure-certified, proficient in IaC (Terraform), CI/CD automation, and Kubernetes. Reduced deployment times by 40% through infrastructure automation and best practices."
     },
     {
         icon: Rocket,
@@ -204,11 +204,15 @@ export const projects = [
 export const skills = [
     {
         category: "GenAI & Agents",
-        items: ["Agent Governance", "LLM Evals", "LangGraph", "MCP", "DSPy", "RAG", "LangChain", "OpenAI API", "LLM Fine-tuning", "MLOps", "Local LLMs / Ollama"]
+        items: ["LangGraph", "DSPy", "RAG", "MCP", "LLM Evals", "Agent Governance", "LangChain", "OpenAI API", "LLM Fine-tuning", "MLOps", "Local LLMs / Ollama"]
     },
     {
-        category: "Data & AI Platforms",
+        category: "Databricks & Data Platforms",
         items: ["Databricks", "Azure Synapse", "Azure Data Factory", "Apache Spark", "Unity Catalog", "Delta Lake"]
+    },
+    {
+        category: "Cloud & Infrastructure",
+        items: ["Azure", "Terraform", "Docker", "Kubernetes", "CI/CD", "GitHub Actions", "Azure DevOps"]
     },
     {
         category: "Data Engineering",
@@ -217,10 +221,6 @@ export const skills = [
     {
         category: "Programming",
         items: ["Python", "PySpark", "SQL", "JavaScript", "TypeScript", "PowerShell"]
-    },
-    {
-        category: "Cloud & Infrastructure",
-        items: ["Azure", "Terraform", "Docker", "Kubernetes", "CI/CD", "GitHub Actions", "Azure DevOps"]
     },
     {
         category: "Security & Compliance",
