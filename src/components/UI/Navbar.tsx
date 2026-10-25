@@ -29,7 +29,6 @@ export const Navbar = () => {
         { name: 'About', href: '#about' },
         { name: 'Experience', href: '#experience' },
         { name: 'Projects', href: '#projects' },
-        { name: 'Principles', href: '#principles' },
         { name: 'Skills', href: '#skills' },
         { name: 'Elsewhere', href: '#elsewhere' },
         { name: 'Contact', href: '#contact' },
