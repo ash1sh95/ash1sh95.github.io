@@ -4,6 +4,7 @@ import { projects } from '../data/content';
 import { Github, ArrowUpRight, Play, FileSearch } from 'lucide-react';
 import ProjectCover, { type CoverVariant } from '../components/ProjectCover';
 import CaseFile from '../components/CaseFile';
+import AssemblingHeading from '../components/AssemblingHeading';
 
 const COVERS: Record<string, CoverVariant> = {
     'agent-control-plane': 'gate',
@@ -94,9 +95,10 @@ const Projects = () => {
                     <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">04 — Work</span>
                     <span className="h-px w-16 bg-platinum-400" />
                 </div>
-                <h2 className="text-4xl md:text-6xl font-display font-bold text-text mb-16">
-                    Selected Works
-                </h2>
+                <AssemblingHeading
+                    text="Selected Works"
+                    className="text-4xl md:text-6xl font-display font-bold text-text mb-16"
+                />
 
                 {/* Featured flagship — cover plate + dossier entry */}
                 <motion.div
@@ -139,9 +141,13 @@ const Projects = () => {
                             </a>
                         </div>
 
-                        <h3 className="text-3xl md:text-4xl font-bold font-display text-text mb-4">
+                        <h3 className="text-3xl md:text-4xl font-bold font-display text-text mb-3">
                             {featured.title}
                         </h3>
+
+                        <p className="font-display italic text-xl md:text-2xl leading-snug text-platinum-700 dark:text-platinum-300 mb-5">
+                            {featured.pitch}
+                        </p>
 
                         <p className="text-text-muted mb-4 max-w-3xl text-base leading-relaxed">
                             {featured.description}
@@ -206,6 +212,9 @@ const Projects = () => {
                                             className="shrink-0 text-burgundy-500 opacity-0 -translate-x-1 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"
                                         />
                                     </h3>
+                                    <p className="font-display italic text-lg md:text-xl leading-snug text-platinum-700 dark:text-platinum-300 mt-2">
+                                        {project.pitch}
+                                    </p>
                                     <p className="text-text-muted text-sm md:text-base leading-relaxed mt-2 max-w-2xl">
                                         {project.description}
                                     </p>
