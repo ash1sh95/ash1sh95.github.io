@@ -57,11 +57,13 @@ const Hero = () => {
                         <span className="mr-3">I am a</span>
                         <TypeAnimation
                             sequence={[
-                                'Senior Data Engineer',
+                                'Technical Principal — Data & AI',
                                 2500,
-                                'AI Architect',
+                                'Agent Governance & Evals',
                                 2500,
-                                'Cloud Solutions Expert',
+                                'Databricks AI Architect',
+                                2500,
+                                'Open-Source Contributor',
                                 2500,
                             ]}
                             wrapper="span"
@@ -111,13 +113,14 @@ const Hero = () => {
                         className="flex gap-6 mt-16"
                     >
                         {[
-                            { icon: Github, href: personalInfo.social.github },
-                            { icon: Linkedin, href: personalInfo.social.linkedin },
-                            { icon: Mail, href: personalInfo.social.email }
+                            { icon: Github, href: personalInfo.social.github, label: 'GitHub' },
+                            { icon: Linkedin, href: personalInfo.social.linkedin, label: 'LinkedIn' },
+                            { icon: Mail, href: personalInfo.social.email, label: 'Email' }
                         ].map((social, index) => (
                             <motion.a
                                 key={index}
                                 href={social.href}
+                                aria-label={social.label}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-text-muted hover:text-primary transition-colors p-3 hover:bg-primary/5 rounded-full border border-transparent hover:border-primary/20"
