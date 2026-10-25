@@ -1,17 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Semantic tokens resolve through the runtime CSS variables in @layer base,
+   so utilities (bg-background, text-primary, ...) switch with the .dark class. */
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-border: var(--color-border);
+}
+
 @theme {
-  --font-sans: 'Inter', sans-serif;
-  --font-mono: 'Space Mono', monospace;
-  --font-display: 'Playfair Display', serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+
+  /* Obsidian & Platinum — executive editorial dark.
+     Surfaces: near-black obsidian. Accent: platinum/silver.
+     Signature: deep burgundy, used sparingly. No gold. */
+  --color-obsidian: #050505;
+  --color-obsidian-950: #050505;
+  --color-obsidian-900: #0A0A0B;
+  --color-obsidian-800: #101013;
+  --color-obsidian-700: #17171C;
+  --color-charcoal: #0F0F0F;
+
+  --color-platinum-100: #E8EBF0;
+  --color-platinum-200: #DDE1E8;
+  --color-platinum-300: #C7CCD6;
+  --color-platinum-400: #AEB5C2;
+  --color-platinum-500: #8E97A5;
+  --color-platinum-600: #646E7D;
+  --color-platinum-700: #454D59;
+
+  --color-burgundy-400: #93303F;
+  --color-burgundy-500: #7A1E2B;
+  --color-burgundy-600: #671824;
+  --color-burgundy-700: #52121C;
+
+  /* Legacy accent names remapped to platinum values — class names stay
+     stable, hues do not: the rendered theme has no gold accent. */
+  --color-gold: #C7CCD6;
+  --color-silver: #C7CCD6;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-spin-slow: spin 15s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
 }
 
 @layer base {
   :root {
     /* Light Mode Defaults - Premium */
-    --color-primary: #0066CC;
-    /* Deeper Blue */
-    --color-secondary: #5856D6;
+    --color-primary: #3A4356;
+    /* Platinum graphite (light mode) */
+    --color-secondary: #7A1E2B;
     --color-background: #FAFAFA;
     /* Cleaner White */
     --color-surface: #FFFFFF;
@@ -22,17 +79,17 @@
   }
 
   .dark {
-    /* Dark Mode Defaults - Obsidian & Gold/Blue hints */
-    --color-primary: #2997FF;
-    /* Vivid Blue */
-    --color-secondary: #BF5AF2;
-    /* Rich Purple */
-    --color-background: #000000;
-    /* True Black for OLED pop */
-    --color-surface: #0A0A0A;
-    /* Almost Black */
+    /* Dark Mode Defaults - Obsidian & Platinum */
+    --color-primary: #C7CCD6;
+    /* Platinum */
+    --color-secondary: #7A1E2B;
+    /* Burgundy signature */
+    --color-background: #050505;
+    /* Obsidian */
+    --color-surface: #0F0F0F;
+    /* Charcoal */
     --color-text: #F5F5F7;
-    --color-text-muted: #86868B;
+    --color-text-muted: #9BA3AF;
     --color-border: #1D1D1F;
   }
 
@@ -75,6 +132,11 @@
 
   .btn-primary:active {
     transform: scale(0.95);
+  }
+
+  /* Platinum fill in dark mode needs dark text for contrast */
+  .dark .btn-primary {
+    color: #050505;
   }
 
   .glass-panel {
