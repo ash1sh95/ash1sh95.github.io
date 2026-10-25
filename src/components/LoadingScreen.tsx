@@ -27,7 +27,7 @@ export const LoadingScreen = () => {
                     className="mb-16 sm:mb-20 relative w-64 h-32 sm:w-80 sm:h-40"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
                 >
                     {/* Infinity Symbol SVG */}
                     <svg
@@ -45,7 +45,7 @@ export const LoadingScreen = () => {
                             className="text-black dark:text-white"
                             initial={{ pathLength: 0, opacity: 0 }}
                             animate={{ pathLength: 1, opacity: 1 }}
-                            transition={{ duration: 2, ease: "easeInOut" }}
+                            transition={{ duration: 0.65, ease: "easeInOut" }}
                         />
                     </svg>
                 </motion.div>
@@ -55,7 +55,7 @@ export const LoadingScreen = () => {
                     className="mb-4 overflow-hidden"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 2, duration: 0.8 }}
+                    transition={{ delay: 0.6, duration: 0.3 }}
                 >
                     <h1 className="text-2xl sm:text-3xl font-display font-light tracking-[0.3em] text-black dark:text-white uppercase text-center">
                         Ashish Arun
@@ -67,10 +67,10 @@ export const LoadingScreen = () => {
                     className="mb-16 sm:mb-20"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 2.3, duration: 0.8 }}
+                    transition={{ delay: 0.7, duration: 0.3 }}
                 >
                     <p className="text-xs sm:text-sm font-mono text-black/60 dark:text-white/60 tracking-widest uppercase text-center">
-                        Data Engineer · AI Architect
+                        Technical Principal · Data & AI
                     </p>
                 </motion.div>
 
@@ -80,7 +80,7 @@ export const LoadingScreen = () => {
                         className="h-[2px] bg-black/10 dark:bg-white/10 rounded-full overflow-hidden relative"
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
-                        transition={{ delay: 2.5, duration: 0.8, ease: "easeOut" }}
+                        transition={{ delay: 0.75, duration: 0.3, ease: "easeOut" }}
                     >
                         <motion.div
                             className="absolute top-0 left-0 h-full bg-black dark:bg-white"
@@ -94,7 +94,7 @@ export const LoadingScreen = () => {
                         className="mt-3 text-center"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 2.7 }}
+                        transition={{ delay: 0.8 }}
                     >
                         <span className="text-xs font-mono text-black/50 dark:text-white/50 tracking-wider">
                             {Math.round(progress)}%
