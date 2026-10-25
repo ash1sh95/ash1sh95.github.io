@@ -49,7 +49,7 @@ const Contact = () => {
                         </span>
                     </h2>
                     <p className="text-xl md:text-2xl text-text-muted max-w-2xl mx-auto font-light">
-                        Working on production AI agents, governance, or evals? Let's get in touch.
+                        Working on production AI agents, governance, or AI safety? Let's get in touch.
                     </p>
                 </motion.div>
 
