@@ -2,6 +2,13 @@ import { motion } from 'framer-motion';
 import { experience } from '../data/content';
 import { Terminal } from 'lucide-react';
 
+/* Scale facts already stated in the entries' own description text,
+   surfaced as a metrics line — nothing added, nothing reworded. */
+const ROLE_METRICS: Record<string, string> = {
+    'GM Financial · Data Engineer III': '3+ product teams · 40% faster AI feature time-to-market · Databricks Center of Excellence',
+    'GM Financial · Data Engineer I': '40% deployment-time reduction · Hive → Unity Catalog migration',
+};
+
 const Experience = () => {
     return (
         <section id="experience" className="py-20 px-6 bg-surface">
@@ -20,7 +27,9 @@ const Experience = () => {
                 </div>
 
                 <div className="space-y-12">
-                    {experience.map((job, index) => (
+                    {experience.map((job, index) => {
+                        const metrics = ROLE_METRICS[`${job.company} · ${job.role}`];
+                        return (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 16 }}
@@ -76,9 +85,16 @@ const Experience = () => {
                                         </li>
                                     )}
                                 </ul>
+
+                                {metrics && (
+                                    <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.18em] text-primary/80">
+                                        {metrics}
+                                    </p>
+                                )}
                             </div>
                         </motion.div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>
