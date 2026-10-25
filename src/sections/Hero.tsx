@@ -1,6 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
-import { personalInfo } from '../data/content';
+import { personalInfo, stats } from '../data/content';
 import { Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
 import { MagneticButton } from '../components/animations/MagneticButton';
 import photo from '../assets/img/Ashish_Photo.jpg';
@@ -35,43 +34,33 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                        className="text-6xl lg:text-8xl font-display font-bold leading-tight mb-6 text-text tracking-tight"
+                        className="font-display font-semibold text-[clamp(3.5rem,8vw,5.5rem)] leading-[1.02] tracking-[-0.01em] mb-8 text-text"
                     >
                         {personalInfo.name}
                         <motion.span
                             initial={{ opacity: 0, scale: 0 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 1, type: "spring" }}
-                            className="text-primary inline-block ml-1"
+                            className="text-burgundy-500 inline-block ml-1"
                         >
                             .
                         </motion.span>
                     </motion.h1>
 
-                    <motion.h2
+                    <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.5, duration: 0.8 }}
-                        className="text-2xl lg:text-4xl text-text-muted font-light mb-8 min-h-[3rem] flex items-center"
+                        className="mb-10"
                     >
-                        <span className="mr-3">I am a</span>
-                        <TypeAnimation
-                            sequence={[
-                                'Technical Principal — Data & AI',
-                                2500,
-                                'Agent Governance & Evals',
-                                2500,
-                                'Databricks AI Architect',
-                                2500,
-                                'Open-Source Contributor',
-                                2500,
-                            ]}
-                            wrapper="span"
-                            speed={50}
-                            repeat={Infinity}
-                            className="text-primary font-medium border-b-2 border-primary/30 pb-1"
-                        />
-                    </motion.h2>
+                        <div className="w-14 h-[2px] bg-burgundy-500 mb-7" />
+                        <p className="font-mono uppercase tracking-[0.3em] text-sm md:text-base text-platinum-700 dark:text-platinum-300 mb-5">
+                            {personalInfo.title}
+                        </p>
+                        <p className="font-display text-2xl md:text-[1.75rem] leading-snug text-text max-w-xl">
+                            {personalInfo.tagline}
+                        </p>
+                    </motion.div>
 
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -129,6 +118,21 @@ const Hero = () => {
                             >
                                 <social.icon size={24} />
                             </motion.a>
+                        ))}
+                    </motion.div>
+
+                    {/* Metrics strip — verified facts from content.ts stats */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.35, duration: 0.8 }}
+                        className="mt-14 pt-8 border-t border-border grid grid-cols-2 md:grid-cols-4 gap-6 max-w-xl"
+                    >
+                        {stats.map((stat) => (
+                            <div key={stat.label}>
+                                <div className="font-display font-semibold text-3xl text-text">{stat.value}</div>
+                                <div className="font-mono uppercase tracking-widest text-[11px] text-text-muted mt-1">{stat.label}</div>
+                            </div>
                         ))}
                     </motion.div>
                 </motion.div>
