@@ -32,9 +32,9 @@ export const techStack = [
 
 export const stats = [
     { label: "Years Experience", value: "5+" },
-    { label: "Projects Delivered", value: "25+" },
-    { label: "Certifications", value: "10+" },
-    { label: "Data & AI Pipelines", value: "30+" }
+    { label: "Suite Projects", value: "6" },
+    { label: "Flagship Eval Cases", value: "17/17" },
+    { label: "Open-Source PRs into Databricks", value: "2" }
 ];
 
 export const about = [
