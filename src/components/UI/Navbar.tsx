@@ -92,6 +92,8 @@ export const Navbar = () => {
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         className="p-2 text-text"
+                        aria-label={isOpen ? 'Close menu' : 'Open menu'}
+                        aria-expanded={isOpen}
                     >
                         {isOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
