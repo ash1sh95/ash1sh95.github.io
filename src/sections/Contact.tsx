@@ -84,6 +84,7 @@ const Contact = () => {
                         >
                             <motion.a
                                 href={social.href}
+                                aria-label={social.label}
                                 target={social.isEmail ? undefined : "_blank"}
                                 rel={social.isEmail ? undefined : "noopener noreferrer"}
                                 onClick={social.onClick}
