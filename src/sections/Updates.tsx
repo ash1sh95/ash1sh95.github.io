@@ -5,7 +5,12 @@ const Updates = () => {
     return (
         <section id="updates" className="py-20 px-6 bg-surface border-t border-border">
             <div className="container mx-auto">
-                <h2 className="text-5xl md:text-7xl font-display font-black text-text mb-12 text-center uppercase tracking-tight">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                    <span className="h-px w-12 bg-platinum-400" />
+                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">04 — Updates</span>
+                    <span className="h-px w-12 bg-platinum-400" />
+                </div>
+                <h2 className="text-4xl md:text-6xl font-display font-bold text-text mb-12 text-center">
                     Live <span className="text-primary">Feed</span>
                 </h2>
 
