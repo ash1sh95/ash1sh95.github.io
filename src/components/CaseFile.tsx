@@ -164,7 +164,7 @@ const CaseFile = ({ open, onClose, repoUrl }: CaseFileProps) => {
                                     <span className="border-b border-burgundy-500 pb-0.5">Open the repository</span>
                                     <ArrowUpRight size={14} className="text-burgundy-500 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                                 </a>
-                                <span className="font-mono text-[11px] text-text-muted">Eval 17/17 · 0 false allows</span>
+                                <span className="font-mono text-[11px] text-text-muted">Safety evaluation: 17 of 17 scenarios passed — no unsafe action allowed</span>
                             </div>
                         </div>
                     </motion.div>
