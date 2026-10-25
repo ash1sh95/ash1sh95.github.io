@@ -37,7 +37,7 @@ const Contact = () => {
                 >
                     <div className="flex items-center justify-center gap-4 mb-6">
                         <span className="h-px w-12 bg-platinum-400" />
-                        <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">07 — Contact</span>
+                        <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">06 — Contact</span>
                         <span className="h-px w-12 bg-platinum-400" />
                     </div>
                     <h2 className="text-4xl md:text-6xl font-display font-bold text-text mb-8">
