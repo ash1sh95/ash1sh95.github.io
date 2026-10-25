@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { skills, certifications } from '../data/content';
 import { Award, Cpu, Database, Cloud, Code, Brain, Shield, Zap, type LucideIcon } from 'lucide-react';
+import AssemblingHeading from '../components/AssemblingHeading';
 
 const categoryIcons: Record<string, LucideIcon> = {
     'Databricks & Data Platforms': Database,
@@ -32,9 +33,10 @@ const Skills = () => {
                     <div className="p-3 rounded-xl bg-primary/10 text-primary">
                         <Cpu size={32} />
                     </div>
-                    <h2 className="text-4xl md:text-6xl font-display font-bold text-text">
-                        Technical Arsenal
-                    </h2>
+                    <AssemblingHeading
+                        text="Technical Arsenal"
+                        className="text-4xl md:text-6xl font-display font-bold text-text"
+                    />
                 </motion.div>
 
                 <div className="grid lg:grid-cols-3 gap-8">
