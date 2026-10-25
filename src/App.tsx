@@ -1,7 +1,7 @@
 import { useState, useEffect, useLayoutEffect } from 'react';
 import { MotionConfig, motion, useScroll, useReducedMotion } from 'framer-motion';
 import { Navbar } from './components/UI/Navbar';
-import { Hero, About, Experience, Projects, Skills, Contact, Education, Elsewhere, Principles } from './sections';
+import { Hero, About, Experience, Projects, Skills, Contact, Education, Elsewhere } from './sections';
 import { TechStackCarousel } from './components/animations/TechStackCarousel';
 import { LoadingScreen } from './components/LoadingScreen';
 
@@ -60,7 +60,6 @@ function App() {
           <Education />
           <Elsewhere />
           <Projects />
-          <Principles />
           <Skills />
           <Contact />
         </main>
