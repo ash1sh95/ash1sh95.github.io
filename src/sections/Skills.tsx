@@ -4,7 +4,7 @@ import { Award, Cpu, Database, Cloud, Code, Brain, Shield, Zap, type LucideIcon 
 
 const categoryIcons: Record<string, LucideIcon> = {
     'Data & AI Platforms': Database,
-    'GenAI & ML': Brain,
+    'GenAI & Agents': Brain,
     'Programming': Code,
     'Cloud & Infrastructure': Cloud,
     'Data Engineering': Zap,
@@ -19,7 +19,7 @@ const Skills = () => {
 
             <div className="container mx-auto relative z-10">
                 <div className="flex items-center gap-4 mb-6">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">06 — Skills</span>
+                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">05 — Skills</span>
                     <span className="h-px w-16 bg-platinum-400" />
                 </div>
                 <motion.div
