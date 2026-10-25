@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, Calendar } from 'lucide-react';
 import { education } from '../data/content';
+import AssemblingHeading from '../components/AssemblingHeading';
 
 const Education = () => {
     return (
@@ -19,8 +20,10 @@ const Education = () => {
                     <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">03 — Education</span>
                     <span className="h-px w-12 bg-platinum-400" />
                 </div>
-                <h2 className="text-4xl md:text-6xl font-display font-bold text-text mb-6">Education</h2>
-                <div className="h-1 w-24 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full" />
+                <AssemblingHeading
+                    text="Education"
+                    className="text-4xl md:text-6xl font-display font-bold text-text mb-6"
+                />
             </motion.div>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto relative z-10 items-stretch">
