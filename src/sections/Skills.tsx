@@ -104,9 +104,11 @@ const Skills = () => {
                                     <h4 className="font-bold text-text mb-2 text-sm leading-tight group-hover:text-primary transition-colors">{cert.name}</h4>
                                     <div className="flex justify-between items-center text-xs font-mono text-text-muted">
                                         <span>{cert.issuer}</span>
-                                        <span className="bg-primary/10 text-primary px-2 py-1 rounded-full border border-primary/20">
-                                            {cert.validity.split(' ').pop()}
-                                        </span>
+                                        {cert.validity && (
+                                            <span className="bg-primary/10 text-primary px-2 py-1 rounded-full border border-primary/20">
+                                                {cert.validity.split(' ').pop()}
+                                            </span>
+                                        )}
                                     </div>
                                 </motion.div>
                             ))}
