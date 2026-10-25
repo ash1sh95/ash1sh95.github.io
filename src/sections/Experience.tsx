@@ -6,6 +6,10 @@ const Experience = () => {
     return (
         <section id="experience" className="py-20 px-6 bg-surface">
             <div className="container mx-auto max-w-4xl">
+                <div className="flex items-center gap-4 mb-6">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">02 — Experience</span>
+                    <span className="h-px w-16 bg-platinum-400" />
+                </div>
                 <div className="flex items-center gap-4 mb-16">
                     <div className="p-3 rounded-xl bg-primary/10 text-primary">
                         <Terminal size={32} />
