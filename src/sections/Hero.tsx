@@ -1,4 +1,5 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { personalInfo, stats } from '../data/content';
 import { Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
 import { MagneticButton } from '../components/animations/MagneticButton';
@@ -7,25 +8,26 @@ import photo from '../assets/img/Ashish_Photo.jpg';
 /* Decorative audit-log texture — generic gate vocabulary, echoes the
    flagship's JSONL audit trail. Purely visual, aria-hidden. */
 const AUDIT_LINES = [
-    'gate.evaluate → allow',
-    'judge.score · 0.98',
-    'tool.call · rate ok',
-    'approval · granted',
-    'audit.log · sealed',
-    'dedupe · hit, skip',
-    'gate.evaluate → deny',
-    'trace.span · 142ms',
-    'policy.check · pass',
-    'router · local first',
-    'eval.case · 17/17',
-    'approval · per-call',
-    'gate.evaluate → allow',
-    'audit.log · sealed',
+    'gate → allow',
+    'judge · 0.98',
+    'rate · ok',
+    'approval ✓',
+    'audit · sealed',
+    'dedupe · skip',
+    'gate → deny',
+    'span · 142ms',
+    'policy · pass',
+    'router · local',
+    'eval · 17/17',
+    'per-call ✓',
+    'gate → allow',
+    'audit · sealed',
 ];
 
 const Hero = () => {
     const { scrollY } = useScroll();
     const y1 = useTransform(scrollY, [0, 300], [0, 100]);
+    const [showAudit, setShowAudit] = useState(false);
 
     return (
         <section id="home" className="min-h-screen flex flex-col justify-center pt-28 pb-14 relative overflow-hidden bg-background">
@@ -39,13 +41,14 @@ const Hero = () => {
                 className="absolute inset-0 pointer-events-none"
                 style={{ background: 'radial-gradient(720px circle at 88% 12%, rgba(199,204,214,0.055), transparent 65%)' }}
             />
-            {/* Audit-log column — right edge, whisper opacity */}
+            {/* Audit-log column — a deliberate margin column at 2xl only:
+                fixed width, hairline gutter rule, fully inside the hero */}
             <div
                 aria-hidden
-                className="absolute right-4 top-24 bottom-24 hidden 2xl:flex flex-col justify-between font-mono text-[10px] tracking-[0.18em] text-platinum-300 opacity-[0.05] pointer-events-none select-none z-0"
+                className="absolute right-10 top-28 bottom-28 hidden 2xl:flex w-44 flex-col justify-between border-l border-platinum-300/10 pl-5 font-mono text-[10px] tracking-[0.18em] text-platinum-300 opacity-[0.07] pointer-events-none select-none z-0 overflow-hidden"
             >
                 {AUDIT_LINES.map((line, i) => (
-                    <span key={i}>{line}</span>
+                    <span key={i} className="block whitespace-nowrap">{line}</span>
                 ))}
             </div>
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
@@ -66,14 +69,18 @@ const Hero = () => {
                             className="font-display font-semibold text-[clamp(3.75rem,9vw,6.25rem)] leading-[1.0] tracking-[-0.01em] mb-8 text-text"
                         >
                             {personalInfo.name}
-                            <motion.span
+                            <motion.button
+                                type="button"
+                                aria-label="audit detail"
+                                aria-expanded={showAudit}
+                                onClick={() => setShowAudit(v => !v)}
                                 initial={{ opacity: 0, scale: 0 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 1, type: "spring" }}
-                                className="text-burgundy-500 inline-block ml-1"
+                                className="text-burgundy-500 inline-block ml-1 cursor-pointer rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burgundy-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                             >
                                 .
-                            </motion.span>
+                            </motion.button>
                         </motion.h1>
 
                         <motion.div
@@ -83,6 +90,20 @@ const Hero = () => {
                             className="mb-10"
                         >
                             <div className="w-14 h-[2px] bg-burgundy-500 mb-7" />
+                            <AnimatePresence initial={false}>
+                                {showAudit && (
+                                    <motion.p
+                                        key="audit-line"
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: 'auto' }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="font-mono text-[11px] md:text-xs tracking-wider text-text-muted mb-5 overflow-hidden"
+                                    >
+                                        {'{"decision":"ALLOW","reason":"principal_verified","eval":"17/17"}'}
+                                    </motion.p>
+                                )}
+                            </AnimatePresence>
                             <p className="font-mono uppercase tracking-[0.3em] text-sm md:text-base text-platinum-700 dark:text-platinum-300 mb-5">
                                 {personalInfo.title}
                             </p>
