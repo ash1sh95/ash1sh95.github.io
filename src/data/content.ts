@@ -1,13 +1,13 @@
-import { Database, Cloud, Brain, Code, Rocket } from 'lucide-react';
+import { Database, Cloud, Brain, Code, Rocket, ShieldCheck } from 'lucide-react';
 import csuLogo from '../assets/img/education/CSU.jpg';
 import vtuLogo from '../assets/img/education/VTU.jpeg';
 
 export const personalInfo = {
     name: "Ashish Arun",
-    title: "Senior Data Engineer",
-    tagline: "Building Scalable Data Solutions",
-    subtitle: "Azure Cloud Architect | End-to-End AI Implementation | DSPy & Data Infrastructure Expert",
-    bio: "Senior Data Engineer at GM Financial with 5+ years of experience. Expert in end-to-end AI pipelines, Azure cloud infrastructure, DSPy, MLOps, and scalable data platforms.",
+    title: "Technical Principal — Data & AI",
+    tagline: "Production agents on Databricks — build, govern, observe, evaluate",
+    subtitle: "Agent Governance & Evals | Databricks · Azure | DSPy & Data Infrastructure",
+    bio: "Technical Principal — Data & AI at GM Financial with 5+ years of experience, working on production AI agents on Databricks. Focus: agent governance, evals, and control planes that keep agents safe to run. Open-source contributor to Databricks projects.",
     social: {
         linkedin: "https://www.linkedin.com/in/ashish-a/",
         github: "https://github.com/ash1sh95",
@@ -40,18 +40,23 @@ export const stats = [
 export const about = [
     {
         icon: Code,
-        title: "Technical Lead",
-        description: "Highly technical Senior Data Engineer with over 5 years of experience building scalable data platforms on Azure. Leading end-to-end AI implementations."
+        title: "Technical Principal",
+        description: "Technical Principal — Data & AI at GM Financial with 5+ years of experience building data and AI platforms on Azure and Databricks. Leading end-to-end AI implementations."
     },
     {
         icon: Database,
         title: "Data Engineering Expert",
-        description: "Staff-level data engineer with 4+ years building production ML systems and cloud-native data platforms. Specialized in Databricks, Azure, and scalable data architecture."
+        description: "Principal-level engineer with 5+ years building production ML systems and cloud-native data platforms. Specialized in Databricks, Azure, and scalable data architecture."
     },
     {
         icon: Brain,
         title: "GenAI & MLOps Leader",
-        description: "Architected enterprise GenAI frameworks serving multiple product teams. Expert in DSPy, LLM evaluation, and production AI infrastructure. Established Databricks Center of Excellence."
+        description: "Architected enterprise GenAI frameworks serving multiple product teams. Works on agent governance, LLM evaluation, and production AI infrastructure. Established Databricks Center of Excellence."
+    },
+    {
+        icon: ShieldCheck,
+        title: "Open-Source Contributor",
+        description: "Contributor to Databricks open source — two pull requests open in databricks/databricks-ai-bridge (PRs #801 and #802), including a Responses API bug fix with regression tests."
     },
     {
         icon: Cloud,
@@ -85,6 +90,18 @@ export const education = [
 ];
 
 export const experience = [
+    {
+        company: "GM Financial",
+        role: "Technical Principal — Data & AI",
+        date: "Present",
+        logo: "https://logo.clearbit.com/gmfinancial.com",
+        description: [
+            "Leads agentic AI work on Databricks — production agents built on Unity Catalog functions, Model Serving, and MLflow.",
+            "Designs agent governance and control-plane patterns: judge-before-action policy checks, tool rate limits, human approvals, and audit trails for agent actions.",
+            "Owns evaluation practices for GenAI systems — DSPy and MLflow-based evals that gate what ships to production.",
+            "Open-source contributor to Databricks projects (databricks-ai-bridge)."
+        ]
+    },
     {
         company: "GM Financial",
         role: "Data Engineer III",
@@ -141,25 +158,46 @@ export const experience = [
 
 export const projects = [
     {
-        title: "Awesome Databricks GenAI",
-        description: "A curated collection of resources, notebooks, and guides for building Generative AI applications on the Databricks platform. Includes best practices for LLM deployment and fine-tuning.",
-        tech: ["Databricks", "GenAI", "LLMs", "Python"],
-        link: "https://github.com/ash1sh95/awesome-databricks-genai",
-        metrics: "Production-ready"
+        title: "agent-control-plane",
+        description: "Judge-before-action control plane for AI agents — policy and LLM-judge gate, tool rate limits, duplicate-call prevention, per-call human approvals, and a JSONL audit log. Databricks notebook and Asset Bundle included.",
+        tech: ["Python", "AI Agents", "Databricks", "MLflow", "MCP"],
+        link: "https://github.com/ash1sh95/agent-control-plane",
+        metrics: "Eval 17/17 · 0 false allows"
+    },
+    {
+        title: "databricks-agent-kit",
+        description: "Starter kit for building production agents on Databricks — Unity Catalog tool patterns, Model Serving agent loop, MLflow eval templates, and Asset Bundle deployment.",
+        tech: ["Databricks", "Unity Catalog", "MLflow", "LangGraph", "Python"],
+        link: "https://github.com/ash1sh95/databricks-agent-kit",
+        metrics: "25 tests · Eval 8/8"
+    },
+    {
+        title: "DSPy Observability Dashboard",
+        description: "Production-grade observability for DSPy pipelines on Databricks — MLflow tracing with cost, latency and error dashboards for LLM pipelines.",
+        tech: ["DSPy", "Databricks", "MLflow", "LLMOps", "Python"],
+        link: "https://github.com/ash1sh95/dspy-observability-dashboard",
+        metrics: "MLflow tracing"
+    },
+    {
+        title: "Databricks Insight Agent",
+        description: "Multi-agent system for real-time monitoring and analysis of Databricks system tables — DSPy, MLflow, enterprise-grade evaluation and security patterns.",
+        tech: ["Databricks", "Multi-Agent", "DSPy", "MLflow", "Python"],
+        link: "https://github.com/ash1sh95/databricks-insight-agent",
+        metrics: "Multi-agent system"
     },
     {
         title: "Azure Agentic RAG",
-        description: "Implementation of Retrieval-Augmented Generation with agentic capabilities on Azure. Features intelligent document processing, contextual Q&A, and scalable knowledge base management.",
-        tech: ["Azure AI", "RAG", "LangChain", "Python"],
+        description: "Agentic RAG pipeline on Azure OpenAI + LangChain — query routing, retrieval and generation with tool-calling, deployable to Azure Functions / App Service.",
+        tech: ["RAG", "Azure OpenAI", "LangChain", "Python"],
         link: "https://github.com/ash1sh95/azure-agentic-rag",
         metrics: "Agentic RAG"
     },
     {
-        title: "AI Essay Writer",
-        description: "AI-powered essay writing assistant with advanced language models. Features topic analysis, structure generation, and content enhancement. Includes web interface for easy access.",
-        tech: ["Python", "OpenAI API", "Streamlit", "NLP"],
-        link: "https://github.com/ash1sh95/essay-writer",
-        metrics: "Web Interface"
+        title: "Awesome Databricks GenAI",
+        description: "Curated list of tools, tutorials & repos for building GenAI on Databricks (RAG, Agents, Mosaic AI, LLMs).",
+        tech: ["Databricks", "GenAI", "RAG", "AI Agents", "LLM"],
+        link: "https://github.com/ash1sh95/awesome-databricks-genai",
+        metrics: "Curated list"
     }
 ];
 
@@ -170,7 +208,7 @@ export const skills = [
     },
     {
         category: "GenAI & ML",
-        items: ["DSPy", "LangChain", "OpenAI API", "LLM Fine-tuning", "RAG", "Model Evaluation", "MLOps"]
+        items: ["DSPy", "LangChain", "LangGraph", "OpenAI API", "LLM Fine-tuning", "RAG", "LLM Evals", "MLOps", "MCP", "Local LLMs / Ollama"]
     },
     {
         category: "Programming",
@@ -186,7 +224,7 @@ export const skills = [
     },
     {
         category: "Security & Compliance",
-        items: ["RBAC", "Azure AD", "Key Vault", "Data Security", "Compliance Frameworks"]
+        items: ["RBAC", "Azure AD", "Key Vault", "Data Security", "Compliance Frameworks", "Agent Governance"]
     }
 ];
 
@@ -194,7 +232,7 @@ export const certifications = [
     {
         name: "Microsoft Certified: Azure AI Fundamentals",
         issuer: "Microsoft",
-        validity: "Valid through 2025"
+        validity: ""
     },
     {
         name: "Databricks Certified Generative AI Engineer Associate",
