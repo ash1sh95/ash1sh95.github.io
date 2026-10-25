@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { about } from '../data/content';
+import AssemblingHeading from '../components/AssemblingHeading';
 
 const About = () => {
     return (
@@ -18,8 +19,10 @@ const About = () => {
                     <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">01 — About</span>
                     <span className="h-px w-12 bg-platinum-400" />
                 </div>
-                <h2 className="text-4xl md:text-6xl font-display font-bold text-text mb-6">About Me</h2>
-                <div className="h-1 w-24 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto rounded-full" />
+                <AssemblingHeading
+                    text="About Me"
+                    className="text-4xl md:text-6xl font-display font-bold text-text mb-6"
+                />
             </motion.div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
