@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { experience } from '../data/content';
 import { Terminal } from 'lucide-react';
+import AssemblingHeading from '../components/AssemblingHeading';
 
 /* Scale facts already stated in the entries' own description text,
    surfaced as a metrics line — nothing added, nothing reworded. */
@@ -21,9 +22,10 @@ const Experience = () => {
                     <div className="p-3 rounded-xl bg-primary/10 text-primary">
                         <Terminal size={32} />
                     </div>
-                    <h2 className="text-4xl md:text-6xl font-display font-bold text-text">
-                        Experience
-                    </h2>
+                    <AssemblingHeading
+                        text="Experience"
+                        className="text-4xl md:text-6xl font-display font-bold text-text"
+                    />
                 </div>
 
                 <div className="space-y-12">
