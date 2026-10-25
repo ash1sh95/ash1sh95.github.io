@@ -1,6 +1,18 @@
 import { motion } from 'framer-motion';
 import { projects } from '../data/content';
-import { Github, Folder, ExternalLink } from 'lucide-react';
+import { Github, ArrowUpRight } from 'lucide-react';
+import ProjectCover, { type CoverVariant } from '../components/ProjectCover';
+
+const COVERS: Record<string, CoverVariant> = {
+    'agent-control-plane': 'gate',
+    'databricks-agent-kit': 'kit',
+    'DSPy Observability Dashboard': 'traces',
+    'Databricks Insight Agent': 'insight',
+    'Azure Agentic RAG': 'rag',
+    'Awesome Databricks GenAI': 'index',
+};
+
+const coverFor = (title: string): CoverVariant => COVERS[title] ?? 'index';
 
 const Projects = () => {
     const [featured, ...rest] = projects;
@@ -8,45 +20,47 @@ const Projects = () => {
         <section id="projects" className="py-20 px-6 bg-background">
             <div className="container mx-auto">
                 <div className="flex items-center gap-4 mb-6">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">05 — Work</span>
+                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">04 — Work</span>
                     <span className="h-px w-16 bg-platinum-400" />
                 </div>
                 <h2 className="text-4xl md:text-6xl font-display font-bold text-text mb-16">
                     Selected Works
                 </h2>
 
-                {/* Featured flagship — full-width treatment */}
+                {/* Featured flagship — cover plate + dossier entry */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5 }}
-                    className="group relative bg-surface border border-border border-l-2 border-l-burgundy-500 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-primary/10 mb-8"
+                    className="group relative bg-surface border border-border rounded-lg overflow-hidden hover:border-primary/40 transition-colors duration-300 mb-4 grid lg:grid-cols-2"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="p-8 md:p-12 relative z-10">
+                    <div className="relative min-h-[240px] lg:min-h-full border-b lg:border-b-0 lg:border-r border-border">
+                        <ProjectCover variant={coverFor(featured.title)} className="absolute inset-0" />
+                    </div>
+                    <div className="p-8 md:p-12 relative">
                         <div className="mb-6 flex justify-between items-start">
                             <div className="flex items-center gap-4">
-                                <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300 group-hover:bg-primary group-hover:text-white">
-                                    <Folder size={26} />
-                                </div>
+                                <span className="font-mono text-sm text-platinum-500">01</span>
+                                <span className="h-px w-8 bg-burgundy-500" />
                                 <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-burgundy-500">Featured</span>
                             </div>
-                            <div className="flex gap-3">
-                                <a href={featured.link} target="_blank" rel="noopener noreferrer" aria-label={`GitHub repository for ${featured.title}`} className="text-text-muted hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full">
-                                    <Github size={20} />
-                                </a>
-                                <a href={featured.link} target="_blank" rel="noopener noreferrer" aria-label={`Open ${featured.title}`} className="text-text-muted hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full">
-                                    <ExternalLink size={20} />
-                                </a>
-                            </div>
+                            <a
+                                href={featured.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`GitHub repository for ${featured.title}`}
+                                className="text-text-muted hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full"
+                            >
+                                <Github size={20} />
+                            </a>
                         </div>
 
-                        <h3 className="text-3xl md:text-4xl font-bold font-display text-text mb-4 group-hover:text-primary transition-colors">
+                        <h3 className="text-3xl md:text-4xl font-bold font-display text-text mb-4">
                             {featured.title}
                         </h3>
 
-                        <p className="text-text-muted mb-4 max-w-3xl text-base leading-relaxed group-hover:text-text transition-colors">
+                        <p className="text-text-muted mb-4 max-w-3xl text-base leading-relaxed">
                             {featured.description}
                         </p>
 
@@ -66,67 +80,60 @@ const Projects = () => {
                     </div>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* The index — work presented as a dossier table of contents */}
+                <div className="border-b border-border">
                     {rest.map((project, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
+                        <motion.a
+                            key={project.title}
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ delay: index * 0.1, duration: 0.5 }}
-                            whileHover={{ y: -10 }}
-                            className="group relative bg-surface border border-border rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-primary/10"
+                            viewport={{ once: true, margin: "-40px" }}
+                            transition={{ delay: index * 0.06, duration: 0.5 }}
+                            className="group relative flex items-start gap-5 md:gap-8 py-7 md:py-8 border-t border-border"
+                            aria-label={`${project.title} — GitHub repository`}
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <span className="font-mono text-sm md:text-base text-platinum-500 pt-1.5 md:pt-2.5 w-8 shrink-0">
+                                {String(index + 2).padStart(2, '0')}
+                            </span>
 
-                            <div className="p-8 flex flex-col h-full relative z-10">
-                                <div className="mb-6 flex justify-between items-start">
-                                    <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300 group-hover:bg-primary group-hover:text-white">
-                                        <Folder size={24} />
-                                    </div>
-                                    <div className="flex gap-3">
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`GitHub repository for ${project.title}`} className="text-text-muted hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full">
-                                            <Github size={20} />
-                                        </a>
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title}`} className="text-text-muted hover:text-primary transition-colors p-2 hover:bg-primary/10 rounded-full">
-                                            <ExternalLink size={20} />
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <h3 className="text-2xl font-bold font-display text-text mb-3 group-hover:text-primary transition-colors">
-                                    {project.title}
+                            <div className="flex-1 min-w-0">
+                                <h3 className="flex items-center gap-3 font-display font-semibold text-2xl md:text-[2rem] leading-tight text-text transition-colors duration-300 group-hover:text-primary">
+                                    <span className="inline-block h-[2px] w-0 bg-burgundy-500 transition-all duration-500 group-hover:w-8 shrink-0" />
+                                    <span>{project.title}</span>
+                                    <ArrowUpRight
+                                        size={20}
+                                        className="shrink-0 text-burgundy-500 opacity-0 -translate-x-1 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"
+                                    />
                                 </h3>
-
-                                <p className="text-text-muted mb-4 flex-1 text-sm leading-relaxed group-hover:text-text transition-colors">
+                                <p className="text-text-muted text-sm md:text-base leading-relaxed mt-2 max-w-2xl line-clamp-2 lg:line-clamp-1">
                                     {project.description}
                                 </p>
-
                                 {project.metrics && (
-                                    <p className="text-xs font-mono text-primary/80 mb-6">
+                                    <p className="text-[11px] font-mono uppercase tracking-[0.15em] text-primary/70 mt-2.5">
                                         {project.metrics}
                                     </p>
                                 )}
+                                <p className="lg:hidden font-mono text-[10px] uppercase tracking-[0.15em] text-text-muted mt-3">
+                                    {project.tech.join('  /  ')}
+                                </p>
+                            </div>
 
-                                <div className="flex flex-wrap gap-2 mt-auto">
-                                    {project.tech.map((t, i) => (
-                                        <span key={i} className="px-3 py-1 bg-background text-text-muted text-xs font-mono rounded-full border border-border flex items-center gap-2 group-hover:border-primary/30 transition-colors">
-                                            {t === 'OpenAI API' && (
-                                                <img
-                                                    src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg"
-                                                    alt="OpenAI"
-                                                    className="w-3 h-3 object-contain"
-                                                    onError={(e) => {
-                                                        e.currentTarget.style.display = 'none';
-                                                    }}
-                                                />
-                                            )}
-                                            {t}
-                                        </span>
-                                    ))}
+                            <div className="hidden lg:flex flex-col items-end gap-4 shrink-0 pt-2">
+                                <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-text-muted text-right leading-relaxed">
+                                    {project.tech.join('  /  ')}
+                                </p>
+                            </div>
+
+                            {/* Cover reveals on hover — desktop only */}
+                            <div className="hidden lg:block shrink-0 self-center overflow-hidden w-0 opacity-0 transition-all duration-500 ease-out group-hover:w-52 group-hover:opacity-100">
+                                <div className="w-52 aspect-[5/3] border border-border">
+                                    <ProjectCover variant={coverFor(project.title)} />
                                 </div>
                             </div>
-                        </motion.div>
+                        </motion.a>
                     ))}
                 </div>
             </div>
