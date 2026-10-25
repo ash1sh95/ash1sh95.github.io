@@ -41,7 +41,7 @@ const Education = () => {
                                     <img
                                         src={edu.logo}
                                         alt={`${edu.school} logo`}
-                                        className={`w-full h-full object-contain ${edu.school === 'Visvesvaraya Technological University' ? 'scale-[1.6]' : ''}`}
+                                        className={`w-full h-full object-contain ${edu.school === 'Visvesvaraya Technological University' ? 'scale-[1.45]' : ''}`}
                                     />
                                 ) : (
                                     <GraduationCap className="text-primary w-16 h-16" />

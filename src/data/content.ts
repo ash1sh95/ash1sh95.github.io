@@ -5,7 +5,7 @@ import vtuLogo from '../assets/img/education/VTU.jpeg';
 export const personalInfo = {
     name: "Ashish Arun",
     title: "Technical Principal — Data & AI",
-    tagline: "Production agents on Databricks — build, govern, observe, evaluate",
+    tagline: "Architecting production AI systems & cloud platforms — Databricks · Azure",
     subtitle: "AI Systems Architecture · Databricks · Azure Cloud — production GenAI platforms at enterprise scale",
     bio: "Technical Principal — Data & AI at GM Financial with 5+ years of experience. Architects and builds production AI systems and cloud data platforms on Databricks and Azure — and the safety controls that let enterprises trust them. Open-source contributor to Databricks projects.",
     social: {
