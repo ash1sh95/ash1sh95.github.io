@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { personalInfo } from '../data/content';
 import { Mail, Linkedin, Github, Check } from 'lucide-react';
 import { useState } from 'react';
+import AssemblingHeading from '../components/AssemblingHeading';
 
 const Contact = () => {
     const [copied, setCopied] = useState(false);
@@ -40,14 +41,14 @@ const Contact = () => {
                         <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">06 — Contact</span>
                         <span className="h-px w-12 bg-platinum-400" />
                     </div>
-                    <h2 className="text-4xl md:text-6xl font-display font-bold text-text mb-8">
-                        Let's <span className="text-primary relative inline-block">
-                            Connect
-                            <svg className="absolute w-full h-3 -bottom-1 left-0 text-primary/30" viewBox="0 0 100 10" preserveAspectRatio="none">
-                                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
-                            </svg>
-                        </span>
-                    </h2>
+                    <AssemblingHeading
+                        text="Let's Connect"
+                        segments={[
+                            { text: "Let's " },
+                            { text: 'Connect', className: 'text-primary' },
+                        ]}
+                        className="text-4xl md:text-6xl font-display font-bold text-text mb-8"
+                    />
                     <p className="text-xl md:text-2xl text-text-muted max-w-2xl mx-auto font-light">
                         Working on production AI agents, governance, or AI safety? Let's get in touch.
                     </p>
