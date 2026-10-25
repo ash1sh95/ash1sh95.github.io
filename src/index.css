@@ -97,6 +97,12 @@
     scroll-behavior: smooth;
   }
 
+  /* Signature selection — burgundy field, white text */
+  ::selection {
+    background-color: #7A1E2B;
+    color: #FFFFFF;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-text);
