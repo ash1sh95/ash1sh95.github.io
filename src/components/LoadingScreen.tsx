@@ -5,16 +5,18 @@ export const LoadingScreen = () => {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
+        // Paced to reach 100% at ~1.05s, inside the splash gate — the old
+        // 80ms / ~0.9-per-tick pacing only reached ~55% when the gate fired.
         const interval = setInterval(() => {
             setProgress(prev => {
                 if (prev >= 100) {
                     clearInterval(interval);
                     return 100;
                 }
-                const increment = Math.random() * 1.5 + 0.3;
+                const increment = Math.random() * 2.4 + 1.2;
                 return Math.min(prev + increment, 100);
             });
-        }, 80);
+        }, 25);
         return () => clearInterval(interval);
     }, []);
 
