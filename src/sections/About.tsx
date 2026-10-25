@@ -7,10 +7,10 @@ const About = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent opacity-50 pointer-events-none" />
 
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                viewport={{ once: true, margin: '0px 0px 60px 0px' }}
+                transition={{ duration: 0.5 }}
                 className="mb-20 text-center relative z-10"
             >
                 <div className="flex items-center justify-center gap-4 mb-6">
@@ -28,10 +28,10 @@ const About = () => {
                     return (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 16 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                            viewport={{ once: true, margin: '0px 0px 60px 0px' }}
+                            transition={{ duration: 0.45, delay: Math.min(index * 0.05, 0.15) }}
                             whileHover={{ y: -10 }}
                             className="glass-panel p-8 rounded-2xl border border-white/10 hover:border-primary/30 transition-all duration-300 group shadow-sm hover:shadow-xl hover:shadow-primary/5"
                         >
