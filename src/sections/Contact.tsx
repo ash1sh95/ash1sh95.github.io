@@ -23,7 +23,7 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-32 px-6 bg-background relative overflow-hidden">
+        <section id="contact" className="py-24 px-6 bg-background relative overflow-hidden">
             {/* Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-surface/50 to-background pointer-events-none" />
 
@@ -35,7 +35,12 @@ const Contact = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-20"
                 >
-                    <h2 className="text-5xl md:text-7xl font-display font-black text-text mb-8 tracking-tight">
+                    <div className="flex items-center justify-center gap-4 mb-6">
+                        <span className="h-px w-12 bg-platinum-400" />
+                        <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-platinum-700 dark:text-platinum-300">07 — Contact</span>
+                        <span className="h-px w-12 bg-platinum-400" />
+                    </div>
+                    <h2 className="text-4xl md:text-6xl font-display font-bold text-text mb-8">
                         Let's <span className="text-primary relative inline-block">
                             Connect
                             <svg className="absolute w-full h-3 -bottom-1 left-0 text-primary/30" viewBox="0 0 100 10" preserveAspectRatio="none">
