@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Navbar } from './components/UI/Navbar';
 import { Hero, About, Experience, Projects, Skills, Contact, Updates, Education } from './sections';
 import { TechStackCarousel } from './components/animations/TechStackCarousel';
-import { CursorFollower } from './components/animations/CursorFollower';
 import { LoadingScreen } from './components/LoadingScreen';
 
 function App() {
@@ -18,8 +17,7 @@ function App() {
   }
 
   return (
-    <div className="bg-background min-h-screen text-text selection:bg-primary selection:text-white overflow-x-hidden transition-colors duration-300">
-      <CursorFollower />
+    <div className="bg-background min-h-screen text-text selection:bg-burgundy-500 selection:text-white overflow-x-hidden transition-colors duration-300">
       <Navbar />
       <main>
         <Hero />
