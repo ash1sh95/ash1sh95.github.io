@@ -183,8 +183,8 @@ const ProjectCover = ({ variant, className = '' }: ProjectCoverProps) => {
     return (
         <svg
             viewBox="0 0 400 240"
-            preserveAspectRatio="xMidYMid slice"
-            className={`block h-full w-full ${className}`}
+            preserveAspectRatio="xMidYMid meet"
+            className={`block h-full w-full bg-[#0A0A0B] ${className}`}
             role="img"
             aria-label={`${caption} — project cover illustration`}
         >
