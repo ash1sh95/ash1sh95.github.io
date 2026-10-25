@@ -6,8 +6,8 @@ export const personalInfo = {
     name: "Ashish Arun",
     title: "Technical Principal — Data & AI",
     tagline: "Production agents on Databricks — build, govern, observe, evaluate",
-    subtitle: "Agent Governance & Evals | Databricks · Azure | DSPy & Data Infrastructure",
-    bio: "Technical Principal — Data & AI at GM Financial with 5+ years of experience, working on production AI agents on Databricks. Focus: agent governance, evals, and control planes that keep agents safe to run. Open-source contributor to Databricks projects.",
+    subtitle: "AI Systems Architecture · Databricks · Azure Cloud — production GenAI platforms at enterprise scale",
+    bio: "Technical Principal — Data & AI at GM Financial with 5+ years of experience. Architects and builds production AI systems and cloud data platforms on Databricks and Azure — and the safety controls that let enterprises trust them. Open-source contributor to Databricks projects.",
     social: {
         linkedin: "https://www.linkedin.com/in/ashish-a/",
         github: "https://github.com/ash1sh95",
@@ -32,9 +32,9 @@ export const techStack = [
 
 export const stats = [
     { label: "Years Experience", value: "5+" },
-    { label: "Suite Projects", value: "6" },
-    { label: "Flagship Eval Cases", value: "17/17" },
-    { label: "Open-Source PRs into Databricks", value: "2" }
+    { label: "Faster AI Feature Delivery", value: "40%" },
+    { label: "Certifications", value: "10+" },
+    { label: "Product Teams Served", value: "3+" }
 ];
 
 export const about = [
@@ -61,7 +61,7 @@ export const about = [
     {
         icon: ShieldCheck,
         title: "Open-Source Contributor",
-        description: "Contributor to Databricks open source — two pull requests open in databricks/databricks-ai-bridge (PRs #801 and #802), including a Responses API bug fix with regression tests."
+        description: "Contributor to Databricks open-source projects, including the AI Bridge that connects LangChain and MCP tooling to Databricks."
     },
     {
         icon: Rocket,
@@ -98,7 +98,7 @@ export const experience = [
         description: [
             "Leads agentic AI work on Databricks — production agents built on Unity Catalog functions, Model Serving, and MLflow.",
             "Designs agent governance and control-plane patterns: judge-before-action policy checks, tool rate limits, human approvals, and audit trails for agent actions.",
-            "Owns evaluation practices for GenAI systems — DSPy and MLflow-based evals that gate what ships to production.",
+            "Owns evaluation practices for GenAI systems — DSPy and MLflow-based evaluations that gate what ships to production.",
             "Open-source contributor to Databricks projects (databricks-ai-bridge)."
         ]
     },
@@ -162,14 +162,14 @@ export const projects = [
         description: "Judge-before-action control plane for AI agents — policy and LLM-judge gate, tool rate limits, duplicate-call prevention, per-call human approvals, and a JSONL audit log. Databricks notebook and Asset Bundle included.",
         tech: ["Python", "AI Agents", "Databricks", "MLflow", "MCP"],
         link: "https://github.com/ash1sh95/agent-control-plane",
-        metrics: "Eval 17/17 · 0 false allows"
+        metrics: "17/17 safety checks passed · 0 unsafe actions allowed"
     },
     {
         title: "databricks-agent-kit",
-        description: "Starter kit for building production agents on Databricks — Unity Catalog tool patterns, Model Serving agent loop, MLflow eval templates, and Asset Bundle deployment.",
+        description: "Starter kit for building production agents on Databricks — Unity Catalog tool patterns, Model Serving agent loop, MLflow evaluation templates, and Asset Bundle deployment.",
         tech: ["Databricks", "Unity Catalog", "MLflow", "LangGraph", "Python"],
         link: "https://github.com/ash1sh95/databricks-agent-kit",
-        metrics: "25 tests · Eval 8/8"
+        metrics: "25 automated tests passed"
     },
     {
         title: "DSPy Observability Dashboard",
@@ -204,7 +204,7 @@ export const projects = [
 export const skills = [
     {
         category: "GenAI & Agents",
-        items: ["LangGraph", "DSPy", "RAG", "MCP", "LLM Evals", "Agent Governance", "LangChain", "OpenAI API", "LLM Fine-tuning", "MLOps", "Local LLMs / Ollama"]
+        items: ["LangGraph", "DSPy", "RAG", "MCP", "LLM Evaluation", "Agent Governance", "LangChain", "OpenAI API", "LLM Fine-tuning", "MLOps", "Local LLMs / Ollama"]
     },
     {
         category: "Databricks & Data Platforms",
